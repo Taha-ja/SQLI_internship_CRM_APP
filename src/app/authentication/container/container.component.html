@@ -1,0 +1,15 @@
+<section class="vh-100">
+    <div class="container-fluid h-custom py-5">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-md-7 col-lg-6 col-xl-5">
+                <img src="../../../assets/images/Microsoft_Dynamics_Logo1.png" class="img-fluid" alt="Sample image">
+            </div>
+            <div class="col-md-8 col-lg-8 col-xl-4 offset-xl-1 col-9">
+                <div *ngIf="id==0"><app-register-user></app-register-user></div>
+                <div *ngIf="id==1"><app-login-user></app-login-user></div>
+                <div *ngIf="id==null"><app-login-user></app-login-user></div>
+                <div *ngIf="id==2"><app-password-user></app-password-user></div>
+            </div>
+        </div>
+    </div>
+</section>

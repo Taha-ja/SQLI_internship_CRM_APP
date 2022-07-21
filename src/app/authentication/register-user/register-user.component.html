@@ -1,0 +1,34 @@
+<!-- <section class="vh-100">
+    <div class="container-fluid h-custom py-5">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-md-7 col-lg-6 col-xl-5">
+                <img src="../../../assets/images/Microsoft_Dynamics_Logo1.png" class="img-fluid" alt="Sample image">
+            </div>
+            <div class="col-md-8 col-lg-8 col-xl-4 offset-xl-1 col-9"> -->
+                <form [formGroup]="registerForm" autocomplete="off" novalidate
+                    (ngSubmit)="registerUser(registerForm.value)">
+                    <div class="mb-3 row">
+                        <div class="form-outline mb-4">
+                            <input type="email" id="email" name="email" class="form-control form-control-lg"
+                                placeholder="Enter a valid email address" formControlName="email"
+                        
+                                required />
+                            <em *ngIf="validateControl('email') && hasError('email', 'email')">Please provide a valid
+                                email</em>
+                            <em *ngIf="validateControl('email') && hasError('email', 'required')">Email is required</em>
+                        </div>
+                    </div>
+                    <div class="text-center text-lg-start mt-4 pt-2">
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary btn-lg"
+                                style="padding-left: 2.5rem; padding-right: 2.5rem;width: 100%;"
+                                [disabled]="!registerForm.valid">Register</button>
+                        </div>
+                        <p class="small fw-bold mt-2 pt-1 mb-0 text-center">You have already an account? <a [routerLink]="['/authentication/auth/1']"
+                                class="link-primary" >Log in</a></p>
+                    </div>
+                </form>
+            <!-- </div>
+        </div>
+    </div>
+</section> -->
