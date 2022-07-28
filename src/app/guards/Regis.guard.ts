@@ -11,12 +11,13 @@ export class RegisGuard implements CanActivate {
     constructor(private router: Router, private data:DataTransfertService) { }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        console.log("AA "+this.data.getEmail!);
-        if (this.data.getEmail==null) {
+        console.log("AA "+this.data.getEmail());
+        if (this.data.getEmail()!=null) {
+
             return true;
         }
-
         this.router.navigate(["/authentication/auth/0"]);
+
         return false;
     }
 }

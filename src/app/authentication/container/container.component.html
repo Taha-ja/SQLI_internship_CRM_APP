@@ -1,15 +1,68 @@
-<section class="vh-100">
-    <div class="container-fluid h-custom py-5">
-        <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col-md-7 col-lg-6 col-xl-5">
-                <img src="../../../assets/images/Microsoft_Dynamics_Logo1.png" class="img-fluid" alt="Sample image">
+
+<!-- Section: Design Block -->
+<section class="text-center">
+    <!-- Background image -->
+    <div class="p-5 bg-image" style="
+          background-color: #6E85B2;
+          border-bottom-left-radius:40% ;
+          height: 300px;
+          /* transform: rotate(5deg); */
+          "></div>
+    <!-- Background image -->
+    <!-- background-image: url('https://mdbootstrap.com/img/new/textures/full/171.jpg'); -->
+    <!-- mx-5 mx-md-5 -->
+    <div  class="card   shadow-5-strong w-75"
+     style="
+          margin-top: -200px;
+          margin-left: auto;
+          margin-right: auto;
+          background: hsla(0, 0%, 100%, 0.8);
+          backdrop-filter: blur(30px);
+          border-radius: 40px;
+          box-shadow: 0px 10px 10px #888888;
+          "
+          >
+        <section class="vh-80" >
+            <div class="container-fluid h-custom py-5 ">
+                <div class="row d-flex justify-content-center align-items-center h-100 ">
+                    <div class="col-md-7 col-lg-6 col-xl-5">
+                        <img src="../../../assets/images/Microsoft_Dynamics_Logo1.png" class="img-fluid d-none d-sm-block d-md-block" alt="Sample image">
+
+                    </div>
+                    <div class="col-md-8 col-lg-8 col-xl-4 offset-xl-1 col-9" >
+                        <div *ngIf="id==0">
+                            <app-register-user></app-register-user>
+                        </div>
+                        <div *ngIf="id==1">
+                            <app-login-user></app-login-user>
+                        </div>
+                        <div *ngIf="id==null">
+                            <app-login-user></app-login-user>
+                        </div>
+                        <div *ngIf="id==2">
+                            <app-password-user></app-password-user>
+                        </div>
+                        <div *ngIf="id==3">
+                            <app-forgot-password></app-forgot-password>
+                        </div>
+                        <div *ngIf="id==4">
+                            <app-reset-password></app-reset-password>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-8 col-lg-8 col-xl-4 offset-xl-1 col-9">
-                <div *ngIf="id==0"><app-register-user></app-register-user></div>
-                <div *ngIf="id==1"><app-login-user></app-login-user></div>
-                <div *ngIf="id==null"><app-login-user></app-login-user></div>
-                <div *ngIf="id==2"><app-password-user></app-password-user></div>
-            </div>
-        </div>
+            <div *ngIf="id==2"  class="mb-5 mx-5" style="float: left;"><strong>Note:</strong> Passwords must have at least one non alphanumeric character, one uppercase and at least one digit.</div>
+
+        </section>
+        
     </div>
+    <!-- <div class="bg-image" style="
+    margin-top: -100px;
+    background-color: #6E85B2;
+    border-radius:50% ;
+    height: 200px;
+    width: 200px;
+    right: 0;
+    "></div> -->
 </section>
+<!-- Section: Design Block -->

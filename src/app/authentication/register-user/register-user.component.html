@@ -8,17 +8,23 @@
                 <form [formGroup]="registerForm" autocomplete="off" novalidate
                     (ngSubmit)="registerUser(registerForm.value)">
                     <div class="mb-3 row">
-                        <div class="form-outline mb-4">
+                        <div class="form-outline mb-0">
+                            <div id="header">
+                                <div id="login">Sign Up</div>
+                                <div>Enter your email and join us</div>
+                            </div>
+                            <div *ngIf="!isEmailExist" class="alert alert-danger">sorry the email you entered does not correspond to any of our customers </div>
                             <input type="email" id="email" name="email" class="form-control form-control-lg"
                                 placeholder="Enter a valid email address" formControlName="email"
                         
                                 required />
-                            <em *ngIf="validateControl('email') && hasError('email', 'email')">Please provide a valid
+                            <!-- <em *ngIf="validateControl('email') && hasError('email', 'email')">Please provide a valid
                                 email</em>
-                            <em *ngIf="validateControl('email') && hasError('email', 'required')">Email is required</em>
+                            <em *ngIf="validateControl('email') && hasError('email', 'required')">Email is required</em> -->
+                            
                         </div>
                     </div>
-                    <div class="text-center text-lg-start mt-4 pt-2">
+                    <div class="text-center text-lg-start mt-0 pt-2">
                         <div class="text-center">
                             <button type="submit" class="btn btn-primary btn-lg"
                                 style="padding-left: 2.5rem; padding-right: 2.5rem;width: 100%;"

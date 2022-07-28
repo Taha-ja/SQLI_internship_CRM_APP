@@ -1,4 +1,11 @@
 export interface RegistrationResponse {
-    isSuccessfulRegistration: boolean;
-    errros: string[];
+    message:string;
+    isExisted: boolean;
+    email:string;
+    firstname?:string;
+    lastname?:string;
+    //isSuccessfulRegistration: boolean;
+    //errros?: string[];
+    
+
 }

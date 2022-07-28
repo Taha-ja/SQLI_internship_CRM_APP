@@ -6,6 +6,8 @@ import { AuthenticationService } from 'src/app/shared/services/authentication.se
 import { DataTransfertService } from 'src/app/shared/services/data-transfert.service';
 import { LoginModel } from 'src/app/_interfaces/login.model';
 import { UserRegistration } from 'src/app/_interfaces/registration.model';
+import { RegistrationResponse } from 'src/app/_interfaces/registrationResponse.model';
+import { EmailCheck } from 'src/app/_interfaces/email.model';
 
 @Component({
   selector: 'app-register-user',
@@ -13,10 +15,12 @@ import { UserRegistration } from 'src/app/_interfaces/registration.model';
   styleUrls: ['./register-user.component.scss']
 })
 export class RegisterUserComponent implements OnInit {
-  @Output() isLogin:boolean;
+  // @Output() isLogin:boolean;
   invalidRegistration: boolean;
   registerForm: FormGroup;
-  credentials: LoginModel = {username:'', password:''};
+  credentials: LoginModel = {email:'', password:''};
+  isEmailExist:boolean=true;
+  emailCheck:EmailCheck={email:''};
   constructor(private authService: AuthenticationService,
               private router:Router,
               private data :DataTransfertService) { }
@@ -37,7 +41,7 @@ export class RegisterUserComponent implements OnInit {
   public hasError = (controlName: string, errorName: string) => {
     return this.registerForm.get(controlName).hasError(errorName)
   }
-  public  registerUser = (registerFormValue) => {
+  public  registerUser = async (registerFormValue) => {
     //const apiAddress: string = 'api/accounts/registration';
     const formValues = {...registerFormValue} ;
     const user: UserRegistration = {
@@ -45,13 +49,26 @@ export class RegisterUserComponent implements OnInit {
       // password: formValues.password,
       // confirmPassword: formValues.confirm
     };
-    this.data.setEmail(user.email);
-    this.router.navigate(['/authentication/auth/2'])
-    // this.authService.registerUser(apiAddress, user)
-    // .subscribe({
-    //   next: (_) => console.log("Successful registration"),
-    //   error: (err: HttpErrorResponse) => this.invalidRegistration = true
-    // })
+
+    this.emailCheck.email=user.email;
+    const apiAddress="api/Auth/checkEmail";
+
+    this.authService.checkEmail(apiAddress, this.emailCheck)
+    .subscribe({
+      next: async (response: RegistrationResponse) => {
+        //this.isEmailExist=response.isExisted;
+        //console.log("Successful registration");
+        //if(this.isEmailExist){
+          this.emailCheck.email=response.email;
+          this.data.setEmail(user.email);
+          this.data.setfirstname(response.firstname);
+          this.data.setlastname(response.lastname);
+          this.router.navigate(['/authentication/auth/2'])
+       // }
+
+    },
+      error: (err: HttpErrorResponse) => console.log(err)
+    })
   }
 
 }

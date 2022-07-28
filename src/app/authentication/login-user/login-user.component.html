@@ -22,12 +22,17 @@
                     class="img-fluid" alt="Sample image">
             </div>
             <div class="col-md-8 col-lg-8 col-xl-4 offset-xl-1 col-9"> -->
+                <div id="header">
+                    <div id="login">Login</div>
+                    <div>Enter your details and start your day with us!</div>
+                </div>
+
                 <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
                     <!-- Email input -->
                     <div *ngIf="invalidLogin" class="alert alert-danger">Invalid username or password.</div>
                     <div class="form-outline mb-4">
                         <input type="email" id="username" name="username" class="form-control form-control-lg"
-                            placeholder="Enter a valid email address" [(ngModel)]="credentials.username" 
+                            placeholder="Enter a valid email address" [(ngModel)]="credentials.email" 
                             required/>
                         <!-- <label class="form-label" for="form3Example3">Email address</label> -->
                     </div>
@@ -47,7 +52,7 @@
                                 Remember me
                             </label> -->
                         </div>
-                        <a href="#!" class="text-body">Forgot password?</a>
+                        <a [routerLink]="['/authentication/auth/3']" class="text-body">Forgot password?</a>
                     </div>
 
                     <div class="text-center text-lg-start mt-4 pt-2">

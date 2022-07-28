@@ -13,7 +13,7 @@ import { LoginModel } from 'src/app/_interfaces/login.model';
 })
 export class LoginUserComponent implements OnInit {
   invalidLogin: boolean;
-  credentials: LoginModel = {username:'', password:''};
+  credentials: LoginModel = {email:'', password:''};
 
   constructor(private router: Router, private authService :AuthenticationService ) { }
 
@@ -21,7 +21,10 @@ export class LoginUserComponent implements OnInit {
     
   }
   login = ( form: NgForm) => {
-    const apiAddress: string = 'api/auth/login';
+    //https://localhost:7290/api/Auth/token
+    //const apiAddress: string = 'api/auth/login';
+    const apiAddress: string = 'api/Auth/token';
+
     if (form.valid) {
       this.authService.login(apiAddress,this.credentials)
       .subscribe({
@@ -29,7 +32,7 @@ export class LoginUserComponent implements OnInit {
           const token = response.token;
           localStorage.setItem("jwt", token); 
           this.invalidLogin = false; 
-          this.router.navigate(["/"]);
+          this.router.navigate(["/home"]);
         },
         error: (err: HttpErrorResponse) => this.invalidLogin = true
       })

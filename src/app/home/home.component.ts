@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
@@ -7,27 +7,32 @@ import { JwtHelperService } from '@auth0/angular-jwt';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  container :any;
-  constructor(private jwtHelper: JwtHelperService) { }
-
+  cont :boolean;
+  //constructor(private jwtHelper: JwtHelperService) { }
+  constructor(private el: ElementRef){}
   ngOnInit(): void {
+    console.log("A "+this.cont)
   }
   
-  isUserAuthenticated = (): boolean => {
-    const token = localStorage.getItem("jwt");
+  // isUserAuthenticated = (): boolean => {
+  //   const token = localStorage.getItem("jwt");
   
-    if (token && !this.jwtHelper.isTokenExpired(token)){
-      return true;
-    }
+  //   if (token && !this.jwtHelper.isTokenExpired(token)){
+  //     return true;
+  //   }
   
-    return false;
-  }
+  //   return false;
+  // }
   
   logOut = () => {
     localStorage.removeItem("jwt");
   }
-
-  signUpButton(){
-      this.container.classList.add("right-panel-active");
-  }
+appendClass(){
+  // this.el.nativeElement.classList.add("right-panel-active");
+  this.cont=true;
+  // console.log(this.cont)
+}
+  // signUpButton(){
+  //     this.container.classList.add("right-panel-active");
+  // }
 }
