@@ -14,6 +14,7 @@ import { LoginModel } from 'src/app/_interfaces/login.model';
 export class LoginUserComponent implements OnInit {
   invalidLogin: boolean;
   credentials: LoginModel = {email:'', password:''};
+  loading:boolean;
 
   constructor(private router: Router, private authService :AuthenticationService ) { }
 

@@ -12,7 +12,6 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 
 
 
-
 @NgModule({
   declarations: [
     RegisterUserComponent,

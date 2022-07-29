@@ -3,6 +3,7 @@ export interface RegResp {
     ExpiresOn?:string;
     IsAuthenticated:boolean;
     Token:string;
+    message:string;
     // Email:string,
     // IsConfirmed:boolean,
     // EmailSent:boolean,

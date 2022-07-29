@@ -28,7 +28,9 @@ export class PasswordUserComponent implements OnInit {
   showSuccess: boolean;
   showError: boolean;
   successMessage: string;
-  errorMessage: string;
+  errorMessage:string;
+  errMessage: string;
+  loading:boolean=false;
   //email:string;
   loginModel:LoginModel = {email:'', password:''};
   userResgister:UserForRegistration={
@@ -58,21 +60,7 @@ export class PasswordUserComponent implements OnInit {
         Validators.required
       ]))
     });
-    // this.token = this.route.snapshot.queryParams['token'];
-    // this.userId = this.route.snapshot.queryParams['uid'];
-    // if(this.IsAuthenticated){
-    //   const config: ModalOptions = {
-    //     initialState: {
-    //       modalHeaderText: 'Success Message',
-    //       modalBodyText: 'Successful registration',
-    //       okButtonText: 'OK'
-    //     }
-    //   };
 
-    //   this.bsModalRef = this.modal.show(SuccessModalComponent, config);
-    //   this.bsModalRef.content.redirectOnOk.subscribe(_ => this.router.navigateByUrl('/authentication/auth/1'));
-    //   console.log("Successful registration");
-    // }
   }
   public validateControl = (controlName: string) => {
     return this.registerForm.get(controlName).invalid && this.registerForm.get(controlName).touched
@@ -81,6 +69,9 @@ export class PasswordUserComponent implements OnInit {
     return this.registerForm.get(controlName).hasError(errorName)
   }
   public registerUser = (registerFormValue) => {
+    this.loading=true;
+    this.isError=false;
+    this.registerForm.disable();
     const formValues = { ...registerFormValue };
     const user: UserRegistration = {
       password: formValues.password,
@@ -97,6 +88,7 @@ export class PasswordUserComponent implements OnInit {
       .subscribe({
         next: (_) => {
           //this.IsAuthenticated=responce.IsAuthenticated;
+          this.loading=false;
           const config: ModalOptions = {
             initialState: {
               modalHeaderText: 'Success Message',
@@ -110,23 +102,35 @@ export class PasswordUserComponent implements OnInit {
           // console.log("Successful registration");
           
       },
-        error: (err: HttpErrorResponse) => {
-          const config: ModalOptions = {
-            initialState: {
-              modalHeaderText: 'Error Message',
-              modalBodyText: "operation failed check your internet connection",
-              okButtonText: 'OK'
-            }
-          };
-    
-          this.bsModalRef = this.modal.show(ErrorModalComponent, config);
-          
-          this.bsModalRef.content.redirectOnOk.subscribe(_ => window.location.reload());
+        error: (error) => {
+          var result = JSON.parse(JSON.stringify(error))
+          //console.log( result?.error);
+          this.errMessage=result?.error;
+          if(this.errMessage!='')this.loading=false;
+          if(this.errMessage.length>200){
+            this.errorMessage="connection failed please check you internet connection";
+            const config: ModalOptions = {
+              initialState: {
+                modalHeaderText: 'Error Message',
+                modalBodyText: this.errorMessage,
+                okButtonText: 'OK'
+              }
+            };
+            this.isError=false;
+            this.bsModalRef = this.modal.show(ErrorModalComponent, config);
+            
+            this.bsModalRef.content.redirectOnOk.subscribe(_ => window.location.reload());
+          }
+          else{
+            this.isError=true;
+          }
+
         }
       })
     }
     else{
       this.isNotEqual=true;
+      
     }
 
   }
