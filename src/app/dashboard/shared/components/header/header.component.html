@@ -1,0 +1,58 @@
+<mat-toolbar >
+<mat-toolbar-row>
+   <button mat-icon-button (click)="toggleSideBar()">
+   <mat-icon>menu</mat-icon>
+</button>
+<span class="logo">CRMP</span>
+<div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
+    <ul fxLayout="row" fxLayoutGap="20px">
+<li>
+    <button mat-button [matMenuTriggerFor]="men">
+        <mat-icon>settings</mat-icon>
+    </button>
+    <mat-menu #men="matMenu">
+        <button mat-menu-item>
+            <mat-icon>update</mat-icon>
+            Modifier mots de pass
+          </button>
+          <mat-divider></mat-divider>
+          <button mat-menu-item>
+            <mat-icon>edit</mat-icon>
+            Modifier profile
+          </button>
+      
+     
+     
+    </mat-menu>
+</li>
+<li>
+    <button mat-icon-button>
+        <mat-icon>help_outline</mat-icon>
+    </button> 
+</li>
+<li>
+    <button mat-button [matMenuTriggerFor]="menu">
+        <mat-icon>account_circle</mat-icon>
+    </button>
+<mat-menu #menu="matMenu">
+    <button mat-menu-item>
+        <mat-icon>perm_identity</mat-icon>
+        Emily LIE
+      </button>
+      <button mat-menu-item>
+        <mat-icon>email</mat-icon>
+        Emily@gmail.com
+      </button>
+      <mat-divider></mat-divider>
+
+  <button mat-menu-item>
+    <mat-icon>exit_to_app</mat-icon>
+    Se Déconnecté
+  </button>
+
+</mat-menu>
+</li>
+    </ul>
+</div> 
+    </mat-toolbar-row>
+    </mat-toolbar>

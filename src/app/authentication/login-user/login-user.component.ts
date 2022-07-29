@@ -33,7 +33,7 @@ export class LoginUserComponent implements OnInit {
           const token = response.token;
           localStorage.setItem("jwt", token); 
           this.invalidLogin = false; 
-          this.router.navigate(["/home"]);
+          this.router.navigate(["/dashboard/"]);
         },
         error: (err: HttpErrorResponse) => this.invalidLogin = true
       })

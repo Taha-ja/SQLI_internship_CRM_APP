@@ -1,0 +1,18 @@
+mat-card:hover{
+transition: 0.4s;
+z-index: 1;
+box-shadow: 0 8px 50px rgba(0,0,0,0.2);
+transform: scale(1.05);
+cursor: pointer;
+}
+mat-card:active{
+    background-color: darkgray;
+
+}
+.stats-cards{
+    background-color:#FDFFFC ;
+}
+
+mat-card{
+    border-radius: 20px;
+}

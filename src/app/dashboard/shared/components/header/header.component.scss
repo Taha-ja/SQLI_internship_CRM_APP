@@ -1,0 +1,13 @@
+*,
+:after,
+:before {
+    box-sizing: border-box
+}
+ul li{
+    list-style: none;
+}
+mat-toolbar{
+    background-color: #023f73;
+    color: white;
+    box-shadow: 0 10px 50px rgb(2, 112, 106);
+}

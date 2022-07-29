@@ -4,17 +4,14 @@ import { ContainerComponent } from './authentication/container/container.compone
 import { LoginUserComponent } from './authentication/login-user/login-user.component';
 import { PasswordUserComponent } from './authentication/password-user/password-user.component';
 import { ConfirmEmailComponent } from './confirm-email/confirm-email.component';
-import { CustomersComponent } from './customers/customers.component';
 import { AuthGuard } from './guards/auth.guard';
 import { RegisGuard } from './guards/Regis.guard';
-import { HomeComponent } from './home/home.component';
 import { SuccessModalComponent } from './shared/modals/success-modal/success-modal.component';
 const routes: Routes = [
-  { path: 'home', component: HomeComponent },
   { path: '', component: ContainerComponent },
-  { path: 'customers', component: CustomersComponent, canActivate: [AuthGuard] },
   { path: 'confirm', component: ConfirmEmailComponent},
   { path: 'authentication', loadChildren: () => import('./authentication/authentication.module').then(m => m.AuthenticationModule) },
+  { path: 'dashboard', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule) ,canActivate: [AuthGuard] },
   //{ path: '**', redirectTo: '/', pathMatch: 'full'}
 ];
 
