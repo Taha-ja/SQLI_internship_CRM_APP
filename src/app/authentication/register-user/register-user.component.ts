@@ -21,6 +21,8 @@ export class RegisterUserComponent implements OnInit {
   credentials: LoginModel = {email:'', password:''};
   isEmailExist:boolean=true;
   emailCheck:EmailCheck={email:''};
+  loading:boolean=false;
+  errorMessage:string;
   constructor(private authService: AuthenticationService,
               private router:Router,
               private data :DataTransfertService) { }
@@ -30,6 +32,7 @@ export class RegisterUserComponent implements OnInit {
       // password: new FormControl('', [Validators.required]),
       // confirm: new FormControl('')
     });
+    this.errorMessage="the email you entered does not match any of our clients";
   }
   checkAndPass(){
     // this.router.navigate(['/authentication/auth/1'], {state: {data:this.registerUser.get("email")}})
@@ -42,6 +45,9 @@ export class RegisterUserComponent implements OnInit {
     return this.registerForm.get(controlName).hasError(errorName)
   }
   public  registerUser = async (registerFormValue) => {
+    this.loading=true;
+    this.registerForm.disable();
+
     //const apiAddress: string = 'api/accounts/registration';
     const formValues = {...registerFormValue} ;
     const user: UserRegistration = {
@@ -56,6 +62,8 @@ export class RegisterUserComponent implements OnInit {
     this.authService.checkEmail(apiAddress, this.emailCheck)
     .subscribe({
       next: async (response: RegistrationResponse) => {
+        this.loading=false;
+        this.registerForm.enable();
         //this.isEmailExist=response.isExisted;
         //console.log("Successful registration");
         //if(this.isEmailExist){
@@ -67,7 +75,10 @@ export class RegisterUserComponent implements OnInit {
        // }
 
     },
-      error: (err: HttpErrorResponse) => console.log(err)
+      error: (err: HttpErrorResponse) =>{ 
+        this.loading=false;
+        this.registerForm.enable();
+        console.log(err)}
     })
   }
 

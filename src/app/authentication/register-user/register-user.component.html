@@ -23,12 +23,21 @@
                             <em *ngIf="validateControl('email') && hasError('email', 'required')">Email is required</em> -->
                             
                         </div>
-                    </div>
                     <div class="text-center text-lg-start mt-0 pt-2">
+                        <div class="text-center text-lg-center mt-0 pt-2">
+                        <div *ngIf="!isEmailExist" class="alert alert-danger" role="alert">
+                            {{errorMessage}}
+                        </div>
+                    </div>
+                    </div>
                         <div class="text-center">
                             <button type="submit" class="btn btn-primary btn-lg"
                                 style="padding-left: 2.5rem; padding-right: 2.5rem;width: 100%;"
-                                [disabled]="!registerForm.valid">Register</button>
+                                [disabled]="!registerForm.valid">
+                                <span *ngIf="loading" class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+                                Register
+                                <span *ngIf="loading"  aria-hidden="true">...</span>
+                            </button>
                         </div>
                         <p class="small fw-bold mt-2 pt-1 mb-0 text-center">You have already an account? <a [routerLink]="['/authentication/auth/1']"
                                 class="link-primary" >Log in</a></p>

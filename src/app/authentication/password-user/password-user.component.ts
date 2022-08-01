@@ -31,6 +31,7 @@ export class PasswordUserComponent implements OnInit {
   errorMessage:string;
   errMessage: string;
   loading:boolean=false;
+  isExisted:boolean=false;
   //email:string;
   loginModel:LoginModel = {email:'', password:''};
   userResgister:UserForRegistration={
@@ -89,6 +90,7 @@ export class PasswordUserComponent implements OnInit {
         next: (_) => {
           //this.IsAuthenticated=responce.IsAuthenticated;
           this.loading=false;
+          this.registerForm.enable();
           const config: ModalOptions = {
             initialState: {
               modalHeaderText: 'Success Message',
@@ -103,9 +105,14 @@ export class PasswordUserComponent implements OnInit {
           
       },
         error: (error) => {
+          this.loading=false;
+          this.registerForm.enable();
           var result = JSON.parse(JSON.stringify(error))
           //console.log( result?.error);
           this.errMessage=result?.error;
+          if(this.errMessage=="Email is already registered!"){
+            this.isExisted=true;
+          }
           if(this.errMessage!='')this.loading=false;
           if(this.errMessage.length>200){
             this.errorMessage="connection failed please check you internet connection";
@@ -123,6 +130,7 @@ export class PasswordUserComponent implements OnInit {
           }
           else{
             this.isError=true;
+            this.registerForm.enable();
           }
 
         }

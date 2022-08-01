@@ -23,6 +23,7 @@ export class ForgotPasswordComponent implements OnInit {
   email:string;
   isSent:boolean;
   bsModalRef?:BsModalRef;
+  loading:boolean=false;
   constructor(
     private _authService: AuthenticationService,
     private router: Router,
@@ -43,6 +44,7 @@ export class ForgotPasswordComponent implements OnInit {
     return this.forgotPasswordForm.get(controlName).hasError(errorName)
   }
   public forgotPassword = (forgotPasswordFormValue) => {
+    this.loading=true;
     this.showError = this.showSuccess = false;
     const forgotPass = { ...forgotPasswordFormValue };
     const forgotPassDto: ForgotPassword = {
@@ -52,6 +54,7 @@ export class ForgotPasswordComponent implements OnInit {
     this._authService.forgotPassword('api/Auth/forgot-password', forgotPassDto)
     .subscribe({
       next: (responce:ForgotPassword) => {
+      this.loading=false;
       this.isSent=responce.emailSent;
       if(this.isSent){
         //this.email='';
@@ -77,11 +80,13 @@ export class ForgotPasswordComponent implements OnInit {
 
       }
       else{
+        this.loading=false;
         this.showError = true;
         this.errorMessage = "operation failed enter a valid email!";
       }
     },
     error: (err: HttpErrorResponse) => {
+      this.loading=false;
       //this.showError = true;
       //this.errorMessage = "operation failed check your internet connection";
 

@@ -24,6 +24,7 @@ export class ResetPasswordComponent implements OnInit {
   private token: string;
   private userId: string;
   bsModalRef?:BsModalRef;
+  loading:boolean=false;
 //   resetPassowordDtoResgister:ResetPasswordDto={
 //     password: "",
 //     confirmPassword:"",
@@ -65,6 +66,8 @@ export class ResetPasswordComponent implements OnInit {
   }
   
   public resetPassword = (resetPasswordFormValue) => {
+    this.loading=true;
+    this.resetPasswordForm.disable();
     this.showError = this.showSuccess = false;
     const resetPass = { ... resetPasswordFormValue };
   
@@ -80,6 +83,7 @@ export class ResetPasswordComponent implements OnInit {
     this.authService.resetPassword('api/Auth/reset-password', resetPassDto)
     .subscribe({
       next:(responce:ResetPasswordDto) =>{
+        this.loading=false;
         this.isSuccess=responce.isSuccess;
         if(this.isSuccess){
             const config: ModalOptions = {
@@ -95,8 +99,10 @@ export class ResetPasswordComponent implements OnInit {
         this.showSuccess = true;
       },
     error: (err: HttpErrorResponse) => {
+      this.loading=false;
       this.showError = true;
-      this.errorMessage = err.message;
+      this.errorMessage = "operation failed check your internet connection";
+      this.resetPasswordForm.enable();
     }})
   }
 }
