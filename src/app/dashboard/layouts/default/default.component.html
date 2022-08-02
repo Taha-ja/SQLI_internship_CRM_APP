@@ -1,6 +1,9 @@
 <app-header (toggleSideBarForMe)="sideBarToggler()"></app-header>
 <mat-drawer-container> 
-    <mat-drawer mode="side" [opened]="sideBarOpen">
+    <mat-drawer *ngIf="windowWidth <=800" mode="over" [opened]="sideBarOpen">
+        <app-sidebar></app-sidebar> 
+    </mat-drawer>
+    <mat-drawer *ngIf="windowWidth >800" mode="side" [opened]="sideBarOpen">
         <app-sidebar></app-sidebar> 
     </mat-drawer>
     <mat-drawer-content>

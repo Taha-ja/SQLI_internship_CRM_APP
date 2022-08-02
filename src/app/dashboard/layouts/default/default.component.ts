@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { Component, OnInit, ViewChild } from '@angular/core';
+
 import { JwtHelperService } from '@auth0/angular-jwt';
+
 
 import { DashboardService } from 'src/app/shared/services/dashboard.service';
 @Component({
@@ -10,9 +13,12 @@ import { DashboardService } from 'src/app/shared/services/dashboard.service';
 export class DefaultComponent implements OnInit {
 
   sideBarOpen=true;
+  OpportinitiesList:any=[];
+  windowWidth:number;
   constructor(private service:DashboardService,private jwtHelper: JwtHelperService) {
 
   }
+ 
   isUserAuthenticated = (): boolean => {
     const token = localStorage.getItem("jwt");
   
@@ -25,9 +31,14 @@ export class DefaultComponent implements OnInit {
   logOut = () => {
     localStorage.removeItem("jwt");
   }
-  OpportinitiesList:any=[];
+
+
   ngOnInit(): void {
+
     this.refreshOppList();
+    window.addEventListener("resize", (_)=>{
+      this.windowWidth=window.innerWidth;
+    });
   }
   sideBarToggler(){
     this.sideBarOpen=!this.sideBarOpen;
@@ -37,5 +48,6 @@ export class DefaultComponent implements OnInit {
       this.OpportinitiesList=data;
     });
   }
+
 
 }
