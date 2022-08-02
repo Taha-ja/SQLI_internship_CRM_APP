@@ -53,6 +53,8 @@ export class LoginUserComponent implements OnInit {
           this.activeForm();
           this.loading=false;
           const token = response.token;
+          sessionStorage.setItem("UserName",response.fullName);
+          sessionStorage.setItem("Email",response.email)
           localStorage.setItem("jwt", token); 
           this.invalidLogin = false; 
           this.router.navigate(["/dashboard/"]);

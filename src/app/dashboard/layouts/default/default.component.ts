@@ -10,12 +10,17 @@ import { DashboardService } from 'src/app/shared/services/dashboard.service';
 export class DefaultComponent implements OnInit {
 
   sideBarOpen=true;
+  isResize:boolean=false;
+  windowWidth:number;
   constructor(private service:DashboardService,private jwtHelper: JwtHelperService) {
+    // this.windowWidth=window.innerWidth;
+    // console.log(this.windowWidth);
 
   }
+  
   isUserAuthenticated = (): boolean => {
     const token = localStorage.getItem("jwt");
-  
+    
     if (token && !this.jwtHelper.isTokenExpired(token)){
       return true;
     }
@@ -26,8 +31,13 @@ export class DefaultComponent implements OnInit {
     localStorage.removeItem("jwt");
   }
   OpportinitiesList:any=[];
+  
   ngOnInit(): void {
     this.refreshOppList();
+    window.addEventListener("resize", (_)=>{
+      this.windowWidth=window.innerWidth;
+    });
+
   }
   sideBarToggler(){
     this.sideBarOpen=!this.sideBarOpen;

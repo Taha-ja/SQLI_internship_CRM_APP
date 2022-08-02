@@ -7,12 +7,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-
+UserName:string;
+Email:string;
 @Output()toggleSideBarForMe:EventEmitter<any>=new EventEmitter();
 
   constructor(private router: Router) { }
 
   ngOnInit(): void {
+    this.UserName=sessionStorage.getItem("UserName");
+    this.Email=sessionStorage.getItem("Email");
   }
   logOut = () => {
     localStorage.removeItem("jwt");
