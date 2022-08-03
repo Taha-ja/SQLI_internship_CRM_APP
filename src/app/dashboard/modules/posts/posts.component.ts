@@ -43,6 +43,11 @@ export class PostsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    setTimeout(()=>{
+      window.dispatchEvent(
+        new Event('resize')
+       );
+    },300)
     const apiAddress: string = 'api/Crm/opportunities';
     // OpportunityModel
     this.dashService.opportunities(apiAddress).subscribe({

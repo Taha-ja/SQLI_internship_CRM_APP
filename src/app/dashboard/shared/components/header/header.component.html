@@ -8,8 +8,9 @@
     <ul fxLayout="row" fxLayoutGap="20px">
 <li>
     <button mat-button [matMenuTriggerFor]="men">
-        <mat-icon>settings</mat-icon>
+        <mat-icon style="margin-top: 16px;">settings</mat-icon>
     </button>
+
     <mat-menu #men="matMenu">
         <button mat-menu-item>
             <mat-icon>update</mat-icon>
@@ -27,17 +28,19 @@
 </li>
 <li>
     <button mat-icon-button>
-        <mat-icon>help_outline</mat-icon>
+        <mat-icon style="margin-top: 15px;">help_outline</mat-icon>
     </button> 
 </li>
 <li>
     <button mat-button [matMenuTriggerFor]="menu">
-        <mat-icon>account_circle</mat-icon>
+        <mat-icon style="margin-top: 15px;">account_circle</mat-icon>
     </button>
 <mat-menu #menu="matMenu">
     <button mat-menu-item>
         <mat-icon>perm_identity</mat-icon>
+
         {{UserName}}
+
       </button>
       <button mat-menu-item>
         <mat-icon>email</mat-icon>

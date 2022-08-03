@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from 'src/app/_interfaces/User.model';
 
 @Component({
   selector: 'app-header',
@@ -7,11 +8,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+
 UserName:string;
 Email:string;
+
 @Output()toggleSideBarForMe:EventEmitter<any>=new EventEmitter();
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {
+    
+   }
 
   ngOnInit(): void {
     this.UserName=sessionStorage.getItem("UserName");

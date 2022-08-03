@@ -21,7 +21,7 @@ export class ComponentTableComponent implements AfterViewInit {
   constructor() {
     this.dataSource = new ComponentTableDataSource();
   }
-ngOnInit
+
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
