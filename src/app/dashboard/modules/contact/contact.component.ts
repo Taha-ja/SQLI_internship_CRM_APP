@@ -11,7 +11,13 @@ export class ContactComponent implements OnInit {
   constructor(private service:DashboardService) { }
   ContactsList:any=[];
   ngOnInit(): void {
+    setTimeout(()=>{
+      window.dispatchEvent(
+        new Event('resize')
+       );
+    },300)
   }
+  
   refreshOppList(){
     this.service.opportunities("").subscribe(data=>{
       this.ContactsList=data;

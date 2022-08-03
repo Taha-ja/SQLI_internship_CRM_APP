@@ -36,10 +36,11 @@ export class DefaultComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+  this.sideBarOpen=true;
     this.refreshOppList();
     window.addEventListener("resize", (_)=>{
       this.windowWidth=window.innerWidth;
+      
     });
   }
   sideBarToggler(){
@@ -49,6 +50,8 @@ export class DefaultComponent implements OnInit {
     this.service.opportunities("").subscribe(data=>{
       this.OpportinitiesList=data;
     });
+
+
   }
 
 
