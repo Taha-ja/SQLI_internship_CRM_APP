@@ -21,7 +21,8 @@ a:hover{
     transition: 0.4s;
 z-index: 1;
 
-transform: scale(1.004);
+transform: scale(1.001);
+background-color: #DAEAF1;
 cursor: pointer;
 }
 
@@ -29,3 +30,9 @@ mat-nav-list{
     background-color: #FDFFFC;
 }
 }
+// mat-icon:hover{
+//     transform: rotate(5deg);
+//     transition: 1;
+
+// }
+
