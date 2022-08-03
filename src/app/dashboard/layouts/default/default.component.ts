@@ -12,7 +12,10 @@ export class DefaultComponent implements OnInit {
   sideBarOpen=true;
   isResize:boolean=false;
   windowWidth:number;
-  constructor(private service:DashboardService,private jwtHelper: JwtHelperService) {
+  constructor(
+    private service:DashboardService,
+    private jwtHelper: JwtHelperService,
+    private dashService:DashboardService,) {
     // this.windowWidth=window.innerWidth;
     // console.log(this.windowWidth);
 
@@ -43,9 +46,20 @@ export class DefaultComponent implements OnInit {
     this.sideBarOpen=!this.sideBarOpen;
   }
   refreshOppList(){
-    this.service.opportunities("").subscribe(data=>{
-      this.OpportinitiesList=data;
-    });
+    // this.service.opportunities("").subscribe(data=>{
+    //   this.OpportinitiesList=data;
+    // });
+    const apiAddress: string = 'api/Crm/opportunities';
+    this.dashService.opportunities(apiAddress).subscribe({
+      next:(responce)=>{
+        var result = JSON.parse(JSON.stringify(responce));
+
+        var opportunities=responce.value;
+        console.log(result.value[0].emailaddress);
+        // this.dataSource = new MatTableDataSource(result.value);
+
+      }
+    })
   }
 
 }

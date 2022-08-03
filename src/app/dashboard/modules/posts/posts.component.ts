@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { DashboardService } from 'src/app/shared/services/dashboard.service';
 
 export interface PeriodicElement {
   name: string;
@@ -28,15 +29,32 @@ const ELEMENT_DATA: PeriodicElement[] = [
 
 
 export class PostsComponent implements OnInit {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  // displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  // dataSource = new MatTableDataSource(ELEMENT_DATA);
 
+  displayedColumns: string[] = ['name', 'emailaddress', 'totalamount', 'actualclosedate'
+  /*'estimatedclosedate','actualvalue','closeprobability','_transactioncurrencyid_value','opportunityid'*/];
   
-  constructor() { 
+  dataSource:any;
+  
+  constructor(
+    private dashService:DashboardService,
+  ) { 
   }
 
   ngOnInit(): void {
-    
+    const apiAddress: string = 'api/Crm/opportunities';
+    // OpportunityModel
+    this.dashService.opportunities(apiAddress).subscribe({
+      next:(responce)=>{
+        var result = JSON.parse(JSON.stringify(responce));
+
+        //var opportunities=responce.value;
+        console.log(result.value[0].emailaddress);
+        this.dataSource = new MatTableDataSource(result.value);
+
+      }
+    })
   }
 
   applyFilter(filterValue: string){
