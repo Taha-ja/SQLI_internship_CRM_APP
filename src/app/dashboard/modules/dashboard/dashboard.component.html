@@ -2,20 +2,29 @@
 <mat-divider></mat-divider>
 <br>
 
-<div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" class="stats-cards">
-    <mat-card fxFlex="25" style="background-color:  #eff6ee; ">
-        <app-widget-card label="users" total="18k" percentage="50"></app-widget-card>
+<div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" class="stats-cards" fxLayout.gt-sm="row" fxLayout.lt-md="column" >
+    
+    <div fxLayout="row" fxLayoutGap="10px" fxFlex="100%" class="block-3" >
+    
+    <mat-card fxFlex="25" style="background-color:  #eff6ee;  "  fxFlex.gt-sm="50%" fxFlex.lt-md="70%"
+    fxFlexFill>
+        <app-widget-card label="users" total="1k" percentage="50"></app-widget-card>
         </mat-card>
-        <mat-card fxFlex="25" style="background-color: #023f73; color: white;">
+        <mat-card fxFlex="25" style="background-color: #023f73; color: white;" fxFlex.gt-sm="50%" fxFlex.lt-md="70%" 
+        fxFlexFill>
             <app-widget-card label="Opportunité" total="1k" percentage="60"></app-widget-card>
-            </mat-card>
-            <mat-card fxFlex="25" style="background-color: #1a759f; color: white;">
-                <app-widget-card label="Contacts" total="50" percentage="10"></app-widget-card>
-                </mat-card>
-                <mat-card fxFlex="25" style="background-color:#023f73 ;color: aliceblue;">
+            </mat-card> </div>
+
+            <div fxLayout="row" fxLayoutGap="10px" fxFlex="100%" class="block-3" >
+                <mat-card fxFlex="25" style="background-color: #1a759f; color: white; "fxFlex.gt-sm="50%" fxFlex.lt-md="70%" 
+                fxFlexFill>
                     <app-widget-card label="users" total="8k" percentage="50"></app-widget-card>
                     </mat-card>
-   
+                <mat-card fxFlex="25" style="background-color:#023f73 ;color: aliceblue;" fxFlex.gt-sm="50%" fxFlex.lt-md="70%" 
+                fxFlexFill>
+                    <app-widget-card label="users" total="8k" percentage="50"></app-widget-card>
+                    </mat-card>
+   </div>
 </div>
 <br>
 <mat-divider>

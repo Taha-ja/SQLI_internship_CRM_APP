@@ -13,15 +13,18 @@ import { DashboardService } from 'src/app/shared/services/dashboard.service';
 export class DefaultComponent implements OnInit {
 
   sideBarOpen=true;
+
   OpportinitiesList:any=[];
   windowWidth:number;
   constructor(private service:DashboardService,private jwtHelper: JwtHelperService) {
+    // this.windowWidth=window.innerWidth;
+    // console.log(this.windowWidth);
 
   }
- 
+
   isUserAuthenticated = (): boolean => {
     const token = localStorage.getItem("jwt");
-  
+    
     if (token && !this.jwtHelper.isTokenExpired(token)){
       return true;
     }
@@ -31,7 +34,6 @@ export class DefaultComponent implements OnInit {
   logOut = () => {
     localStorage.removeItem("jwt");
   }
-
 
   ngOnInit(): void {
 

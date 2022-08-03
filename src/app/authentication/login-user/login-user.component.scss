@@ -8,6 +8,11 @@ background: #eee;
 .h-custom {
 height: calc(100% );
 }
+.submit-button{
+    background-color: #003865;
+    color:white;
+}
+
 @media (max-width: 450px) {
 .h-custom {
 height: 100%;

@@ -8,7 +8,9 @@ import { User } from 'src/app/_interfaces/User.model';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  user: User;
+
+UserName:string;
+Email:string;
 
 @Output()toggleSideBarForMe:EventEmitter<any>=new EventEmitter();
 
@@ -17,6 +19,8 @@ export class HeaderComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.UserName=sessionStorage.getItem("UserName");
+    this.Email=sessionStorage.getItem("Email");
   }
   logOut = () => {
     localStorage.removeItem("jwt");
