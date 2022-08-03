@@ -6,9 +6,12 @@
     <mat-drawer *ngIf="windowWidth >800" mode="side" [opened]="sideBarOpen">
         <app-sidebar></app-sidebar> 
     </mat-drawer>
+
     <mat-drawer-content>
+
         <router-outlet></router-outlet>
         
         <app-footer></app-footer>
+
     </mat-drawer-content>
 </mat-drawer-container>
