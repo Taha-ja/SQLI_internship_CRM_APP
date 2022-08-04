@@ -5,6 +5,11 @@
 
 /* Importing Datepicker SCSS file. */
 @import "node_modules/ngx-bootstrap/datepicker/bs-datepicker";
+@import 'ag-grid-community/styles/ag-grid.css'; // Core grid CSS, always needed
+@import 'ag-grid-community/styles/ag-theme-alpine.css'; // Optional theme CSS
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.ag-paging-panel {
+    justify-content:center;
+}

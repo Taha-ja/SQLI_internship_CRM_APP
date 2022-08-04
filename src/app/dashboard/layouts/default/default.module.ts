@@ -16,6 +16,7 @@ import { ComptesComponent } from 'src/app/dashboard/modules/comptes/comptes.comp
 import { HeaderComponent } from '../../shared/components/header/header.component';
 import { ComponentTableComponent } from '../../component-table/component-table.component';
 import { MatPaginator } from '@angular/material/paginator';
+import { AgGridModule } from 'ag-grid-angular';
 
 
 
@@ -36,6 +37,7 @@ import { MatPaginator } from '@angular/material/paginator';
     HttpClientModule ,
     FormsModule,
     ReactiveFormsModule,
+    AgGridModule
     
   ]
 })
