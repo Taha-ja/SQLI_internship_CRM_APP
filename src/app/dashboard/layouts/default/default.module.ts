@@ -16,14 +16,15 @@ import { ComptesComponent } from 'src/app/dashboard/modules/comptes/comptes.comp
 import { HeaderComponent } from '../../shared/components/header/header.component';
 import { ComponentTableComponent } from '../../component-table/component-table.component';
 import { MatPaginator } from '@angular/material/paginator';
-
-
+import{MatIconModule}from '@angular/material/icon';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
     DefaultComponent,
     DashboardComponent,
     PostsComponent,
+    ComptesComponent
   ],
   imports: [
     CommonModule,
@@ -36,6 +37,8 @@ import { MatPaginator } from '@angular/material/paginator';
     HttpClientModule ,
     FormsModule,
     ReactiveFormsModule,
+    MatIconModule,
+MatPaginatorModule
     
   ]
 })

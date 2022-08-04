@@ -16,6 +16,7 @@ import { HighchartsChartModule } from 'highcharts-angular';
 import { CardComponent } from './widgets/card/card.component';
 import { MatTableModule } from '@angular/material/table';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { ComptesComponent } from '../modules/comptes/comptes.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     SidebarComponent,  
     AreaComponent, 
     CardComponent,
+    
   ],
   
   imports: [

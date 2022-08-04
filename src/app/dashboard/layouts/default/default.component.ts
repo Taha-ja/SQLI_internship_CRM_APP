@@ -14,7 +14,7 @@ export class DefaultComponent implements OnInit {
 
   sideBarOpen=true;
 
-  OpportinitiesList:any=[];
+  //OpportinitiesList:any=[];
   windowWidth:number;
   constructor(
     private service:DashboardService,
