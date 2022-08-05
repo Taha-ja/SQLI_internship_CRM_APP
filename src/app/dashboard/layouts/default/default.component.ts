@@ -50,6 +50,11 @@ export class DefaultComponent implements OnInit {
       this.windowWidth=window.innerWidth;
       
     });
+    const body = document.body;
+    const html = document.documentElement;
+    const heightToAdd = Math.max(body.scrollHeight, body.offsetHeight,
+      html.clientHeight, html.scrollHeight, html.offsetHeight);
+    console.log(heightToAdd)
   }
   sideBarToggler(){
     this.sideBarOpen=!this.sideBarOpen;

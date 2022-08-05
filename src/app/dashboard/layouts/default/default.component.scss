@@ -16,9 +16,12 @@ mat-drawer-container{
 mat-drawer-content{
     padding: 20px;
     background-color: #FDFFFC;
-}  
-.blank{
-    //margin-bottom: 50px;
-    height: 40px;
-    background-color:red;
+} 
+.content-outer-container{
+    min-height: 95%;
 }
+
+.content-inner-container{
+    padding-bottom: 10px;
+}
+

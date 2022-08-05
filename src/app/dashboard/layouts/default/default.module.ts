@@ -17,14 +17,16 @@ import { HeaderComponent } from '../../shared/components/header/header.component
 import { ComponentTableComponent } from '../../component-table/component-table.component';
 import { MatPaginator } from '@angular/material/paginator';
 import{MatIconModule}from '@angular/material/icon';
-import {MatPaginatorModule} from '@angular/material/paginator';
+import { ModifierProfilComponent } from '../../modules/modifier-profil/modifier-profil.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
     DefaultComponent,
     DashboardComponent,
     PostsComponent,
-    ComptesComponent
+    ComptesComponent,
+    ModifierProfilComponent
   ],
   imports: [
     CommonModule,
@@ -38,7 +40,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     FormsModule,
     ReactiveFormsModule,
     MatIconModule,
-MatPaginatorModule
+    MatFormFieldModule
     
   ]
 })

@@ -12,6 +12,7 @@ import { ConfirmEmailComponent } from './confirm-email/confirm-email.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ErrorModalComponent } from './shared/modals/error-modal/error-modal.component';
 import { DashboardRoutingModule } from './dashboard/dashboard-routing.module';
+
 export function tokenGetter() { 
   return localStorage.getItem("jwt"); 
 }

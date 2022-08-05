@@ -1,7 +1,9 @@
-footer{
-    padding-top: 30px;
-    position:absolute;
-    bottom:0;  /* on le colle en bas */
-    width:50%;
-    height: 0px; 
+.footer-container {
+    height: 20px;
+    margin-top: 10px;
+}
+
+.footer-content {
+    margin: 0 auto;
+    //text-align: center;
 }

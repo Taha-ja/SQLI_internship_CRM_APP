@@ -10,6 +10,7 @@ import { DataTransfertService } from 'src/app/shared/services/data-transfert.ser
 export class ContainerComponent implements OnInit {
   id:number;
   email:string;
+  currentYear = new Date().getFullYear();
   constructor(private activeRoute: ActivatedRoute,
     private dataTransfertService: DataTransfertService,
     private router: Router,
