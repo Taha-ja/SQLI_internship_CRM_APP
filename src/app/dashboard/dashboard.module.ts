@@ -11,6 +11,7 @@ import { DefaultModule } from './layouts/default/default.module';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
+import { AgGridModule } from 'ag-grid-angular';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { MatTableModule } from '@angular/material/table';
     DefaultModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    AgGridModule
   ]
 })
 export class DashboardModule { }

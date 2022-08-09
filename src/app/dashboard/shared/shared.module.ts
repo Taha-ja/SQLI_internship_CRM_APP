@@ -17,7 +17,8 @@ import { CardComponent } from './widgets/card/card.component';
 import { MatTableModule } from '@angular/material/table';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { ComptesComponent } from '../modules/comptes/comptes.component';
-
+import { ImageWidgetComponent } from './widgets/image-widget/image-widget.component';
+import { InfoPersonnelComponent } from './widgets/info-personnel/info-personnel.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ComptesComponent } from '../modules/comptes/comptes.component';
     SidebarComponent,  
     AreaComponent, 
     CardComponent,
-    
+    ImageWidgetComponent,
+    InfoPersonnelComponent
   ],
   
   imports: [
@@ -50,7 +52,9 @@ import { ComptesComponent } from '../modules/comptes/comptes.component';
     AreaComponent,
     CardComponent,
     MatTableModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    ImageWidgetComponent,
+    InfoPersonnelComponent
   ]
 
 })

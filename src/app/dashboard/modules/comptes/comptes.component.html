@@ -1,26 +1,21 @@
 <h2 style="color: rgb(81, 81, 81);">Mon Compte</h2>
-
 <mat-divider></mat-divider>
+<button mat-fab style="background-color:#023f73 ;margin-top: 1%;"><mat-icon style="width: 100%;" routerLink="/dashboard/ModifierProfile">update</mat-icon></button>
+<br><br>
+<div class="profile-card" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" class="stats-cards" fxLayout.gt-sm="row" fxLayout.lt-md="column"  style="  height: 40vh; ">
+    <div fxLayout="column" fxLayoutGap="30px" fxFlex="100%" class="block-3"  fxLayoutAlign="center center"fxFlex.gt-sm="50%" fxFlex.lt-md="50%" >
+<app-image-widget></app-image-widget>
+</div>
+<mat-divider vertical="true"></mat-divider>
+<div fxLayout="column" fxLayoutGap="30px" fxFlex="100%" class="block-3"fxLayoutAlign="center center" fxFlex.gt-sm="50%" fxFlex.lt-md="50%"  style="align-items: flex-start;">
+<app-info-personnel></app-info-personnel>
+</div>
 
-<form #imageForm=ngForm >
-    
-<div class="profile-card">
 
-    <br>
-    <div class="image">
-    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHw%3D&w=1000&q=80" alt="{{UserName}}" style="margin-left: 7%;" >
 
-    </div>
-    
-    <div class="header" style="margin-top: -20%;margin-left: 20%;">
-        <h2 style="color: rgb(77, 77, 77); margin-top: 1%;  text-align: center; ">  <mat-icon style="color: grey;">person</mat-icon>{{UserName}}</h2>
-         <h4 style="color: rgb(77, 77, 77);">   <mat-icon style="color: grey;">email</mat-icon>{{Email}}</h4>
-         <h4 style="color: rgb(77, 77, 77);">   <mat-icon style="color: grey;">account_circle</mat-icon>Role: Contact Principal</h4>
-         <h4 style="color: rgb(77, 77, 77);">   <mat-icon style="color: grey;">call</mat-icon>Téléphone: 06-86-90-10-20</h4>
-     </div>
+   
 
  <!--<input type="file" #Image accept="image/*"  onchange="console.log(event.target.files)"/>--> 
 
 </div>
 
-</form>

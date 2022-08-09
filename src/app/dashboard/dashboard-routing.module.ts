@@ -7,6 +7,7 @@ import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { ModifierProfilComponent } from './modules/modifier-profil/modifier-profil.component';
 
 import { PostsComponent } from './modules/posts/posts.component';
+import { ImageWidgetComponent } from './shared/widgets/image-widget/image-widget.component';
 
 const routes: Routes = [{
   path:'',

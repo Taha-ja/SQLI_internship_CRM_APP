@@ -13,20 +13,18 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ComptesComponent } from 'src/app/dashboard/modules/comptes/comptes.component';
-import { HeaderComponent } from '../../shared/components/header/header.component';
-import { ComponentTableComponent } from '../../component-table/component-table.component';
-import { MatPaginator } from '@angular/material/paginator';
 import{MatIconModule}from '@angular/material/icon';
 import { ModifierProfilComponent } from '../../modules/modifier-profil/modifier-profil.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
-
+import { AgGridModule } from 'ag-grid-angular';
+import {MatButtonModule} from '@angular/material/button'
 @NgModule({
   declarations: [
     DefaultComponent,
     DashboardComponent,
     PostsComponent,
     ComptesComponent,
-    ModifierProfilComponent
+    ModifierProfilComponent,
   ],
   imports: [
     CommonModule,
@@ -40,7 +38,10 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     FormsModule,
     ReactiveFormsModule,
     MatIconModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    AgGridModule,
+    MatButtonModule
+
     
   ]
 })

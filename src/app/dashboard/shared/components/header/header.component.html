@@ -4,6 +4,7 @@
    <mat-icon>menu</mat-icon>
 </button>
 <span class="logo">CRMP</span>
+<!-- <img src="../../../../../assets/images/LogoHeader2.png" alt=""> -->
 <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
     <ul fxLayout="row" fxLayoutGap="20px">
 <li>
@@ -12,12 +13,12 @@
     </button>
 
     <mat-menu #men="matMenu">
-        <button mat-menu-item routerLink="/dashboard/ModifierProfile">
+        <button mat-menu-item>
             <mat-icon>update</mat-icon>
             Modifier mots de pass
           </button>
           <mat-divider></mat-divider>
-          <button mat-menu-item>
+          <button mat-menu-item routerLink="/dashboard/ModifierProfile">
             <mat-icon>edit</mat-icon>
             Modifier profile
           </button>
@@ -36,7 +37,7 @@
         <mat-icon style="margin-top: 15px;">account_circle</mat-icon>
     </button>
 <mat-menu #menu="matMenu">
-    <button mat-menu-item>
+    <button mat-menu-item routerLink="/dashboard/comptes">
         <mat-icon>perm_identity</mat-icon>
 
         {{UserName}}

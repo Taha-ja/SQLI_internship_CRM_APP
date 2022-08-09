@@ -7,8 +7,8 @@
       text-align: center;
       padding: 0 20px 20px 20px;
       img {
-        width: 200px;
-        height: 200px;
+        width: 150px;
+        height: 150px;
         object-fit: cover;
         border-radius: 50%;
       }
@@ -17,5 +17,9 @@
       margin-left: -70%;
       margin-top: 8%;
     }
+    input{
+      font-size: small;
+    }
   }
+  
   

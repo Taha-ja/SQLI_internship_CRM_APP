@@ -1,9 +1,13 @@
-<h2 style="color: rgb(81, 81, 81);">Mes Opportunités</h2>
+
+<!-- <h2 style="color: rgb(81, 81, 81);">Mes Opportunités</h2> -->
+
+<!-- <h2 style="color: rgb(81, 81, 81);">Opportunités</h2>
+
 <mat-divider></mat-divider>
 <BR>
  
     <br>
-<mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+<mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort> -->
     <!-- Position Column -->
 
     <!-- <ng-container matColumnDef="position">
@@ -36,25 +40,25 @@
 
 
 
-    <ng-container matColumnDef="name">
+    <!-- <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef> Rubrique </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
-    </ng-container>
+    </ng-container> -->
   
     <!-- Name Column -->
-    <ng-container matColumnDef="emailaddress">
+    <!-- <ng-container matColumnDef="emailaddress">
       <mat-header-cell *matHeaderCellDef> Client Email </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.emailaddress}} </mat-cell>
-    </ng-container>
+    </ng-container> -->
   
     <!-- Weight Column -->
-    <ng-container matColumnDef="totalamount">
+    <!-- <ng-container matColumnDef="totalamount">
       <mat-header-cell *matHeaderCellDef> Total Amount </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.totalamount}} </mat-cell>
-    </ng-container>
+    </ng-container> -->
   
     <!-- Symbol Column -->
-    <ng-container matColumnDef="actualclosedate">
+    <!-- <ng-container matColumnDef="actualclosedate">
       <mat-header-cell *matHeaderCellDef> Estimated income</mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.actualclosedate}} </mat-cell>
     </ng-container>
@@ -62,6 +66,31 @@
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
   
   </mat-table>
+
+  </mat-table> -->
+
+
+  <ag-grid-angular
+  style="width: 100%"
+  class="ag-theme-alpine"
+  
+  domLayout="autoHeight"
+
+  [columnDefs]="columnDefs"
+  [defaultColDef]="defaultColDef"
+  [rowData]="rowData$"
+  
+
+
+  [animateRows]="true"
+  [suppressDragLeaveHidesColumns]="true"
+
+  [pagination]="true"
+  [paginationPageSize]="10"
+  
+  >
+</ag-grid-angular>
 
