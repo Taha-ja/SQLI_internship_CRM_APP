@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { JwtModule } from "@auth0/angular-jwt";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SuccessModalComponent } from './shared/modals/success-modal/success-modal.component';
@@ -12,10 +12,21 @@ import { ConfirmEmailComponent } from './confirm-email/confirm-email.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ErrorModalComponent } from './shared/modals/error-modal/error-modal.component';
 import { DashboardRoutingModule } from './dashboard/dashboard-routing.module';
-export function tokenGetter() { 
-  return localStorage.getItem("jwt"); 
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSelectModule } from '@angular/material/select';
+import { MatToolbarModule } from '@angular/material/toolbar';
+export function tokenGetter() {
+  return localStorage.getItem("jwt");
 }
-
+// AOT compilation support  
+export function httpTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,6 +40,14 @@ export function tokenGetter() {
     FormsModule,
     DashboardRoutingModule,
     HttpClientModule,
+    MatCardModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatSelectModule,
+    MatIconModule,
+    MatCardModule,
+    MatMenuModule,
+    MatIconModule,
     ModalModule.forRoot(),
     JwtModule.forRoot({
       config: {
@@ -37,7 +56,16 @@ export function tokenGetter() {
         disallowedRoutes: []
       }
     }),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: httpTranslateLoader,
+        deps: [HttpClient]
+      }
+    }),
+
   ],
   providers: [],
   bootstrap: [AppComponent]

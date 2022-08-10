@@ -1,0 +1,64 @@
+{  
+    "login": {  
+        "title": "تسجيل الدخول",  
+        "SubTitle": "!أدخل بياناتك وابدأ يومك معنا",  
+        "error":"خطأ في اسم المستخدم أو كلمة مرور.",
+        "username.placeholder": "أدخل عنوان بريد إلكتروني صالح",  
+        "password.placeholder": "أدخل كلمة المرور",  
+        "toRegister": "ليس لديك حساب؟",  
+        "button.name": "الولوج",  
+        "forgotpassword.link": "هل نسيت كلمة السر؟",  
+        "register.link": "سجل الان"
+    },
+    "register":{
+        "title": "إنشاء حساب جديد",  
+        "SubTitle": "!أدخل بريدك الإلكتروني وانضم إلينا",  
+        "errorNotFound":".آسف ، البريد الإلكتروني الذي أدخلته لا يتوافق مع أي من عملائنا",
+        "connectionFailed":"فشل الاتصال ، يرجى التحقق من اتصالك بالإنترنت",
+        "username.placeholder": "أدخل عنوان بريد إلكتروني صالح",
+        "button.name": "إنشاء حساب", 
+        "toLogin": "لديك حساب؟",
+        "login.link": "تسجيل الدخول"
+    },
+    "AddPassword":{
+        "password.placeholder":"أدخل كلمة المرور",
+        "confirmPassword.placeholder":"قم بتأكيد كلمة المرور",
+        "notEqualError":".كلمة المرور غير متطابقة",
+        "successMessage.title":"تم التسجيل بنجاح",
+        "successMessage.body":"تم إرسال الرابط ، يرجى التحقق من بريدك الإلكتروني لتأكيد تسجيلك",
+        "successMessage.button":"تم",
+        "EchecMessage.title":"فشل في التسجيل",
+        "EchecMessage.body":"فشل الاتصال ، يرجى التحقق من اتصالك بالإنترنت",
+        "EchecMessage.button":"تم",
+        "noteNotRespected":"يرجى احترام الملاحظة",
+        "button.name":"إرسال",
+        "note.title":"تنويه",
+        "note.body":"يجب أن تحتوي كلمة المرور على حرف واحد غير أبجدي رقمي ، وحرف كبير واحد و رقم واحد على الأقل"
+    },
+    "ForgotPassword":{
+        "title": "استرجاع كلمة السر",
+        "email.placeholder":"أدخل عنوان بريد إلكتروني صالح",
+        "required":" يرجى ادخال بريدك الالكتروني  (*)",
+        "button.name":"إرسال",
+        "successMessage.title":" تمت العملية بنجاح",
+        "successMessage.body":"تم إرسال الرابط ، يرجى التحقق من بريدك الإلكتروني لإعادة تعيين كلمة المرور الخاصة بك.",
+        "successMessage.button":"تم",
+        "EchecMessage.title":"العملية لم تتم بنجاح",
+        "EchecMessage.body":"فشل الاتصال ، يرجى التحقق من اتصالك بالإنترنت",
+        "EchecMessage.button":"تم",
+        "ErrorMessage":"فشلت العملية ، أدخل عنوان بريد إلكتروني صالح!",
+        "goToLogin":"هل تتذكر كلمة المرور الخاصة بك؟",
+        "login.link":"تسجيل الدخول"
+    },
+    "reset":{
+        "title": "إعادة تعيين كلمة المرور",  
+        "password.placeholder":"أدخل كلمة المرور",
+        "confirmPassword.placeholder":"قم بتأكيد كلمة المرور",
+        "passwordRequired":"يرجى ادخال كلمة السر  (*)",
+        "confirmationRequired":"يرجى تَأْكيد كلمة السر  (*)",
+        "notEqualError":" كلمة المرور غير متطابقة  (*)",
+        "button.name": "تَأْكيد"
+    },
+    "connectionFailed":"فشل الاتصال ، يرجى التحقق من اتصالك بالإنترنت",
+    "copyRight":"كل الحقوق محفوظة"
+} 

@@ -11,6 +11,8 @@ import { ModalOptions, BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { SuccessModalComponent } from 'src/app/shared/modals/success-modal/success-modal.component';
 import { RegResp } from 'src/app/_interfaces/registrationResponse';
 import { ErrorModalComponent } from 'src/app/shared/modals/error-modal/error-modal.component';
+import { LanguageService } from 'src/app/shared/services/language.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-password-user',
@@ -32,6 +34,7 @@ export class PasswordUserComponent implements OnInit {
   errMessage: string;
   loading:boolean=false;
   isExisted:boolean=false;
+  lang:string;
   //email:string;
   loginModel:LoginModel = {email:'', password:''};
   userResgister:UserForRegistration={
@@ -44,11 +47,14 @@ export class PasswordUserComponent implements OnInit {
               private router: Router,
               private data :DataTransfertService,
               private modal: BsModalService,
-              private route: ActivatedRoute
+              private route: ActivatedRoute,
+              private languageService :LanguageService,
+              public translate: TranslateService, 
               ) { 
 
               }
   ngOnInit(){
+    this.lang=this.languageService.Arinput();
     this.loginModel.email=this.data.getEmail();
     console.log(this.loginModel.email);
     this.registerForm = new FormGroup({
@@ -70,8 +76,11 @@ export class PasswordUserComponent implements OnInit {
     return this.registerForm.get(controlName).hasError(errorName)
   }
   public registerUser = (registerFormValue) => {
+    this.lang=this.languageService.Arinput();
     this.loading=true;
     this.isError=false;
+    this.isExisted=false;
+    this.isNotEqual=false;
     this.registerForm.disable();
     const formValues = { ...registerFormValue };
     const user: UserRegistration = {
@@ -91,16 +100,20 @@ export class PasswordUserComponent implements OnInit {
           //this.IsAuthenticated=responce.IsAuthenticated;
           this.loading=false;
           this.registerForm.enable();
-          const config: ModalOptions = {
-            initialState: {
-              modalHeaderText: 'Success Message',
-              modalBodyText: 'The link has been sent, please check your email to confirm your registration',
-              okButtonText: 'OK'
-            }
-          };
+          this.translate.get(["AddPassword.successMessage.title","AddPassword.successMessage.body","AddPassword.successMessage.button"]).subscribe(tab =>{
+            const config: ModalOptions = {
+              initialState: {
+                modalHeaderText: tab["AddPassword.successMessage.title"],
+                modalBodyText: tab["AddPassword.successMessage.body"],
+                okButtonText: tab["AddPassword.successMessage.button"]
+              }
+            };
+            this.bsModalRef = this.modal.show(SuccessModalComponent, config);
+            this.bsModalRef.content.redirectOnOk.subscribe(_ => window.location.href = 'https://mail.google.com/mail/u/0/#inbox');
+          })
+
     
-          this.bsModalRef = this.modal.show(SuccessModalComponent, config);
-          this.bsModalRef.content.redirectOnOk.subscribe(_ => window.location.href = 'https://mail.google.com/mail/u/0/#inbox');
+
           // console.log("Successful registration");
           
       },
@@ -110,27 +123,34 @@ export class PasswordUserComponent implements OnInit {
           var result = JSON.parse(JSON.stringify(error))
           //console.log( result?.error);
           this.errMessage=result?.error;
+          console.log(this.errMessage.slice(0,-2));
           if(this.errMessage=="Email is already registered!"){
             this.isExisted=true;
           }
           if(this.errMessage!='')this.loading=false;
           if(this.errMessage.length>200){
-            this.errorMessage="connection failed please check you internet connection";
-            const config: ModalOptions = {
-              initialState: {
-                modalHeaderText: 'Error Message',
-                modalBodyText: this.errorMessage,
-                okButtonText: 'OK'
-              }
-            };
-            this.isError=false;
-            this.bsModalRef = this.modal.show(ErrorModalComponent, config);
-            
-            this.bsModalRef.content.redirectOnOk.subscribe(_ => window.location.reload());
+            this.translate.get(["AddPassword.EchecMessage.title","AddPassword.EchecMessage.body","AddPassword.EchecMessage.button"]).subscribe(tab =>{
+
+              const config: ModalOptions = {
+                initialState: {
+                  modalHeaderText: tab["AddPassword.EchecMessage.title"],
+                  modalBodyText: tab["AddPassword.EchecMessage.body"],
+                  okButtonText: tab["AddPassword.EchecMessage.button"]
+                }
+              };
+              this.isError=false;
+              this.bsModalRef = this.modal.show(ErrorModalComponent, config);
+              
+              this.bsModalRef.content.redirectOnOk.subscribe(_ => window.location.reload());
+            });
+
           }
           else{
+            this.translate.get("AddPassword.noteNotRespected").subscribe(connFailed=>this.errorMessage=connFailed);
+            //this.errorMessage="connection failed please check you internet connection";
             this.isError=true;
             this.registerForm.enable();
+
           }
 
         }
@@ -138,7 +158,8 @@ export class PasswordUserComponent implements OnInit {
     }
     else{
       this.isNotEqual=true;
-      
+      this.loading=false;
+      this.registerForm.enable();
     }
 
   }

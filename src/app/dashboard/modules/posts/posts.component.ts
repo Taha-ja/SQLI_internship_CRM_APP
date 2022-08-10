@@ -11,7 +11,6 @@ import { DashboardService } from 'src/app/shared/services/dashboard.service';
 
 
 export class PostsComponent implements OnInit {
-  displayedColumns: string[] = ['name', 'emailaddress', 'totalamount', 'actualclosedate'];
   public rowData$!: Observable<any[]>;
   constructor(
     private dashService:DashboardService,
@@ -34,6 +33,8 @@ initDataTable() {
       next:(responce)=>{
         //var result = JSON.parse(JSON.stringify(responce));
         this.rowData$=responce.value;
+        console.log(this.rowData$);
+        
       }   
     })
 }

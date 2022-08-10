@@ -1,0 +1,64 @@
+{  
+    "login": {  
+        "title": "Login",  
+        "SubTitle": "Enter your details and start your day with us!",  
+        "error":"Invalid username or password.",
+        "username.placeholder": "Enter a valid email address",  
+        "password.placeholder": "Enter password",  
+        "toRegister": "Don't have an account?",  
+        "button.name": "Login",  
+        "forgotpassword.link": "Forgot password?",  
+        "register.link": "Register"
+    },
+    "register":{
+        "title": "Sign Up",  
+        "SubTitle": "Enter your email and join us!",  
+        "errorNotFound":"sorry the email you entered does not correspond to any of our customers.",
+        "connectionFailed":"connection failed please check you internet connection",
+        "username.placeholder": "Enter a valid email address",
+        "button.name": "Register", 
+        "toLogin": "You have already an account?",
+        "login.link": "Log in"
+    },
+    "AddPassword":{
+        "password.placeholder":"Enter a Password",
+        "confirmPassword.placeholder":"Confirm the Password",
+        "successMessage.title":"Success Message",
+        "successMessage.body":"The link has been sent, please check your email to confirm your registration",
+        "successMessage.button":"ok",
+        "EchecMessage.title":"Echec Message",
+        "EchecMessage.body":"connection failed please check you internet connection",
+        "EchecMessage.button":"ok",
+        "notEqualError":"password don't match.",
+        "noteNotRespected":"Please respect the note",
+        "button.name":"confirm",
+        "note.title":"Note:",
+        "note.body":"Password must have at least one non alphanumeric character, one uppercase and at least one digit."
+    },
+    "ForgotPassword":{
+        "title": "Forgot Password",
+        "email.placeholder":"Enter a valid email address",
+        "required":"(*) Email is required",
+        "button.name":"submit",
+        "successMessage.title":"Success Message",
+        "successMessage.body":"The link has been sent, please check your email to reset your password.",
+        "successMessage.button":"ok",
+        "EchecMessage.title":"Echec Message",
+        "EchecMessage.body":"connection failed please check you internet connection",
+        "EchecMessage.button":"ok",
+        "ErrorMessage":"operation failed enter a valid email!",
+        "goToLogin":"You remember your password?",
+        "login.link":"Log in"
+    },
+    "reset":{
+        "title": "Reset Password",  
+        "password.placeholder":"Enter a Password",
+        "confirmPassword.placeholder":"Confirm the Password",
+        "passwordRequired":"(*) Password is required",
+        "confirmationRequired":"(*) Confirmation is required",
+        "notEqualError":"(*) Passwords must match",
+        "button.name": "Confirm"
+    },
+    "copyRight":"All rights reserved",
+    "connectionFailed":"connection failed please check you internet connection"
+} 

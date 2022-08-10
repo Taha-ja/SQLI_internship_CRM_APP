@@ -1,16 +1,99 @@
-@media (max-width: 450px) {
-    #compont {
-        margin: 200px;
-    }
+.header {
+    height: 300px;
+    background-color: #003865;
+    border-bottom-left-radius: 40%;
+
 }
 
 #compo {
     color: #000;
 }
-.copyRight{
+
+.component {
+    margin-top: -12%;
+    margin-left: auto;
+    margin-right: auto;
+    background: hsla(0, 0%, 100%, 0.8);
+    backdrop-filter: blur(30px);
+    border-radius: 40px;
+    box-shadow: 0px 10px 10px #888888;
+}
+
+.copyRight {
     position: absolute;
     font-size: 15px;
     font-weight: bold;
     bottom: 10%;
 }
+.ArcopyRight {
+    //position: absolute;
+    font-size: 15px;
+    font-weight: bold;
+    bottom: 10%;
+    float: right;
+}
 
+.nav-bar {
+    position: absolute;
+    top: 0;
+    z-index: 99;
+    border: none;
+    color: white
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+.mat-elevation-z2 {
+    box-shadow: none;
+}
+.note{
+    float: right;
+    width: 37.4%;
+}
+.Arnote{
+    position: relative;
+    float: right;
+    right: 50px;
+    width: 33%;
+}
+@media (max-width: 500px) {
+
+    #compont {
+        margin: 200px;
+    }
+
+    .component {
+        margin-top: -30%;
+    }
+
+    .header {
+        height: 250px;
+    }
+    .note{
+        width: 80%;
+    }
+    .Arnote{
+        float: none;
+        width: 80%;
+        right: 0px;
+    }
+}
+
+@media (min-width:501px) and (max-width: 1200px) {
+.note{
+width: 80%;
+}
+.component {
+    margin-top: -10%;
+}
+
+.header {
+    height: 200px;
+}
+.Arnote{
+    float: none;
+    width: 80%;
+    right: 0px;
+}
+}

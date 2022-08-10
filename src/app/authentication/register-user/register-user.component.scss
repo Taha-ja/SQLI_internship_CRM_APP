@@ -24,10 +24,11 @@ height: 100%;
 }
 #login{
     font-weight:bolder;
-    font-size: 50px;
+    font-size: 35px;
     font-family:Georgia, 'Times New Roman', Times, serif;
     margin-bottom: 25px;
 }
+
 #header{
     margin: 20px;
     font-size: 20px;
@@ -35,4 +36,23 @@ height: 100%;
 .submit-button{
     background-color: #003865;
     color:white;
+}
+input{
+    font-size: 16px;
+}
+@media (max-width: 500px) {
+    #login {
+        font-size: 32px;
+    }
+}
+
+@media (min-width:501px) and (max-width: 1200px) {
+    #login {
+        font-size: 32px;
+    }
+}
+@media (min-width:1201px) and (max-width: 1414px) {
+    #login {
+        font-size: 32px;
+    }
 }

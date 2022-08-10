@@ -11,12 +11,13 @@ export class ErrorModalComponent implements OnInit {
   modalHeaderText: string;
   modalBodyText: string;
   okButtonText: string;
+  lang:string;
   redirectOnOk: EventEmitter<any> = new EventEmitter();
 
   constructor(private bsModalRef: BsModalRef,) { }
 
   ngOnInit(): void {
-    
+    this.lang=localStorage.getItem("keyLanguage")
   }
 
   onOkClicked = () => {
