@@ -20,12 +20,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
 import { MatToolbarModule } from '@angular/material/toolbar';
-export function tokenGetter() {
-  return localStorage.getItem("jwt");
-}
+
 // AOT compilation support  
 export function httpTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http);
+}
+export function tokenGetter() { 
+  return localStorage.getItem("jwt"); 
 }
 @NgModule({
   declarations: [
@@ -69,5 +70,6 @@ export function httpTranslateLoader(http: HttpClient) {
   ],
   providers: [],
   bootstrap: [AppComponent]
+
 })
 export class AppModule { }

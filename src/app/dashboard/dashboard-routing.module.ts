@@ -4,7 +4,10 @@ import { DefaultComponent } from './layouts/default/default.component';
 import { ComptesComponent } from './modules/comptes/comptes.component';
 import { ContactComponent } from './modules/contact/contact.component';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
+import { ModifierProfilComponent } from './modules/modifier-profil/modifier-profil.component';
+
 import { PostsComponent } from './modules/posts/posts.component';
+import { ImageWidgetComponent } from './shared/widgets/image-widget/image-widget.component';
 
 const routes: Routes = [{
   path:'',
@@ -23,7 +26,11 @@ const routes: Routes = [{
   {
     path:'comptes',
     component:ComptesComponent,
-  }
+  },
+{
+  path:'ModifierProfile',
+    component:ModifierProfilComponent,
+}
 ]
 }];
 

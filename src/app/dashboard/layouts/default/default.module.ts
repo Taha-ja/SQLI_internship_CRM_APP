@@ -20,11 +20,19 @@ import { AgGridModule } from 'ag-grid-angular';
 
 
 
+
+import{MatIconModule}from '@angular/material/icon';
+import { ModifierProfilComponent } from '../../modules/modifier-profil/modifier-profil.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatButtonModule} from '@angular/material/button'
+
 @NgModule({
   declarations: [
     DefaultComponent,
     DashboardComponent,
     PostsComponent,
+    ComptesComponent,
+    ModifierProfilComponent,
   ],
   imports: [
     CommonModule,
@@ -37,7 +45,11 @@ import { AgGridModule } from 'ag-grid-angular';
     HttpClientModule ,
     FormsModule,
     ReactiveFormsModule,
-    AgGridModule
+    AgGridModule,
+    MatIconModule,
+    MatFormFieldModule,
+    AgGridModule,
+    MatButtonModule
     
   ]
 })

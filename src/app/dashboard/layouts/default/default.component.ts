@@ -1,9 +1,6 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, OnInit, ViewChild } from '@angular/core';
-
 import { JwtHelperService } from '@auth0/angular-jwt';
-
-
 import { DashboardService } from 'src/app/shared/services/dashboard.service';
 @Component({
   selector: 'app-default',
@@ -14,7 +11,7 @@ export class DefaultComponent implements OnInit {
 
   sideBarOpen=true;
 
-  OpportinitiesList:any=[];
+  //OpportinitiesList:any=[];
   windowWidth:number;
   constructor(
     private service:DashboardService,
@@ -23,7 +20,10 @@ export class DefaultComponent implements OnInit {
     // this.windowWidth=window.innerWidth;
     // console.log(this.windowWidth);
 
+   
   }
+  
+ 
 
   isUserAuthenticated = (): boolean => {
     const token = localStorage.getItem("jwt");
@@ -39,6 +39,7 @@ export class DefaultComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
     setTimeout(()=>{
       window.dispatchEvent(
         new Event('resize')
