@@ -43,7 +43,7 @@ export class LoginUserComponent implements OnInit {
     a.forEach(lin => {
       lin.classList.add("disabled")
     });
-    btn.setAttribute('disabled','');
+    btn.classList.add("disabled");
     //btn.disabled = true;
   }
   activeForm(){
@@ -56,11 +56,11 @@ export class LoginUserComponent implements OnInit {
     a.forEach(lin => {
       lin.classList.remove("disabled")
     });
-    btn.removeAttribute('disabled');
+    // btn.removeAttribute('disabled');
+    btn.classList.remove("disabled");
+
   }
   login = ( form: NgForm) => {
-    //https://localhost:7290/api/Auth/token
-    //const apiAddress: string = 'api/auth/login';
     this.lang=this.languageService.Arinput();
     this.disableForm();
     const apiAddress: string = 'api/Auth/token';

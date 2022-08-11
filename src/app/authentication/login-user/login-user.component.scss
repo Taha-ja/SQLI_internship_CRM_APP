@@ -13,11 +13,7 @@ height: calc(100% );
     color:white;
 }
 
-@media (max-width: 450px) {
-.h-custom {
-height: 100%;
-}
-}
+
 #login{
     font-weight:bolder;
     font-size: 32px;
@@ -33,3 +29,18 @@ input{
     //font-size: 3vmin;
     font-size: 16px;
 }
+@media  (max-width: 500px) {
+    .h-custom {
+    height: 100%;
+    }
+    #login{
+        font-weight:bolder;
+        font-size: 5vw;
+        font-family:Georgia, 'Times New Roman', Times, serif;
+        margin-bottom: 25px;
+    }
+    #header{
+        margin: 20px;
+        font-size: 4vw;
+    }
+    }
