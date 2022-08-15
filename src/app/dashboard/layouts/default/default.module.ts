@@ -14,12 +14,17 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ComptesComponent } from 'src/app/dashboard/modules/comptes/comptes.component';
+import { AgGridModule } from 'ag-grid-angular';
+
+
+
+
 import{MatIconModule}from '@angular/material/icon';
 import { ModifierProfilComponent } from '../../modules/modifier-profil/modifier-profil.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import { AgGridModule } from 'ag-grid-angular';
 import {MatButtonModule} from '@angular/material/button'
-import { EntrepriseComponent } from '../../shared/widgets/entreprise/entreprise.component';
+
+
 @NgModule({
   declarations: [
     DefaultComponent,
@@ -40,13 +45,13 @@ import { EntrepriseComponent } from '../../shared/widgets/entreprise/entreprise.
     HttpClientModule ,
     FormsModule,
     ReactiveFormsModule,
+    AgGridModule,
     MatIconModule,
     MatFormFieldModule,
     AgGridModule,
     MatButtonModule,
-    FormsModule
-
-    
+    FormsModule,
+    MatButtonModule
   ]
 })
 export class DefaultModule { }

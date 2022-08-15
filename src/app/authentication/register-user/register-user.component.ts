@@ -8,6 +8,7 @@ import { LoginModel } from 'src/app/_interfaces/login.model';
 import { UserRegistration } from 'src/app/_interfaces/registration.model';
 import { RegistrationResponse } from 'src/app/_interfaces/registrationResponse.model';
 import { EmailCheck } from 'src/app/_interfaces/email.model';
+import { LanguageService } from 'src/app/shared/services/language.service';
 
 @Component({
   selector: 'app-register-user',
@@ -22,20 +23,31 @@ export class RegisterUserComponent implements OnInit {
   isEmailExist:boolean=true;
   emailCheck:EmailCheck={email:''};
   loading:boolean=false;
-  errorMessage:string;
+  isError:boolean;
+  lang:string;
+  alert:any;
   constructor(private authService: AuthenticationService,
               private router:Router,
-              private data :DataTransfertService) { }
+              private data :DataTransfertService,
+              private languageService :LanguageService ) { }
   ngOnInit(): void {
+    this.lang=this.languageService.Arinput();
     this.registerForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
       // password: new FormControl('', [Validators.required]),
       // confirm: new FormControl('')
     });
-    this.errorMessage="the email you entered does not match any of our clients";
   }
   checkAndPass(){
     // this.router.navigate(['/authentication/auth/1'], {state: {data:this.registerUser.get("email")}})
+  }
+  disableLink(){
+    let a=document.querySelector('.lin');
+    a.classList.add("disabled");
+  }
+  enableLink(){
+    let a=document.querySelector('.lin');
+    a.classList.remove("disabled");
   }
 
   public validateControl = (controlName: string) => {
@@ -45,9 +57,12 @@ export class RegisterUserComponent implements OnInit {
     return this.registerForm.get(controlName).hasError(errorName)
   }
   public  registerUser = async (registerFormValue) => {
+    this.lang=this.languageService.Arinput();
+    this.disableLink();
     this.loading=true;
     this.registerForm.disable();
-
+    let fake=document.getElementById("fake");
+    fake.innerHTML="1";
     //const apiAddress: string = 'api/accounts/registration';
     const formValues = {...registerFormValue} ;
     const user: UserRegistration = {
@@ -62,6 +77,7 @@ export class RegisterUserComponent implements OnInit {
     this.authService.checkEmail(apiAddress, this.emailCheck)
     .subscribe({
       next: async (response: RegistrationResponse) => {
+        this.enableLink();
         this.loading=false;
         this.registerForm.enable();
         //this.isEmailExist=response.isExisted;
@@ -76,9 +92,24 @@ export class RegisterUserComponent implements OnInit {
 
     },
       error: (err: HttpErrorResponse) =>{ 
+        this.enableLink();
+        this.isError=true;
         this.loading=false;
         this.registerForm.enable();
-        console.log(err)}
+        setTimeout(()=>{
+          function removeAlert(){
+            this.alert=document.getElementById("errorAlert");
+            fake.innerHTML= ((+fake.innerHTML)-0.01).toString().slice(0,3);
+            this.alert.style.opacity=fake.innerHTML;
+            if(fake.innerHTML=="0.0"){
+              this.alert.style.display="none"
+              clearInterval(alt);
+            }
+            
+            }
+          let alt=setInterval(removeAlert,200);
+        },3000)
+      }
     })
   }
 

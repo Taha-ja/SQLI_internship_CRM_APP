@@ -1,0 +1,65 @@
+{  
+    "login": {  
+        "title": "Se connecter",  
+        "SubTitle": "Entrez vos coordonnées et commencez votre journée avec nous!",  
+        "error":"Nom d'utilisateur ou mot de passe invalide.",
+        "username.placeholder": "Entrez une adresse mail valide",  
+        "password.placeholder": "Entrez le mot de passe",  
+        "toRegister": "Vous n'avez pas de compte ?",  
+        "button.name": "Connexion",  
+        "forgotpassword.link": "mot de passe oublié?",  
+        "register.link": "S'inscrire"
+    },
+    "register":{
+        "title": "S'inscrire",  
+        "SubTitle": "Entrez votre email et rejoignez-nous!",  
+        "errorNotFound":"désolé l'email que vous avez saisi ne correspond à aucun de nos clients.",
+        "connectionFailed":"la connexion a échoué, veuillez vérifier votre connexion Internet",
+        "username.placeholder": "Entrez une adresse mail valide",
+        "button.name": "S'inscrire", 
+        "toLogin": "Vous avez déja un compte ?",
+        "login.link": "Se connecter"
+    },
+    "AddPassword":{
+        "password.placeholder":"Entez un mot de passe",
+        "confirmPassword.placeholder":"Confirmer le mot de passe",
+        "notEqualError":"le mot de passe ne correspond pas.",
+        "successMessage.title":"inscription réussie",
+        "successMessage.body":"Le lien a été envoyé, merci de vérifier votre email pour confirmer votre inscription",
+        "successMessage.button":"ok",
+        "EchecMessage.title":"inscription échouée",
+        "EchecMessage.body":"la connexion a échoué, veuillez vérifier votre connexion Internet",
+        "EchecMessage.button":"ok",
+        "noteNotRespected":"Merci de respecter la notice",
+        "button.name":"confirme",
+        "note.title":"Remarque:",
+        "note.body":"Le mot de passe doit comporter au moins un caractère non alphanumérique, une majuscule et au moins un chiffre."
+    },
+    "ForgotPassword":{
+        "title": "Récupération",
+        "email.placeholder":"Entrez une adresse mail valide",
+        "required":"(*) l'email est obligatoire",
+        "button.name":"soumettre",
+        "successMessage.title":"Récupération réussite",
+        "successMessage.body":"Le lien a été envoyé, merci de vérifier votre email pour réinitialiser votre mot de passe.",
+        "successMessage.button":"ok",
+        "EchecMessage.title":"Récupération échouée",
+        "EchecMessage.body":"la connexion a échoué, veuillez vérifier votre connexion Internet",
+        "EchecMessage.button":"ok",
+        "ErrorMessage":"l'opération a échoué, entrez un e-mail valide !",
+        "goToLogin":"Vous vous souvenez de votre mot de passe ?",
+        "login.link":"Se connecter"
+    },
+    "reset":{
+        "title": "réinitialisation",  
+        "password.placeholder":"Entez un mot de passe",
+        "confirmPassword.placeholder":"Confirmer le mot de passe",
+        "passwordRequired":"(*) mot de passe est obligatoire",
+        "confirmationRequired":"(*) Confirmation est obligatoire",
+        "notEqualError":"(*) Les mots de passe doivent correspondre",
+        "button.name": "Confirmer"
+    },
+    "connectionFailed":"la connexion a échoué, veuillez vérifier votre connexion Internet",
+    "copyRight":"Tous les droits sont réservés"
+
+} 

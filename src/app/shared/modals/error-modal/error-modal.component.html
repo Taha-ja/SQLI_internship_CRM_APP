@@ -1,12 +1,12 @@
 <div class="modal-header">
-    <h4 class="modal-title pull-left">{{modalHeaderText}}</h4>
+    <h4 class="modal-title pull-left" [ngClass]="{'modHeadTxt':lang=='ar'}">{{modalHeaderText}}</h4>
     <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="onOkClicked()">
         <span aria-hidden="true" class="visually-hidden">&times;</span>
     </button>
 </div>
-<div class="modal-body">
+<div class="modal-body " [ngClass]="{'modBodyTxt':lang=='ar'}">
     {{modalBodyText}}
 </div>
 <div class="modal-footer">
-    <button type="button" class="btn btn-danger" (click)="onOkClicked()">{{okButtonText}}</button>
+    <button type="button" class="btn btn-danger " [ngClass]="{'modbtn':lang=='ar'}" (click)="onOkClicked()">{{okButtonText}}</button>
 </div>

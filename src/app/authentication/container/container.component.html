@@ -1,37 +1,44 @@
+<!-- Default dropup button -->
 
 <!-- Section: Design Block -->
+<mat-toolbar style="background-color: #003865;" class="nav-bar mat-elevation-z2">
+    <span class="spacer"></span>
+    <ng-container>
+        <mat-icon>language</mat-icon>
+        <button mat-button [matMenuTriggerFor]="menu">
+            {{siteLanguage}}
+            <mat-icon>arrow_drop_down</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+            <a mat-menu-item *ngFor="let language of languageList" (click)="switchLang(language)">{{ language.label }}</a>
+        </mat-menu>
+    </ng-container>
+</mat-toolbar>
 <section class="text-center">
     <!-- Background image -->
-    <div class="p-5 bg-image" style="
-          background-color: #003865;
-          border-bottom-left-radius:40% ;
-          height: 300px;
-          /* transform: rotate(5deg); */
-          "></div>
+    <div class="header p-5"></div>
     <!-- Background image -->
     <!-- background-image: url('https://mdbootstrap.com/img/new/textures/full/171.jpg'); -->
     <!-- mx-5 mx-md-5 -->
-    <div  class="card   shadow-5-strong w-75"
-     style="
-          margin-top: -19%;
-          margin-left: auto;
-          margin-right: auto;
-          background: hsla(0, 0%, 100%, 0.8);
-          backdrop-filter: blur(30px);
-          border-radius: 40px;
-          box-shadow: 0px 10px 10px #888888;
-          "
-          >
-        <section class="vh-80"  style="height:min-content">
+
+    <div class="card  shadow-5-strong w-75 component">
+        <section class="vh-80" style="height:min-content">
             <div class="container-fluid h-custom py-5 ">
-                <div class="row d-flex justify-content-center align-items-center h-100 " >
-                    <div class="col-md-7 col-lg-6 col-xl-5" >
-                        <img src="../../../assets/images/Microsoft_Dynamics_Logo1.png" class="img-fluid d-none d-sm-block d-md-block" alt="Sample image">
-                        <div class="copyRight mg-fluid d-none d-xl-block ">
-                            <span style="font-size: 20px;">&copy;</span> All rights reserved {{currentYear}}
+                <div class="row d-flex justify-content-center align-items-center h-100 ">
+                    <div class="col-md-7 col-lg-6 col-xl-5">
+                        <img src="../../../assets/images/Microsoft_Dynamics_Logo1.png"
+                            class="img-fluid d-none d-sm-block d-md-block" alt="Sample image">
+                        <div *ngIf="lang!='ar'" class="copyRight mg-fluid d-none d-xl-block ">
+                            <span style="font-size: 18px;">&copy;</span> {{'copyRight' | translate}} {{currentYear}}
+
+                        </div>
+                        <div *ngIf="lang=='ar'" class="ArcopyRight mg-fluid d-none d-xl-block ">
+                            {{'copyRight' | translate}} {{currentYear}}  <span *ngIf="lang=='ar'" style="font-size: 18px;">&copy;</span>
+
+
                         </div>
                     </div>
-                    <div class="col-md-8 col-lg-8 col-xl-4 offset-xl-1 col-9" >
+                    <div class="col-md-8 col-lg-8 col-xl-4 offset-xl-1 col-9">
                         <div *ngIf="id==0">
                             <app-register-user></app-register-user>
                         </div>
@@ -53,10 +60,12 @@
                     </div>
                 </div>
             </div>
-            <div *ngIf="id==2"  class="mb-5 mx-5" style="float: left;"><strong>Note:</strong> Passwords must have at least one non alphanumeric character, one uppercase and at least one digit.</div>
-
+            <div *ngIf="id==2 && lang!='ar'" class="mb-5 mx-5 note"><strong>{{'AddPassword.note.title' | translate}}</strong> {{'AddPassword.note.body' | translate}}</div>
+            <div *ngIf="lang=='ar' && id==2"class="mb-5 mx-5 Arnote">
+                <strong>{{'AddPassword.note.title' | translate}}</strong> {{'AddPassword.note.body' | translate}}
+            </div>
         </section>
-        
+
     </div>
     <!-- <div class="bg-image" style="
     margin-top: -100px;
@@ -66,5 +75,21 @@
     width: 200px;
     right: 0;
     "></div> -->
+
+
+
+
+
 </section>
 <!-- Section: Design Block -->
+<!-- <div class="dropDown">
+    <span class="form-inline">
+        <select class="form-control" #selectedLang (change)="switchLang(selectedLang.value)">
+            <option *ngFor="let language of translate.getLangs()" [value]="language"
+                [selected]="language === translate.currentLang">
+                {{ language }}
+            </option>
+        </select>
+    </span>
+</div> -->
+
