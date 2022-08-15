@@ -1,21 +1,25 @@
 <h2 style="color: rgb(81, 81, 81);">Mon Compte</h2>
 <mat-divider></mat-divider>
+
 <button mat-fab style="background-color:#023f73 ;margin-top: 1%;"><mat-icon style="width: 100%;" routerLink="/dashboard/ModifierProfile">update</mat-icon></button>
-<br><br>
+<br><br><br>
+
+<mat-card  fxFlexFill>
+
 <div class="profile-card" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" class="stats-cards" fxLayout.gt-sm="row" fxLayout.lt-md="column"  style="  height: 40vh; ">
     <div fxLayout="column" fxLayoutGap="30px" fxFlex="100%" class="block-3"  fxLayoutAlign="center center"fxFlex.gt-sm="50%" fxFlex.lt-md="50%" >
-<app-image-widget></app-image-widget>
+       
+        <app-image-widget></app-image-widget>
+  
 </div>
-<mat-divider vertical="true"></mat-divider>
-<div fxLayout="column" fxLayoutGap="30px" fxFlex="100%" class="block-3"fxLayoutAlign="center center" fxFlex.gt-sm="50%" fxFlex.lt-md="50%"  style="align-items: flex-start;">
-<app-info-personnel></app-info-personnel>
+<mat-divider vertical style="height:150px"></mat-divider>
+<div fxLayout="column" fxLayoutGap="30px" fxFlex="100%" class="block-3"fxLayoutAlign="center center" fxFlex.gt-sm="50%" fxFlex.lt-md="50%"  >
+    <app-info-personnel></app-info-personnel>
 </div>
-
-
-
-   
-
- <!--<input type="file" #Image accept="image/*"  onchange="console.log(event.target.files)"/>--> 
-
+<mat-divider vertical style="height:150px"></mat-divider>
+<div fxLayout="column" fxLayoutGap="30px" fxFlex="100%" class="block-3"fxLayoutAlign="center center" fxFlex.gt-sm="50%" fxFlex.lt-md="50%"  >
+    <app-entreprise></app-entreprise>
 </div>
 
+</div>
+</mat-card>

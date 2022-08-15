@@ -28,7 +28,7 @@ mobileMedia:any=window.matchMedia("(max-width:520px)")
   }
 
   }
-
+ 
   ngOnInit(): void {
     this.UserName=sessionStorage.getItem("UserName");
     this.Email=sessionStorage.getItem("Email");

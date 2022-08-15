@@ -1,18 +1,87 @@
 <h2 style="color: rgb(81, 81, 81);">Modifier mon Compte</h2>
 <mat-divider></mat-divider>
+<div  fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" class="stats-cards" fxLayout.gt-sm="row" fxLayout.lt-md="column" >
+    
+  <div fxLayout="row" fxLayoutGap="10px" fxFlex="100%" class="block-3" >
+  
 
-<form #imageForm=ngForm class="example-form">
-    <div class="profile-card" >
-        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHw%3D&w=1000&q=80" alt="Soufiane FADIL" style="margin-top: 2%;">
-        <button mat-raised-button style="margin-left:10px;background-color:#023f73;color: azure;">Importer</button>
+
+  <div class="profile-card" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" class="stats-cards" fxLayout.gt-sm="row" fxLayout.lt-md="column"  style="  height: 40vh;">
+    <mat-card  fxFlexFill> 
+    <div fxLayout="column" fxLayoutGap="30px" fxFlex="100%" class="block-3"  fxLayoutAlign="center center"fxFlex.gt-sm="50%" fxFlex.lt-md="30%" >
+         
+          <app-image-widget></app-image-widget>
+    
+  </div></mat-card>
+  <mat-card  fxFlexFill> 
+  <div fxLayout="column" fxLayoutGap="30px" fxFlex="100%" class="block-3"  fxLayoutAlign="center center"fxFlex.gt-sm="50%" fxFlex.lt-md="30%" >
+         
+    <app-image-widget></app-image-widget>
+
+</div>
+</mat-card>
+
+  </div>
+
+</div>
+</div>
+<!--
+<mat-card  fxFlexFill>
+  <div class="all">
+    <div class="profile-card"  >
+        <img  [src]="UrlImage" style="margin-top: 2%;">
+        <input type="file" #file placeholder="Choose file" (change)="handleFileInput(file.files)" style="display:none;">
+        <button type="button" class="btn btn-info" style="margin-left:5% ;color: white;background-color: #023f73;font-size: small;" (click)="file.click()">Télécharger l'image</button>
     </div>
-
-    <div class="form-outline mb-4">
-        <input type="email" id="username" name="username" class="form-control form-control-lg"
-            placeholder="Nom" style="width: 35%;height: 20%;"
-            required/><br>
-            <input type="email" id="username" name="username" class="form-control form-control-lg"
-            placeholder="Prenom" style="width: 35%;height: 50%;"
+   
+    <div class="col-md-4" fxLayout.gt-sm="row" fxLayout.lt-md="column">
+        <span class="upload" *ngIf="progress > 0" style="color: green;font-size: large;">
+          {{progress}}%
+        </span>
+        <span class="upload" *ngIf="message">
+          {{message}}
+        </span>
+      </div>
+      </div>
+     </mat-card>
+    
+     <mat-card  fxFlexFill>
+    <div class="container" fxLayout.gt-sm="row" fxLayout.lt-md="column" fxLayoutAlign="space-between">
+    <div class="form-outline mb-4" fxFlex.gt-sm="45%" fxFlex.lt-md="40%" 
+    fxLayoutAlign="center center">
+        <input type="text" id="nom" name="username" class="form-control form-control-lg"
+            placeholder="nom"
+            required/>&nbsp; <input type="text" id="nom" name="username" class="form-control form-control-lg"
+            placeholder="Prénom"
+            required/> </div>
+            <div class="form-outline mb-4" fxFlex.gt-sm="50%" fxFlex.lt-md="40%" 
+            fxLayoutAlign="center center">   
+            <input type="text" id="prenom" name="username" class="form-control form-control-lg"
+           placeholder="Prénom"
             required/>
+           
+        </div>
+   
+</div>
+<div class="container" fxLayout.gt-sm="row" fxLayout.lt-md="column" fxLayoutAlign="space-between">
+    <div class="form-outline mb-4" fxFlex.gt-sm="45%" fxFlex.lt-md="40%" 
+    fxLayoutAlign="center center">
+    
+   
+        <input type="tel" id="telephone" name="telephone" class="form-control form-control-lg"
+            placeholder="Téléphone" 
+            required/> </div>
+            <div class="form-outline mb-4" fxFlex.gt-sm="50%" fxFlex.lt-md="40%" 
+            fxLayoutAlign="center center">   
+            <input type="email" id="email" name="email" class="form-control form-control-lg"
+            placeholder="{{Email}}"  disabled/>  
+        </div>
+       
+</div>
+<div class="row">
+    <div class="offset-md-5 col-md-2" fxLayout.gt-sm="row" fxLayout.lt-md="column">
+      <button type="button" class="btn btn-primary" style="font-size: medium;background-color: #023f73;width: 100%;"  (click)="uploadFile(file.files)"><mat-icon>edit</mat-icon>Modifier </button>
     </div>
-</form>
+  </div>
+
+</mat-card>-->

@@ -1,7 +1,10 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { UserComponentFactory } from 'ag-grid-community';
 import { DashboardService } from 'src/app/shared/services/dashboard.service';
+
 @Component({
   selector: 'app-default',
   templateUrl: './default.component.html',
@@ -16,7 +19,8 @@ export class DefaultComponent implements OnInit {
   constructor(
     private service:DashboardService,
     private jwtHelper: JwtHelperService,
-    private dashService:DashboardService,) {
+    private dashService:DashboardService,
+    private http: HttpClient) {
     // this.windowWidth=window.innerWidth;
     // console.log(this.windowWidth);
 
@@ -39,7 +43,6 @@ export class DefaultComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
     setTimeout(()=>{
       window.dispatchEvent(
         new Event('resize')
@@ -49,6 +52,7 @@ export class DefaultComponent implements OnInit {
     this.refreshOppList();
     window.addEventListener("resize", (_)=>{
       this.windowWidth=window.innerWidth;
+     
       
     });
     const body = document.body;
@@ -78,6 +82,7 @@ export class DefaultComponent implements OnInit {
     })
 
   }
+  
 
 
 }

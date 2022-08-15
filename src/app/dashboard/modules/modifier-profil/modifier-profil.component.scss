@@ -11,15 +11,20 @@
         height: 150px;
         object-fit: cover;
         border-radius: 50%;
+      
+        border: 1px solid #023f73;
+        
       }
     }
-    .image{
-      margin-left: -70%;
-      margin-top: 8%;
-    }
+   
     input{
       font-size: small;
     }
+    .button{
+      background-color:#023f73;
+      color: azure;
+    }
+    
   }
   
   

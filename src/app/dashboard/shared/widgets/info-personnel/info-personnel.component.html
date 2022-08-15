@@ -1,5 +1,24 @@
-<div class="header" >
-    <h4 style="color: rgb(77, 77, 77);">   <mat-icon style="color: grey;vertical-align: middle;">email</mat-icon>{{Email}}</h4>
-    <h4 style="color: rgb(77, 77, 77);">   <mat-icon style="color: grey;vertical-align: middle;margin-left: -7%;">account_circle</mat-icon><b>Role:</b> Contact Principal</h4>
-    <h4 style="color: rgb(77, 77, 77);" class="h4">   <mat-icon style="color: grey;vertical-align: middle;">phone</mat-icon><b>Téléphone:</b> 06-86-90-10-20</h4>
+<mat-nav-list>
+<div class="header"  >
+    <h5 matSubheader >Information Personnels</h5>
+    
+    <table cellspacing="0" cellpadding="0">
+      <tr>
+        <td style="color: rgb(77, 77, 77);font-size: small;"> <mat-icon style="color: grey;vertical-align:middle;">person</mat-icon><b>Nom du Compte:</b> {{UserName}}</td>
+      </tr>
+   
+        <tr>
+            <td style="color: rgb(77, 77, 77);font-size: small;">   <mat-icon style="color: grey;vertical-align: middle;">email</mat-icon><b>Email: </b> {{Email}}</td>
+          </tr>
+          <tr>
+            <td style="color: rgb(77, 77, 77);font-size: small;">   <mat-icon style="color: grey;vertical-align: middle;">account_circle</mat-icon><b>Role:</b> Contact </td>
+          </tr>
+          <tr>
+            <td style="color: rgb(77, 77, 77); font-size: small;" class="h4">   <mat-icon style="color: grey;vertical-align: middle;">phone</mat-icon><b>Téléphone:</b> 06-86-90-10-20</td>
+          </tr>
+       
+        <br>
+      
+   </table>
 </div>
+</mat-nav-list>

@@ -9,6 +9,7 @@ import{MatSidenavModule} from'@angular/material/sidenav';
 import { MatDividerModule } from '@angular/material/divider';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import{MatCardModule} from '@angular/material/card';
+
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -18,6 +19,7 @@ import { ModifierProfilComponent } from '../../modules/modifier-profil/modifier-
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { AgGridModule } from 'ag-grid-angular';
 import {MatButtonModule} from '@angular/material/button'
+import { EntrepriseComponent } from '../../shared/widgets/entreprise/entreprise.component';
 @NgModule({
   declarations: [
     DefaultComponent,
@@ -25,6 +27,7 @@ import {MatButtonModule} from '@angular/material/button'
     PostsComponent,
     ComptesComponent,
     ModifierProfilComponent,
+   
   ],
   imports: [
     CommonModule,
@@ -40,7 +43,8 @@ import {MatButtonModule} from '@angular/material/button'
     MatIconModule,
     MatFormFieldModule,
     AgGridModule,
-    MatButtonModule
+    MatButtonModule,
+    FormsModule
 
     
   ]
