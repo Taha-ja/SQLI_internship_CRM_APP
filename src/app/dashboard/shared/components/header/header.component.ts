@@ -19,8 +19,8 @@ Email:string;
    }
 
   ngOnInit(): void {
-    this.UserName=sessionStorage.getItem("UserName");
-    this.Email=sessionStorage.getItem("Email");
+    this.UserName=localStorage.getItem("UserName");
+    this.Email=localStorage.getItem("Email");
   }
   logOut = () => {
     localStorage.removeItem("jwt");

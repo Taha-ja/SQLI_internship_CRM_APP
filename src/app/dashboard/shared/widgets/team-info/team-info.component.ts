@@ -1,13 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardService } from 'src/app/shared/services/dashboard.service';
+import { DataTransfertService } from 'src/app/shared/services/data-transfert.service';
+import { EmailCheck } from 'src/app/_interfaces/email.model';
 
 @Component({
-  selector: 'app-info-personnel',
-  templateUrl: './info-personnel.component.html',
-  styleUrls: ['./info-personnel.component.scss']
+  selector: 'app-team-info',
+  templateUrl: './team-info.component.html',
+  styleUrls: ['./team-info.component.scss']
 })
-export class InfoPersonnelComponent implements OnInit {
+export class TeamInfoComponent implements OnInit {
+
   Data!: any;
+  emailCheck:EmailCheck={email:''};
   showSpinner:boolean=true;
   section:any;
   //  Responsive variable
@@ -19,7 +23,8 @@ export class InfoPersonnelComponent implements OnInit {
     4:"Widowed"
   }
   constructor(
-    private dashService:DashboardService
+    private dashService:DashboardService,
+    private dataTrans:DataTransfertService,
   ) { }
 
   ngOnInit(): void {
@@ -28,8 +33,11 @@ export class InfoPersonnelComponent implements OnInit {
     this.section.style.opacity ="0";
   }
   initDataTable() {
-    const apiAddress: string = 'api/Crm/profileDetails';
-    this.dashService.opportunities(apiAddress).subscribe({
+    const email=this.dataTrans.getTeamProfile();
+    const apiAddress: string = `api/Crm/ProfileByUser`;
+    this.emailCheck.email=email;
+    console.log("aaaa"+email);
+    this.dashService.getProfileByUser(apiAddress,this.emailCheck).subscribe({
       next:(responce)=>{
         this.Data=responce.value[0];
         console.log(this.Data);
@@ -40,5 +48,4 @@ export class InfoPersonnelComponent implements OnInit {
       }   
     })
 }
-
 }

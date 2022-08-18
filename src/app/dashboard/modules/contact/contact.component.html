@@ -1,8 +1,7 @@
-<h2 style="color: rgb(81, 81, 81);">Mes Contacts</h2>
+<!-- <h2 style="color: rgb(81, 81, 81);">Mes Contacts</h2>
 <br>
 <table class="table" style="margin-bottom: 20px;">
     <thead>
-    <!--   <tr>Nom Opportinité</tr>--> 
         <tr>Nom du compte</tr>
         <tr>Téléphone principal</tr>
         <tr>Adresse 1 : Ville</tr>
@@ -11,8 +10,51 @@
 
     </thead>
     <tbody>
-        <tr *ngFor="let dataItem of  ContactsList">
+        <tr *ngFor="let dataItem of  Data">
             
             </tr>
     </tbody>
-</table>
+</table> -->
+<div class="col-lg-12">
+    <div class="card mb-4">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-4">
+                    <dt class="mb-0">Full Name</dt>
+                </div>
+                <div class="col-4">
+                    <dt class="mb-0">Email</dt>
+                </div>
+                <div class="col-4">
+                    <dt class="mb-0">Phone</dt>
+                </div>
+
+            </div>
+            <hr>
+            <div *ngFor="let data of result; let i = index" class="sendTo">
+
+                <div  class="row">
+                    <div class="col-4">
+                        <p class="text-muted mb-0" (click)="showDetail(data?.emailaddress1)">{{data?.firstname}} {{data?.lastname}}</p>
+                    </div>
+                    <div class="col-4">
+                        <p class="mb-0">{{data?.emailaddress1}}</p>
+                    </div>
+                    <div class="col-4">
+                        <p class="text-muted mb-0">+{{data?.telephone1}}</p>
+                    </div>
+
+                </div>
+                <hr *ngIf="i!=result.length-1">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <div class="spinner" *ngIf="showSpinner">
+    
+        <div >
+            <span class="spinner-border spinner-border-sm mx-2" role="status"></span>Loading...
+        </div>
+    </div>

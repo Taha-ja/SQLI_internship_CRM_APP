@@ -8,6 +8,7 @@ import { ModifierProfilComponent } from './modules/modifier-profil/modifier-prof
 
 import { PostsComponent } from './modules/posts/posts.component';
 import { ImageWidgetComponent } from './shared/widgets/image-widget/image-widget.component';
+import { TeamInfoComponent } from './shared/widgets/team-info/team-info.component';
 
 const routes: Routes = [{
   path:'',
@@ -30,6 +31,10 @@ const routes: Routes = [{
 {
   path:'ModifierProfile',
     component:ModifierProfilComponent,
+},
+{
+  path:'Details',
+    component:TeamInfoComponent,
 }
 ]
 }];

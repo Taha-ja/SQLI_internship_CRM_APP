@@ -7,6 +7,7 @@ export class DataTransfertService {
   private email:string;
   private firstname:string;
   private lastname:string;
+  private teamProfile:string;
   constructor() {
   
   }
@@ -15,8 +16,13 @@ export class DataTransfertService {
     this.email=email;
   }
   getEmail(){
-    console.log('from get email '+this.email)
     return this.email;
+  }
+  setTeamProfile(teamProfile :string){
+    this.teamProfile=teamProfile;
+  }
+  getTeamProfile(){
+    return this.teamProfile;
   }
   
   setfirstname(firstname :string){

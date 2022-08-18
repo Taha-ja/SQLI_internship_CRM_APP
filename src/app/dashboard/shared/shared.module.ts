@@ -19,6 +19,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { ComptesComponent } from '../modules/comptes/comptes.component';
 import { ImageWidgetComponent } from './widgets/image-widget/image-widget.component';
 import { InfoPersonnelComponent } from './widgets/info-personnel/info-personnel.component';
+import { TeamInfoComponent } from './widgets/team-info/team-info.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { InfoPersonnelComponent } from './widgets/info-personnel/info-personnel.
     AreaComponent, 
     CardComponent,
     ImageWidgetComponent,
-    InfoPersonnelComponent
+    InfoPersonnelComponent,
+    TeamInfoComponent
   ],
   
   imports: [

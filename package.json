@@ -26,6 +26,7 @@
     "@ngx-translate/http-loader": "^7.0.0",
     "ag-grid-angular": "^28.1.0",
     "ag-grid-community": "^28.1.0",
+    "ag-grid-enterprise": "^28.1.0",
     "bootstrap": "^5.1.3",
     "highcharts-angular": "^3.0.0",
     "ngx-bootstrap": "^8.0.0",
