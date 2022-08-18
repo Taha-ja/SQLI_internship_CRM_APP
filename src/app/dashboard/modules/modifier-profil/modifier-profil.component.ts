@@ -1,8 +1,12 @@
 import { HttpClient, HttpErrorResponse, HttpEventType, HttpResponse } from '@angular/common/http';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { AnyForUntypedForms, Form, FormBuilder, FormControl, FormGroup, NgForm } from '@angular/forms';
 import { CompteInfo } from 'src/app/_interfaces/CompteInfo.model';
 import { User } from 'src/app/_interfaces/User.model';
-
+import { Validators } from '@angular/forms';
+import { BehaviorSubject, first } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
+import { DashboardService } from 'src/app/shared/services/dashboard.service';
 
 
 @Component({
@@ -12,106 +16,84 @@ import { User } from 'src/app/_interfaces/User.model';
 })
 
 export class ModifierProfilComponent implements OnInit {
-public isCreate:boolean;
+  userForm = new FormControl({
+    
+    firstname:  new FormControl(''),
+    lastname:new FormControl(''),
+    Email:new FormControl(''),
+    jobtitle:new FormControl(''),
+    telephone1:new FormControl(''),
+    mobilephone: new FormControl(''),
+    fax:new FormControl(''),
+    preferredcontactmethodcode:new FormControl(''),
+    address1_line1:new FormControl(''),
+    address1_line2:new FormControl(''),
+    address1_postalcode:new FormControl(''),
+    gendercode:new FormControl(''),
+    birthdate:new FormControl(''),
+    address1_country:new FormControl(''),
+  });
+
+//public isCreate:boolean;
 public User:CompteInfo;
 public Users:User[]=[];
 public nom:string;
 public prenom:string;
 public telephone:string;
 public email:string;
+private route: ActivatedRoute;
+private router: Router;
+private userService: DashboardService;
 
+
+loading = false;
+submitted = false;
   progress: number;
   message: string;
 
   @Output() public onUploadFinished = new EventEmitter();
 
-  UrlImage:string="./assets/images/149071.png";
-  Nom:string;
-  Prenom:string;
+  UrlImage:string="./assets/images/pexels.jpg";
+  isLoading$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  isLoading: boolean;
   Email:string;
-  Firstname:string;
-  PhoneNumber:string;
-  response: {dbPath: ''};
+  UserName:string;
 
-  file: FileList;
-  fileToUpload:File=null;
-  percentDone: number;
-  uploadSuccess: boolean;
-  constructor(private http: HttpClient) { }
+
+
+  constructor(private http: HttpClient,private cdr: ChangeDetectorRef) {
+   
+   }
 
   ngOnInit(): void {
  
-   this.Firstname=sessionStorage.getItem("Firstname");
+   this.UserName=sessionStorage.getItem("UserName");
     this.Email=sessionStorage.getItem("Email");
     
   }
-  handleFileInput(file: FileList){
-     this.fileToUpload=file.item(0);
-     var reader=new FileReader();
-     reader.onload=(event:any)=>{
-      this.UrlImage=event.target.result;
-     }
-     reader.readAsDataURL(this.fileToUpload);
+  onFormSubmit(userForm: NgForm){
+    console.log(userForm)
   }
-
-uploadFile = (files) => {
- 
-    if (files.length === 0) {
-      return;
-    }
-    let fileToUpload = <File>files[0];
-    const formData = new FormData();
-    formData.append('file', fileToUpload, fileToUpload.name);
-    
-    this.http.post('https://localhost:7290/api/Image/UploadImage', formData, {reportProgress: true, observe: 'events'})
+resetform(userForm: NgForm){
+  userForm.resetForm();
+}
+  
+/*private updateUser() {
+  this.userService.ProfileUser(this.userForm.value)
+      .pipe(first())
       .subscribe({
-        next: (event) => {
-          
-        if (event.type === HttpEventType.UploadProgress){
-          this.progress = Math.round(100 * event.loaded / event.total);
-          this.User={
-            Nom:this.nom,
-            Prenom:this.prenom,
-            tele:this.telephone,
-            Imagee:this.response.dbPath,
-            }}
-
-        else if (event.type === HttpEventType.Response) {
-          console.log ('hello');
-          this.message = 'Upload success.';
-          this.onUploadFinished.emit(event.body);
-          // var reader=new FileReader();
-          // reader.onload=(event:any)=>{
-          //   this.UrlImage=event.target.result;
-          //  }
-
-       
-        }
-        else  this.message = 'Erreur';
-      },
-      error: (err: HttpErrorResponse) => console.log(err)
-    });
-  }
-  public onCreate=()=>{
-    this.User={
-    Nom:this.nom,
-    Prenom:this.prenom,
-    tele:this.telephone,
-    Imagee:this.response.dbPath,
-    }
-    this.UrlImage=this.response.dbPath;
-    console.log("AAA :"+this.UrlImage)
-  
-  }
-  public returnToCreate=()=>{
-      this.isCreate=true;
-      this.nom='';
-      this.prenom='';
-      this.telephone='';
+          next: () => {
+              this.alertService.success('User updated', { keepAfterRouteChange: true });
+              this.router.navigate(['../../'], { relativeTo: this.route });
+          },
       
-  }
-  public createImgPath = (serverPath: string) => { 
-    return `https://localhost:7290/api/Image/api/UploadImage`; 
-  }
-  
+      });
+}*/
+saveSettings() {
+  this.isLoading$.next(true);
+  setTimeout(() => {
+    this.isLoading$.next(false);
+    this.cdr.detectChanges();
+  }, 1500);
+}
 }

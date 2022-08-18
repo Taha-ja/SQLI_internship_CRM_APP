@@ -1,18 +1,23 @@
 :host {
+
+
     .mat-icon {
       vertical-align: middle;
       margin-right: 20px;
     }
     .profile-card {
+      margin-top: 1%;
       text-align: center;
       padding: 0 20px 20px 20px;
+      border-radius: 5%;
+      
       img {
         width: 150px;
         height: 150px;
         object-fit: cover;
         border-radius: 50%;
-      
-        border: 1px solid #023f73;
+        object-position: center;
+        border: 3px solid #023f73;
         
       }
     }
@@ -24,7 +29,26 @@
       background-color:#023f73;
       color: azure;
     }
-    
+   
+     .Profile-image > button{
+      position: absolute;
+      bottom: 10px;
+      right: 43%;
+     }
+.Profile-image{
+  position: relative;
+}
+input[type=text], textarea,input[type=date] ,input[type=date],input[type=tel] {
+ font-size: 15px; 
+}
+.form-select {
+  font-size: 15px; 
+ }
+
+.example-full-width{
+  width: 80%;
+}
+
   }
   
   

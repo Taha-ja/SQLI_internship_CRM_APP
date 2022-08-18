@@ -9,22 +9,18 @@ import{MatSidenavModule} from'@angular/material/sidenav';
 import { MatDividerModule } from '@angular/material/divider';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import{MatCardModule} from '@angular/material/card';
-
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ComptesComponent } from 'src/app/dashboard/modules/comptes/comptes.component';
 import { AgGridModule } from 'ag-grid-angular';
-
-
-
-
 import{MatIconModule}from '@angular/material/icon';
 import { ModifierProfilComponent } from '../../modules/modifier-profil/modifier-profil.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button'
+import {MatBadgeModule} from '@angular/material/badge';
 
-
+import { MatInputModule } from '@angular/material/input';
 @NgModule({
   declarations: [
     DefaultComponent,
@@ -51,7 +47,9 @@ import {MatButtonModule} from '@angular/material/button'
     AgGridModule,
     MatButtonModule,
     FormsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatBadgeModule,
+    MatInputModule
   ]
 })
 export class DefaultModule { }

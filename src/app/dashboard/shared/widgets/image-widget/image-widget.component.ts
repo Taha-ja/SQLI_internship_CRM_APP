@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./image-widget.component.scss']
 })
 export class ImageWidgetComponent implements OnInit {
+  hidden = false;
   UserName:string;
   Email:string;
   constructor() { }
@@ -15,5 +16,7 @@ export class ImageWidgetComponent implements OnInit {
     this.Email=sessionStorage.getItem("Email");
   
   }
-
+  toggleBadgeVisibility() {
+    this.hidden = !this.hidden;
+  }
 }

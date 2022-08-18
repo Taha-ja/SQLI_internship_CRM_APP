@@ -9,7 +9,7 @@
     <ul fxLayout="row" fxLayoutGap="20px">
 <li>
     <button mat-button [matMenuTriggerFor]="men">
-        <mat-icon style="margin-top: 16px;">settings</mat-icon>
+        <mat-icon style="margin-top: 20px;">settings</mat-icon>
     </button>
 
     <mat-menu #men="matMenu">
@@ -29,12 +29,17 @@
 </li>
 <li>
     <button mat-icon-button>
-        <mat-icon style="margin-top: 15px;">help_outline</mat-icon>
+        <mat-icon style="margin-top: 20px;">help_outline</mat-icon>
     </button> 
 </li>
 <li>
     <button mat-button [matMenuTriggerFor]="menu">
-        <mat-icon style="margin-top: 15px;">account_circle</mat-icon>
+        <img style="margin-top: 40%;"
+        width="30"
+        height="30"
+        class="profile-image-toolbar"
+        src="./assets/images/pexels.jpg"
+      />
     </button>
 <mat-menu #menu="matMenu">
     <button mat-menu-item routerLink="/dashboard/comptes">

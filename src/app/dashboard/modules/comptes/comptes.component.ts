@@ -1,6 +1,8 @@
 
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { DashboardService } from 'src/app/shared/services/dashboard.service';
 
 
 @Component({
@@ -10,8 +12,9 @@ import { Component, OnInit } from '@angular/core';
  
 })
 export class ComptesComponent implements OnInit {
-  //
+ // ProfileForm=new FormControl({
 
+  //});
 
   //variable Username & email
   UserName:string;
@@ -21,12 +24,7 @@ export class ComptesComponent implements OnInit {
 mobileMedia:any=window.matchMedia("(max-width:520px)")
  
   constructor(private responsive: BreakpointObserver) { 
-    if(this.mobileMedia.matches){
-    //alert("Media Matches");
-    this.UserName;
-    
-  }
-
+   // private toast:DashboardService
   }
  
   ngOnInit(): void {
