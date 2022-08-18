@@ -54,6 +54,7 @@ import { TeamInfoComponent } from './widgets/team-info/team-info.component';
     AreaComponent,
     CardComponent,
     MatTableModule,
+    MatMenuModule,
     MatFormFieldModule,
     ImageWidgetComponent,
     InfoPersonnelComponent
@@ -64,4 +65,4 @@ import { TeamInfoComponent } from './widgets/team-info/team-info.component';
 
 export class SharedModule {
   
- }
+}
