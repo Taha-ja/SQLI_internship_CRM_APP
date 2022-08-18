@@ -10,7 +10,10 @@ import { EnvironmentUrlService } from './environment-url.service';
     providedIn: 'root'
 })
 export class DashboardService {
-
+    readonly APIUrl = "https://localhost:7290";
+    updateUser(val: any) {
+        return this.http.put(this.APIUrl + '/Comptes', val);
+    }
     constructor(private http: HttpClient, private envUrl: EnvironmentUrlService) { }
     public opportunities=(route: string)=>{
         return this.http.get<any>(this.createCompleteRoute(route, this.envUrl.urlAddress),{

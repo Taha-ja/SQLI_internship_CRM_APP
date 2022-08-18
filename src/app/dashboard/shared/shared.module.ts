@@ -20,6 +20,8 @@ import { ComptesComponent } from '../modules/comptes/comptes.component';
 import { ImageWidgetComponent } from './widgets/image-widget/image-widget.component';
 import { InfoPersonnelComponent } from './widgets/info-personnel/info-personnel.component';
 import { TeamInfoComponent } from './widgets/team-info/team-info.component';
+import { EntrepriseComponent } from './widgets/entreprise/entreprise.component';
+
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { TeamInfoComponent } from './widgets/team-info/team-info.component';
     CardComponent,
     ImageWidgetComponent,
     InfoPersonnelComponent,
-    TeamInfoComponent
+    TeamInfoComponent,
+    EntrepriseComponent
+
   ],
   
   imports: [
@@ -57,7 +61,8 @@ import { TeamInfoComponent } from './widgets/team-info/team-info.component';
     MatMenuModule,
     MatFormFieldModule,
     ImageWidgetComponent,
-    InfoPersonnelComponent
+    InfoPersonnelComponent,
+    EntrepriseComponent
   ]
 
 })

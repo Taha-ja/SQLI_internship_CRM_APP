@@ -9,13 +9,11 @@ import{MatSidenavModule} from'@angular/material/sidenav';
 import { MatDividerModule } from '@angular/material/divider';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import{MatCardModule} from '@angular/material/card';
+
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ComptesComponent } from 'src/app/dashboard/modules/comptes/comptes.component';
-import { HeaderComponent } from '../../shared/components/header/header.component';
-import { ComponentTableComponent } from '../../component-table/component-table.component';
-import { MatPaginator } from '@angular/material/paginator';
 import { AgGridModule } from 'ag-grid-angular';
 
 
@@ -26,6 +24,7 @@ import { ModifierProfilComponent } from '../../modules/modifier-profil/modifier-
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button'
 
+
 @NgModule({
   declarations: [
     DefaultComponent,
@@ -33,6 +32,7 @@ import {MatButtonModule} from '@angular/material/button'
     PostsComponent,
     ComptesComponent,
     ModifierProfilComponent,
+   
   ],
   imports: [
     CommonModule,
@@ -49,8 +49,9 @@ import {MatButtonModule} from '@angular/material/button'
     MatIconModule,
     MatFormFieldModule,
     AgGridModule,
+    MatButtonModule,
+    FormsModule,
     MatButtonModule
-    
   ]
 })
 export class DefaultModule { }

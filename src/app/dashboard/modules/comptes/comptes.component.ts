@@ -3,7 +3,6 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DashboardService } from 'src/app/shared/services/dashboard.service';
-import { ProfileModel } from 'src/app/_interfaces/profile..model';
 
 
 @Component({
@@ -38,7 +37,9 @@ export class ComptesComponent implements OnInit {
   }
   }
 
+
   ngOnInit(){
+
 
   }
 
