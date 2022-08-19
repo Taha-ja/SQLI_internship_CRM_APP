@@ -12,26 +12,18 @@ export class ContactComponent implements OnInit {
   Data:any[];
   result:any[]=[];
   userEmail=localStorage.getItem("Email");
-  showSpinner:boolean=true;
+  notFound:boolean=false;
+  section:any;
   constructor(
               private dashService:DashboardService,
               private dataTrans:DataTransfertService,
               private route:Router) { }
-  //ContactsList:any=[];
   ngOnInit(): void {
-    // setTimeout(()=>{
-    //   window.dispatchEvent(
-    //     new Event('resize')
-    //   );
-    // },300);
+
     this.initDataTable();
+
   }
   
-  // refreshOppList(){
-  //   this.dashService.opportunities("").subscribe(data=>{
-  //     this.Data=data;
-  //   });
-  // }
 showDetail(email:string){
   this.dataTrans.setTeamProfile(email);
   this.route.navigate(['Details'])
@@ -44,12 +36,16 @@ showDetail(email:string){
         this.Data.forEach(c => {
           if(c.emailaddress1!=this.userEmail){
             this.result.push(c);
+            this.notFound=true
           }
         });
-        console.log(this.Data);
-        if(this.result!=null){
-          this.showSpinner=false;
-        }
+      }
+      ,error:()=>{
+        setTimeout(_ =>{
+          var div = document.getElementById('spinner');
+          div.innerHTML += 'Something is wrong,Please check your network';
+          this.notFound=true;
+        },5000);
       }   
     })
 }

@@ -25,25 +25,26 @@ export class TeamInfoComponent implements OnInit {
   constructor(
     private dashService:DashboardService,
     private dataTrans:DataTransfertService,
-  ) { }
+  ) {
+    
+  }
 
   ngOnInit(): void {
     this.initDataTable();
-    this.section = document.getElementById("section");
-    this.section.style.opacity ="0";
   }
   initDataTable() {
     const email=this.dataTrans.getTeamProfile();
     const apiAddress: string = `api/Crm/ProfileByUser`;
     this.emailCheck.email=email;
-    console.log("aaaa"+email);
     this.dashService.getProfileByUser(apiAddress,this.emailCheck).subscribe({
       next:(responce)=>{
         this.Data=responce.value[0];
         console.log(this.Data);
         if(this.Data!=null){
-          this.showSpinner=false;
-          this.section.style.opacity ="1";
+          setTimeout(()=>{
+            this.showSpinner=false;
+            this.section.style.display= "block";
+          },500)
         }
       }   
     })
