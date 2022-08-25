@@ -26,10 +26,10 @@ export class ContactComponent implements OnInit {
   
 showDetail(email:string){
   this.dataTrans.setTeamProfile(email);
-  this.route.navigate(['Details'])
+  this.route.navigate(['dashboard/Details'])
   }
   initDataTable() {    
-    const apiAddress: string = 'api/Crm/TeamprofileDetails';
+    const apiAddress: string = 'api/Crm/teamContacts';
     this.dashService.opportunities(apiAddress).subscribe({
       next:(responce)=>{
         this.Data=responce.value;

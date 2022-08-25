@@ -13,18 +13,21 @@
             <div class="col-lg-4">
                 <div class="card mb-4">
                     <div class="card-body text-center">
-                        <button mat-fab
-                            style="background-color:#023f73 ;margin-top: 1%;position: relative;float: left;">
-                            <mat-icon style="width: 100%;" routerLink="/dashboard/ModifierProfile">update</mat-icon>
-                        </button>
-                        <!-- 
-              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
-                class="rounded-circle img-fluid" style="width: 150px;"> -->
-                        <!-- <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHw%3D&w=1000&q=80"
-                         class="rounded-circle img-fluid"
-                            style="width: 150px;height: 150px;margin-right: 60px;"> -->
-                        <img src="../../../../../assets/images/unkown.jfif" class="rounded-circle img-fluid"
-                            style="width: 150px;height: 150px;margin-right: 60px;">
+                        <div class="headerOfUser">
+
+                            <button mat-fab
+                                style="background-color:#023f73 ;margin-top: 1%;position: relative;float: left;">
+                                <mat-icon style="width: 100%;" routerLink="/dashboard/ModifierProfile">update</mat-icon>
+                            </button>
+                            <!-- 
+                  <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
+                    class="rounded-circle img-fluid" style="width: 150px;"> -->
+                            <!-- <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHw%3D&w=1000&q=80"
+                             class="rounded-circle img-fluid"
+                                style="width: 150px;height: 150px;margin-right: 60px;"> -->
+                            <img src="../../../../../assets/images/unkown.jfif" class="rounded-circle img-fluid"
+                                style="width: 150px;height: 150px;margin-right: 60px;">
+                        </div>
                         <h5 class="my-3" style="font-size: 25px;">{{Data?.firstname}} {{Data?.lastname}}</h5>
                         <p class="text-muted mb-1">{{Data?.jobtitle}}</p>
                         <p class="text-muted mb-4">At {{Data?.parentcustomerid_account.name}}</p>

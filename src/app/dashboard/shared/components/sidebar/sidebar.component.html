@@ -7,12 +7,13 @@
 
 <a mat-list-item routerLinkActive="list-item-active"   routerLink="/dashboard/" style="color: rgb(92, 90, 90);"><mat-icon> pie_chart</mat-icon>Dashboard</a>
 <a mat-list-item routerLinkActive="list-item-active"   routerLink="/dashboard/comptes" style="color: rgb(92, 90, 90);">	<mat-icon>account_circle</mat-icon>Account</a>
-<h2 matSubheader >Lists</h2>
-<mat-divider></mat-divider>
-<a mat-list-item routerLinkActive="list-item-active"   routerLink="/dashboard/posts" style="color: rgb(92, 90, 90);"><mat-icon> work_outline</mat-icon>Opportunities</a>
 <h2 matSubheader >Team</h2>
 <mat-divider></mat-divider>
-<a mat-list-item routerLinkActive="list-item-active"   routerLink="/dashboard/contact" style="color: rgb(92, 90, 90);"><mat-icon>contact_mail</mat-icon>Contacts</a>
+<div *ngIf="user?.isPrimary">
+    <a mat-list-item routerLinkActive="list-item-active"   routerLink="/dashboard/teamOpp" style="color: rgb(92, 90, 90);"><mat-icon> work_outline</mat-icon>Opportunities</a>
+    <a mat-list-item routerLinkActive="list-item-active"   routerLink="/dashboard/contact" style="color: rgb(92, 90, 90);"><mat-icon>contact_mail</mat-icon>Contacts</a>
+</div>
+
 
 
 

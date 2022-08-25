@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -23,9 +23,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 
 import 'ag-grid-enterprise';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { DashboardService } from './shared/services/dashboard.service';
+import { DataTransfertService } from './shared/services/data-transfert.service';
 // import { LicenseManager } from 'ag-grid-enterprise';
 // LicenseManager.setLicenseKey("For_Trialing_ag-Grid_Only-Not_For_Real_Development_Or_Production_Projects-Valid_Until-15_October_2022_[v2]_MTY2NTc4ODQwMDAwMA==ed34c56281207035daa5a30ff4d54660")
-
 
 // AOT compilation support  
 export function httpTranslateLoader(http: HttpClient) {
@@ -75,7 +76,8 @@ export function tokenGetter() {
     }),
 
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 
 })

@@ -14,6 +14,7 @@ export class TeamInfoComponent implements OnInit {
   emailCheck:EmailCheck={email:''};
   showSpinner:boolean=true;
   section:any;
+  notFound:boolean=false;
   //  Responsive variable
   mobileMedia:any=window.matchMedia("(max-width:520px)")
   familyStatus={
@@ -30,19 +31,27 @@ export class TeamInfoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    setTimeout(()=>{
+      window.dispatchEvent(
+        new Event('resize')
+      );
+      // console.log(this.dataService.getCurrentUser());
+      // console.log(this.dataService.userValue);
+    },300)
     this.initDataTable();
   }
   initDataTable() {
     const email=this.dataTrans.getTeamProfile();
-    const apiAddress: string = `api/Crm/ProfileByUser`;
+    const apiAddress: string = `api/Crm/contactsDetails`;
     this.emailCheck.email=email;
     this.dashService.getProfileByUser(apiAddress,this.emailCheck).subscribe({
       next:(responce)=>{
         this.Data=responce.value[0];
+        this.notFound=true
         console.log(this.Data);
         if(this.Data!=null){
           setTimeout(()=>{
-            this.showSpinner=false;
+            this.notFound=true;
             this.section.style.display= "block";
           },500)
         }

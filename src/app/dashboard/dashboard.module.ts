@@ -10,6 +10,7 @@ import { AgGridModule } from 'ag-grid-angular';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import 'ag-grid-enterprise';
 import { ContactComponent } from './modules/contact/contact.component';
+import { TeamOpportunitiesComponent } from './modules/team-opportunities/team-opportunities.component';
 // import { ModuleRegistry } from '@ag-grid-community/core';     // @ag-grid-community/core will always be implicitly available
 // import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
 // import { CsvExportModule } from "@ag-grid-community/csv-export";
@@ -27,7 +28,7 @@ import { ContactComponent } from './modules/contact/contact.component';
 
 @NgModule({
   declarations: [
-    ContactComponent,
+
   ],
   imports: [
     CommonModule,
