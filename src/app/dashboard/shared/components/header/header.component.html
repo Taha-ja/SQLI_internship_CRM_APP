@@ -28,8 +28,8 @@
     </mat-menu>
 </li>
 <li>
-    <button mat-icon-button>
-        <mat-icon style="margin-top: 20px;">help_outline</mat-icon>
+    <button mat-icon-button style="margin-top: 11px;">
+      <mat-icon matBadge="15" matBadgeColor="warn">notifications</mat-icon>
     </button> 
 </li>
 <li>
@@ -44,13 +44,12 @@
 <mat-menu #menu="matMenu">
     <button mat-menu-item routerLink="/dashboard/comptes">
         <mat-icon>perm_identity</mat-icon>
-
-        {{UserName}}
+        {{Data?.firstname}} {{Data?.lastname}}
 
       </button>
       <button mat-menu-item>
         <mat-icon>email</mat-icon>
-        {{Email}}
+        {{Data?.emailaddress1}}
       </button>
       <mat-divider></mat-divider>
 

@@ -1,94 +1,26 @@
-<!-- <h2 style="color: rgb(81, 81, 81);">Mes Opportunités</h2> -->
-
-<h2 style="color: rgb(81, 81, 81);">Mes Opportunités</h2>
-
-<mat-divider></mat-divider>
-<BR>
- 
-    <br>
-<!--<mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort> -->
-    <!-- Position Column -->
-
-    <!-- <ng-container matColumnDef="position">
-      <mat-header-cell *matHeaderCellDef> Rubrique </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
-    </ng-container> -->
-  
-    <!-- Name Column -->
-    <!-- <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef> Client Potentiel </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
-    </ng-container> -->
-  
-    <!-- Weight Column -->
-    <!-- <ng-container matColumnDef="weight">
-      <mat-header-cell *matHeaderCellDef> Date de férméture </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
-    </ng-container> -->
-  
-    <!-- Symbol Column -->
-    <!-- <ng-container matColumnDef="symbol">
-      <mat-header-cell *matHeaderCellDef> Revenue estimé </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
-    </ng-container> -->
+<ag-grid-angular
+style="width: 100%; Height:600px"
+class="ag-theme-alpine"
 
 
+[columnDefs]="columnDefs"
+[debounceVerticalScrollbar]="true"
+[defaultColDef]="defaultColDef"
+[sideBar]="sideBar"
+[rowData]="rowData$"
 
+(gridReady)="onGridReady($event)"
 
+[animateRows]="true"
+[suppressDragLeaveHidesColumns]="true"
 
+[pagination]="true"
+[paginationPageSize]="10"
 
+[suppressExcelExport]="true" 
 
+[enableCharts]="true"
+[enableRangeSelection]="true"
 
-    <!-- <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef> Rubrique </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
-    </ng-container> -->
-  
-    <!-- Name Column -->
-    <!-- <ng-container matColumnDef="emailaddress">
-      <mat-header-cell *matHeaderCellDef> Client Email </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.emailaddress}} </mat-cell>
-    </ng-container> -->
-  
-    <!-- Weight Column -->
-    <!-- <ng-container matColumnDef="totalamount">
-      <mat-header-cell *matHeaderCellDef> Total Amount </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.totalamount}} </mat-cell>
-    </ng-container> -->
-  
-    <!-- Symbol Column -->
-    <!-- <ng-container matColumnDef="actualclosedate">
-      <mat-header-cell *matHeaderCellDef> Estimated income</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.actualclosedate}} </mat-cell>
-    </ng-container>
-
-
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-
-  
-  </mat-table>
-
-  </mat-table> -->
-
-
-  <ag-grid-angular
-  style="width: 100%"
-  class="ag-theme-alpine"
-  
-  domLayout="autoHeight"
-
-  [columnDefs]="columnDefs"
-  [defaultColDef]="defaultColDef"
-  [rowData]="rowData$"
-  
-
-
-  [animateRows]="true"
-  [suppressDragLeaveHidesColumns]="true"
-
-  [pagination]="true"
-  [paginationPageSize]="10"
-  
-  >
+>
 </ag-grid-angular>

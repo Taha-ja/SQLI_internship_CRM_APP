@@ -21,6 +21,12 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
+import 'ag-grid-enterprise';
+import { DashboardModule } from './dashboard/dashboard.module';
+import { HotToastModule } from '@ngneat/hot-toast';
+// import { LicenseManager } from 'ag-grid-enterprise';
+// LicenseManager.setLicenseKey("For_Trialing_ag-Grid_Only-Not_For_Real_Development_Or_Production_Projects-Valid_Until-15_October_2022_[v2]_MTY2NTc4ODQwMDAwMA==ed34c56281207035daa5a30ff4d54660")
+
 
 // AOT compilation support  
 export function httpTranslateLoader(http: HttpClient) {
@@ -68,6 +74,7 @@ export function tokenGetter() {
         deps: [HttpClient]
       }
     }),
+      HotToastModule.forRoot(),
 
   ],
   providers: [],

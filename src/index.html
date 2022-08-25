@@ -13,21 +13,11 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body class="mat-typography">
-  <app-root></app-root>
-  <!-- <script type="text/javascript">
-    const signUpButton = document.getElementById('signUp');
-    const signInButton = document.getElementById('signIn');
-    const signUpNVButton = document.getElementById('signUpNV');
-    let container = document.getElementById('container');
-  
-    signUpButton.addEventListener('click', () => {
-      container.classList.add("right-panel-active");
-    });
-    signInButton.addEventListener('click', () => {
-      container.classList.remove("right-panel-active");
-    });
-    
-  </script> -->
-  
+  <app-root id="kt_body" class="mat-typography">
+    <div id="splash-screen" class="splash-screen">
+      <img src="./assets/images/Microsoft_Dynamics_Logo1.png" alt="Metronic logo"/>
+      <span>Loading ...</span>
+    </div>
+  </app-root>  
 </body>
 </html>

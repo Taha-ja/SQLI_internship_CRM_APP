@@ -19,7 +19,9 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { ComptesComponent } from '../modules/comptes/comptes.component';
 import { ImageWidgetComponent } from './widgets/image-widget/image-widget.component';
 import { InfoPersonnelComponent } from './widgets/info-personnel/info-personnel.component';
+import { TeamInfoComponent } from './widgets/team-info/team-info.component';
 import { EntrepriseComponent } from './widgets/entreprise/entreprise.component';
+
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { EntrepriseComponent } from './widgets/entreprise/entreprise.component';
     CardComponent,
     ImageWidgetComponent,
     InfoPersonnelComponent,
+    TeamInfoComponent,
     EntrepriseComponent
+
   ],
   
   imports: [
@@ -54,6 +58,7 @@ import { EntrepriseComponent } from './widgets/entreprise/entreprise.component';
     AreaComponent,
     CardComponent,
     MatTableModule,
+    MatMenuModule,
     MatFormFieldModule,
     ImageWidgetComponent,
     InfoPersonnelComponent,
@@ -65,4 +70,4 @@ import { EntrepriseComponent } from './widgets/entreprise/entreprise.component';
 
 export class SharedModule {
   
- }
+}

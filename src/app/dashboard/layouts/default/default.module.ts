@@ -19,7 +19,7 @@ import { ModifierProfilComponent } from '../../modules/modifier-profil/modifier-
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button'
 import {MatBadgeModule} from '@angular/material/badge';
-
+import {MatChipsModule} from '@angular/material/chips';
 import { MatInputModule } from '@angular/material/input';
 @NgModule({
   declarations: [
@@ -49,7 +49,8 @@ import { MatInputModule } from '@angular/material/input';
     FormsModule,
     MatButtonModule,
     MatBadgeModule,
-    MatInputModule
+    MatInputModule,
+    MatChipsModule
   ]
 })
 export class DefaultModule { }

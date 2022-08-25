@@ -1,24 +1,5 @@
-<h2 style="color: rgb(81, 81, 81);">Mon Compte</h2>
+<h2 style="color: rgb(81, 81, 81);">My account</h2>
 <mat-divider></mat-divider>
 
-<button mat-fab style="background-color:#023f73 ;margin-top: 1%;"><mat-icon style="width: 100%;" routerLink="/dashboard/ModifierProfile">update</mat-icon></button>
-<br><br><br>
+<app-info-personnel></app-info-personnel>
 
-<div  style="height: 50%; border-radius: 5px;border: 1px solid rgb(214, 212, 212);padding: 20px;" >
-<div class="profile-card" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" class="stats-cards" fxLayout.gt-sm="row" fxLayout.lt-md="column"  style="  height: 40vh; ">
-    <div fxLayout="column" fxLayoutGap="30px" fxFlex="100%" class="block-3"  fxLayoutAlign="center center"fxFlex.gt-sm="50%" fxFlex.lt-md="50%" >
-       
-        <app-image-widget></app-image-widget>
-  
-</div>
-<mat-divider vertical style="height:250px"></mat-divider>
-<div fxLayout="column" fxLayoutGap="30px" fxFlex="100%" class="block-3"fxLayoutAlign="center center" fxFlex.gt-sm="50%" fxFlex.lt-md="50%"  >
-    <app-info-personnel></app-info-personnel>
-</div>
-<mat-divider vertical style="height:250px"></mat-divider>
-<div fxLayout="column" fxLayoutGap="30px" fxFlex="100%" class="block-3"fxLayoutAlign="center center" fxFlex.gt-sm="50%" fxFlex.lt-md="50%"  >
-    <app-entreprise></app-entreprise>
-</div>
-
-</div>
-</div>
