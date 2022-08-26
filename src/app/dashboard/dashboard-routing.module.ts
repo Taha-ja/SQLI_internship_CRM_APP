@@ -7,6 +7,7 @@ import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { ModifierProfilComponent } from './modules/modifier-profil/modifier-profil.component';
 
 import { PostsComponent } from './modules/posts/posts.component';
+import { TeamOpportunitiesComponent } from './modules/team-opportunities/team-opportunities.component';
 import { ImageWidgetComponent } from './shared/widgets/image-widget/image-widget.component';
 import { TeamInfoComponent } from './shared/widgets/team-info/team-info.component';
 
@@ -35,7 +36,10 @@ const routes: Routes = [{
 {
   path:'Details',
     component:TeamInfoComponent,
-}
+},{
+  path:'teamOpp',
+  component:TeamOpportunitiesComponent,
+},
 ]
 }];
 

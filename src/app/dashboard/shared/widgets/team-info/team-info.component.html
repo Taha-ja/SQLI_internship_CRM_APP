@@ -1,201 +1,116 @@
-<!-- <div class="header" >
-    <h4 style="color: rgb(77, 77, 77);">   <mat-icon style="color: grey;vertical-align: middle;">email</mat-icon>{{Email}}</h4>
-    <h4 style="color: rgb(77, 77, 77);">   <mat-icon style="color: grey;vertical-align: middle;margin-left: -7%;">account_circle</mat-icon><b>Role:</b> Contact Principal</h4>
-    <h4 style="color: rgb(77, 77, 77);" class="h4">   <mat-icon style="color: grey;vertical-align: middle;">phone</mat-icon><b>Téléphone:</b> 06-86-90-10-20</h4>
-</div> -->
-<section style="background-color: #F9F9F9;" id="section">
-    <div class="container py-5">
-        <div class="row">
-            <div class="col">
-            </div>
-        </div>
+<section *ngIf="notFound; else loading">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col col-lg-6 mb-4 mb-lg-0">
+                <div class="card mb-3" style="border-radius: .5rem;">
+                    <div class="row g-0">
+                        <div class="col-md-4 gradient-custom text-center text-white"
+                            style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+                            <div id="child">
+                                <img src="../../../../../assets/images/unkown.jfif"
+                                    class="rounded-circle img-fluid my-5" alt="Avatar" style="width: 80px;" />
+                                <h5 style="font-size:20px ;" class="name">{{Data?.firstname}} {{Data?.lastname}}</h5>
+                                <p style="color:#F9F3EE;">{{Data?.jobtitle}}</p>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body p-4">
 
-        <div class="row">
-            <div class="col-lg-4">
-                <div class="card mb-4">
-                    <div class="card-body text-center">
-                        <button mat-fab
-                            style="background-color:#023f73 ;margin-top: 1%;position: relative;float: left;">
-                            <mat-icon style="width: 100%;" routerLink="/dashboard/ModifierProfile">update</mat-icon>
-                        </button>
-                        <!-- 
-              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
-                class="rounded-circle img-fluid" style="width: 150px;"> -->
-                        <!-- <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHw%3D&w=1000&q=80"
-                         class="rounded-circle img-fluid"
-                            style="width: 150px;height: 150px;margin-right: 60px;"> -->
-                            <img src="../../../../../assets/images/unkown.jfif"
-                            class="rounded-circle img-fluid" style="width: 150px;height: 150px;margin-right: 60px;">
-                        <h5 class="my-3" style="font-size: 25px;">{{Data?.firstname}} {{Data?.lastname}}</h5>
-                        <p class="text-muted mb-1">{{Data?.jobtitle}}</p>
-                        <p class="text-muted mb-4">At {{Data?.parentcustomerid_account.name}}</p>
-                        <!-- <div class="d-flex justify-content-center mb-2">
-                <button type="button" class="btn btn-primary">Follow</button>
-                <button type="button" class="btn btn-outline-primary ms-1">Message</button>
-              </div> -->
+                                <h6 style="text-align: center;font-size: large;">{{Data?.parentcustomerid_account.name}}</h6>
+
+                                <hr class="mt-0 mb-4">
+                                <div class="row pt-1">
+                                    <div class="line">
+                                        <div>
+                                            <dt class="font-bold mb-0">First Name</dt>
+                                        </div>
+                                        <div>
+                                            <p class="text-muted mb-0 s">{{Data?.firstname}}</p>
+                                        </div>
+                                        <!-- <div>
+                                        </div> -->
+                                    </div>
+
+
+                                    <p>
+                                    <div class="line">
+                                        <div>
+                                            <dt class="mb-0">Last Name</dt>
+                                        </div>
+                                        <div>
+                                            <p class="text-muted mb-0">{{Data?.lastname}}</p>
+                                        </div>
+                                        <!-- <div></div> -->
+                                    </div>
+                                    <p>
+                                    <div class="line">
+                                        <div>
+                                            <dt class="mb-0">Birth Date</dt>
+                                        </div>
+                                        <div>
+                                            <p class="text-muted mb-0">{{Data?.birthdate}}</p>
+                                        </div>
+                                        <!-- <div></div> -->
+                                    </div>
+                                    <p>
+                                    <div class="line">
+                                        <div>
+                                            <dt class="mb-0">Gender</dt>
+                                        </div>
+                                        <div>
+                                            <p class="text-muted mb-0">{{Data?.gendercode==1?"men":"women"}}</p>
+                                        </div>
+                                        <!-- <div></div> -->
+                                    </div>
+                                    <p>
+                                    <div class="line">
+                                        <div>
+                                            <dt class="mb-0">Family status</dt>
+                                        </div>
+                                        <div>
+                                            <p class="text-muted mb-0">{{familyStatus[Data?.gendercode]}}</p>
+                                        </div>
+                                        <!-- <div></div> -->
+                                    </div>
+                                </div>
+                                <hr class="mt-5 mb-3">
+                                <div class="row pt-1">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                                        <p class="mb-0" style="color: #3AB0FF;">Business Phone</p>
+                                        <p class="text-muted mb-0">{{Data?.telephone1}}</p>
+                                        <!-- <p></p> -->
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                                        <p class=" mb-0" style="color: #3AB0FF;">Mobile Phone</p>
+                                        <p class="text-muted mb-0">{{Data?.mobilephone}}</p>
+                                        <!-- <p></p> -->
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                                        <p class=" mb-0" style="color: #3AB0FF;">Fax</p>
+                                        <p class="text-muted mb-0">{{Data?.fax}}</p>
+                                        <!-- <p></p> -->
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                                        <p class=" mb-0" style="color: #3AB0FF;">Email</p>
+                                        <p class="text-muted mb-0">{{Data?.emailaddress1}}</p>
+                                        <!-- <p></p> -->
+                                    </li>
+
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="card mb-4 mb-lg-0">
-                    <div class="card-body p-0">
-                        <ul class="list-group list-group-flush rounded-3">
-                            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                <p class="mb-0" style="color: #3AB0FF;">Business Phone</p>
-                                <p class="text-muted mb-0">{{Data?.telephone1}}</p>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                <p class=" mb-0" style="color: #3AB0FF;">Mobile Phone</p>
-                                <p class="text-muted mb-0">{{Data?.mobilephone}}</p>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                <p class=" mb-0" style="color: #3AB0FF;">Fax</p>
-                                <p class="text-muted mb-0">{{Data?.fax}}</p>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                <p class=" mb-0" style="color: #3AB0FF;">Email</p>
-                                <p class="text-muted mb-0">{{Data?.emailaddress1}}</p>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                <p class=" mb-0" style="color: #3AB0FF;">Company Name</p>
-                                <p class="text-muted mb-0">{{Data?.parentcustomerid_account.name}}</p>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-8">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <dt class="font-bold mb-0">First Name</dt>
-                            </div>
-                            <div class="col-sm-9">
-                                <p class="text-muted mb-0">{{Data?.firstname}}</p>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <dt class="mb-0">Last Name</dt>
-                            </div>
-                            <div class="col-sm-9">
-                                <p class="text-muted mb-0">{{Data?.lastname}}</p>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <dt class="mb-0">Birth Date</dt>
-                            </div>
-                            <div class="col-sm-9">
-                                <p class="text-muted mb-0">{{Data?.birthdate}}</p>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <dt class="mb-0">Gender</dt>
-                            </div>
-                            <div class="col-sm-9">
-                                <p class="text-muted mb-0">{{Data?.gendercode==1?"men":"women"}}</p>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <dt class="mb-0">Family status</dt>
-                            </div>
-                            <div class="col-sm-9">
-                                <p class="text-muted mb-0">{{familyStatus[Data?.familystatuscode]}}</p>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <dt class="mb-0">Address 1</dt>
-                            </div>
-                            <div class="col-sm-9">
-                                <p class="text-muted mb-0">{{Data?.address1_line1}}</p>
-                            </div>
-                        </div>
-                        <div *ngIf="Data?.address1_line2==null">
-
-                            <hr>
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <dt class="mb-0">Address 2</dt>
-                                </div>
-                                <div class="col-sm-9">
-                                    <p class="text-muted mb-0">{{Data?.address1_line2}}</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div *ngIf="Data?.address1_line3==null">
-
-                            <hr>
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <dt class="mb-0">Address 3</dt>
-                                </div>
-                                <div class="col-sm-9">
-                                    <p class="text-muted mb-0">{{Data?.address1_line3}}</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <dt class="mb-0">State or province</dt>
-                            </div>
-                            <div class="col-sm-9">
-                                <p class="text-muted mb-0">{{Data?.address1_stateorprovince}}</p>
-                            </div>
-                        </div>
-
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <dt class="mb-0">Postal Code</dt>
-                            </div>
-                            <div class="col-sm-9">
-                                <p class="text-muted mb-0">{{Data?.postalcode}}</p>
-                            </div>
-                        </div>
-
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <dt class="mb-0">Country</dt>
-                            </div>
-                            <div class="col-sm-9">
-                                <p class="text-muted mb-0">{{Data?.address1_country}}</p>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <dt class="mb-0">Full Address</dt>
-                            </div>
-                            <div class="col-sm-9">
-                                <p class="text-muted mb-0">{{Data?.address1_composite}}</p>
-                            </div>
-                        </div>
-
-
-
-
-
-                    </div>
-                </div>
-
             </div>
         </div>
     </div>
 </section>
-<div class="spinner" *ngIf="showSpinner">
-    
-    <div >
-        <span class="spinner-border spinner-border-sm mx-2" role="status"></span>Loading...
+<ng-template #loading>
+    <div class="spinner">
+
+        <div>
+            <span class="spinner-border spinner-border-sm mx-2" role="status"></span>Loading...
+        </div>
     </div>
-</div>
+    <div class="spinner" id="spinner"></div>
+</ng-template>

@@ -44,12 +44,17 @@
 <mat-menu #menu="matMenu">
     <button mat-menu-item routerLink="/dashboard/comptes">
         <mat-icon>perm_identity</mat-icon>
-        {{Data?.firstname}} {{Data?.lastname}}
+
+
+        {{this.user?.firstname}} {{this.user?.lastname}}
+
 
       </button>
       <button mat-menu-item>
         <mat-icon>email</mat-icon>
-        {{Data?.emailaddress1}}
+
+        {{this.user?.email}}
+
       </button>
       <mat-divider></mat-divider>
 

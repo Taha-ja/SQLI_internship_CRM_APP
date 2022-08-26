@@ -4,6 +4,7 @@ import { FormGroup, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthenticationService } from 'src/app/shared/services/authentication.service';
+import { DataTransfertService } from 'src/app/shared/services/data-transfert.service';
 import { LanguageService } from 'src/app/shared/services/language.service';
 import { AuthenticatedResponse } from 'src/app/_interfaces/authenticatedResponse.model';
 import { LoginModel } from 'src/app/_interfaces/login.model';
@@ -23,7 +24,8 @@ export class LoginUserComponent implements OnInit {
                 private router: Router,
                 private authService :AuthenticationService,
                 public translate: TranslateService,
-                private languageService :LanguageService 
+                private languageService :LanguageService,
+                private dataService:DataTransfertService
                 ) { 
                   // translate.addLangs(['en', 'fr']);  
                   // translate.setDefaultLang('en');
@@ -72,14 +74,19 @@ export class LoginUserComponent implements OnInit {
       this.authService.login(apiAddress,this.credentials)
       .subscribe({
         next: (response: AuthenticatedResponse) => {
+          
           this.activeForm();
           this.loading=false;
           const token = response.token;
           localStorage.setItem("UserName",response.fullName);
           localStorage.setItem("Email",response.email)
           localStorage.setItem("jwt", token); 
+          this.dataService.getCurrentUser();
+          console.log("after ");
           this.invalidLogin = false; 
-          this.router.navigate(["/dashboard/"]);
+          setTimeout(_=>{
+            this.router.navigate(["/dashboard/"]);
+          }, 200)
         },
         error: (err: HttpErrorResponse) => {
           this.activeForm();

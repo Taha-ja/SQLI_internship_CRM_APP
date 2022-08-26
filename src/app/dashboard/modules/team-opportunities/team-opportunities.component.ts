@@ -6,13 +6,11 @@ import { DashboardService } from 'src/app/shared/services/dashboard.service';
 import { DataTransfertService } from 'src/app/shared/services/data-transfert.service';
 
 @Component({
-  selector: 'app-posts',
-  templateUrl: './posts.component.html',
-  styleUrls: ['./posts.component.scss']
+  selector: 'app-team-opportunities',
+  templateUrl: './team-opportunities.component.html',
+  styleUrls: ['./team-opportunities.component.scss']
 })
-
-
-export class PostsComponent implements OnInit {
+export class TeamOpportunitiesComponent implements OnInit {
   displayedColumns: string[] = ['name', 'emailaddress', 'totalamount', 'actualclosedate'];
   public rowData$!: Observable<any[]>;
   private gridApi!: GridApi;
@@ -35,7 +33,7 @@ export class PostsComponent implements OnInit {
   }
 //init DataTable
 initDataTable() {
-    const apiAddress: string = 'api/Crm/opportunities';
+    const apiAddress: string = 'api/Crm/teamOpportunities';
     // OpportunityModel
     this.dashService.opportunities(apiAddress).subscribe({
       next:(responce)=>{
@@ -140,8 +138,3 @@ public defaultColDef: ColDef = {
     this.unsubscribe.forEach((sb) => sb.unsubscribe());
   }
 }
-
-
-
-
-

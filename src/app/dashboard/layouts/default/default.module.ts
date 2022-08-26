@@ -18,9 +18,15 @@ import{MatIconModule}from '@angular/material/icon';
 import { ModifierProfilComponent } from '../../modules/modifier-profil/modifier-profil.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button'
+
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatChipsModule} from '@angular/material/chips';
 import { MatInputModule } from '@angular/material/input';
+
+import { ContactComponent } from '../../modules/contact/contact.component';
+import { TeamOpportunitiesComponent } from '../../modules/team-opportunities/team-opportunities.component';
+
+
 @NgModule({
   declarations: [
     DefaultComponent,
@@ -28,7 +34,8 @@ import { MatInputModule } from '@angular/material/input';
     PostsComponent,
     ComptesComponent,
     ModifierProfilComponent,
-   
+    ContactComponent,
+    TeamOpportunitiesComponent,
   ],
   imports: [
     CommonModule,

@@ -10,12 +10,16 @@ import { RegResp } from 'src/app/_interfaces/registrationResponse';
 import { UserForRegistration } from 'src/app/_interfaces/userForRegistration.model';
 import { ForgotPassword } from 'src/app/_interfaces/forgotPassword.model';
 import { ResetPasswordDto } from 'src/app/_interfaces/resetPassword.model';
+import { User } from 'src/app/_interfaces/User.model';
+import { BehaviorSubject, Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
 
-  constructor(private http: HttpClient, private envUrl: EnvironmentUrlService) { }
+  constructor(private http: HttpClient, private envUrl: EnvironmentUrlService) { 
+
+  }
   public registerUser = (route: string, body: UserForRegistration) => {
     return this.http.post<RegResp> (this.createCompleteRoute(route, this.envUrl.urlAddress), body,{
       headers: new HttpHeaders({ "Content-Type": "application/json"})
@@ -43,6 +47,11 @@ export class AuthenticationService {
   public confirmPassword = (route: string, queryParams: any) => {
     return this.http.get(this.createCompleteRoute(route, this.envUrl.urlAddress), {params: queryParams});
   }
+  public getMe=(route: string)=>{
+    return this.http.get<User>(this.createCompleteRoute(route, this.envUrl.urlAddress),{
+      headers: new HttpHeaders({ "Authorization": `Bearer ${localStorage.getItem("jwt")}`})
+    });
+}
   private createCompleteRoute = (route: string, envAddress: string) => {
     return `${envAddress}/${route}`;
   }

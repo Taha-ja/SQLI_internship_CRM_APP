@@ -9,11 +9,11 @@ import { EmailCheck } from 'src/app/_interfaces/email.model';
   styleUrls: ['./team-info.component.scss']
 })
 export class TeamInfoComponent implements OnInit {
-
   Data!: any;
   emailCheck:EmailCheck={email:''};
   showSpinner:boolean=true;
   section:any;
+  notFound:boolean=false;
   //  Responsive variable
   mobileMedia:any=window.matchMedia("(max-width:520px)")
   familyStatus={
@@ -25,25 +25,34 @@ export class TeamInfoComponent implements OnInit {
   constructor(
     private dashService:DashboardService,
     private dataTrans:DataTransfertService,
-  ) { }
+  ) {
+    
+  }
 
   ngOnInit(): void {
+    setTimeout(()=>{
+      window.dispatchEvent(
+        new Event('resize')
+      );
+      // console.log(this.dataService.getCurrentUser());
+      // console.log(this.dataService.userValue);
+    },300)
     this.initDataTable();
-    this.section = document.getElementById("section");
-    this.section.style.opacity ="0";
   }
   initDataTable() {
     const email=this.dataTrans.getTeamProfile();
-    const apiAddress: string = `api/Crm/ProfileByUser`;
+    const apiAddress: string = `api/Crm/contactsDetails`;
     this.emailCheck.email=email;
-    console.log("aaaa"+email);
     this.dashService.getProfileByUser(apiAddress,this.emailCheck).subscribe({
       next:(responce)=>{
         this.Data=responce.value[0];
+        this.notFound=true
         console.log(this.Data);
         if(this.Data!=null){
-          this.showSpinner=false;
-          this.section.style.opacity ="1";
+          setTimeout(()=>{
+            this.notFound=true;
+            this.section.style.display= "block";
+          },500)
         }
       }   
     })

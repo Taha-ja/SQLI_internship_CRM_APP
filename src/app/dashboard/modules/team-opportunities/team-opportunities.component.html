@@ -1,0 +1,26 @@
+<ag-grid-angular
+style="width: 100%; Height:600px"
+class="ag-theme-alpine"
+
+
+[columnDefs]="columnDefs"
+[debounceVerticalScrollbar]="true"
+[defaultColDef]="defaultColDef"
+[sideBar]="sideBar"
+[rowData]="rowData$"
+
+(gridReady)="onGridReady($event)"
+
+[animateRows]="true"
+[suppressDragLeaveHidesColumns]="true"
+
+[pagination]="true"
+[paginationPageSize]="10"
+
+[suppressExcelExport]="true" 
+
+[enableCharts]="true"
+[enableRangeSelection]="true"
+
+>
+</ag-grid-angular>
