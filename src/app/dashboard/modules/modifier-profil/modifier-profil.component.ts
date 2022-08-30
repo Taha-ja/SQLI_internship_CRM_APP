@@ -216,7 +216,7 @@ export class ModifierProfilComponent implements OnInit {
       Object.keys(this.f).forEach((key) => {
         data[key] = this.f[key].value;
       });
-      const userImage = this.UrlImage.replace("data:image/png;base64,", "")
+      const userImage = this.UrlImage.replace(/^data:(.*,)?/, '');
       data['entityimage'] = userImage;
       console.log(data);
       this.dashService.updateProfile(this.apiAddress, data).subscribe({

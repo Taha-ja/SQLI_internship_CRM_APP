@@ -10,19 +10,21 @@
           <div fxLayout="column" fxFlex="100%" class="block-3" fxFlexFill >
                 <mat-card  style="background-color: #023f73; color: white; "fxFlex.gt-sm="33%" fxFlex.lt-md="50%" 
                 fxFlexFill>
-                    <app-widget-card fxLayoutAlign="center center" label="Opportunities" total={{Data[0].count}} percentage="Open"></app-widget-card>
+                
+                    <app-widget-card label="Opportunities" total={{Data[0].count}} percentage="Open"></app-widget-card>
+                   
                     </mat-card>
             </div>
             <div fxLayout="column"  fxFlex="100%" class="block-3" fxFlexFill>
                     <mat-card  style="background-color:  #eff6ee;  "  fxFlex.gt-sm="33%" fxFlex.lt-md="50%"
                     fxFlexFill>
-                        <app-widget-card fxLayoutAlign="center center"  label="Opportunities" total={{Data[1].count}} percentage="Won"></app-widget-card>
+                        <app-widget-card   label="Opportunities" total={{Data[1].count}} percentage="Won"></app-widget-card>
                         </mat-card>
             </div>
              <div fxLayout="column"  fxFlex="100%" class="block-3" fxFlexFill>
                     <mat-card  style="background-color:#1a759f ;color: aliceblue;" fxFlex.gt-sm="33%" fxFlex.lt-md="50%" 
                     fxFlexFill>
-                    <app-widget-card fxLayoutAlign="center center"  label="Opportunities" total={{Data[2].count}} percentage="Lost"></app-widget-card>
+                    <app-widget-card   label="Opportunities" total={{Data[2].count}} percentage="Lost"></app-widget-card>
                     </mat-card>
         
             </div> 

@@ -9,9 +9,10 @@ import { InitDataService } from 'src/app/shared/services/init-data.service';
 })
 
 export class DashboardComponent implements OnInit {
+ 
   windowWidth:number;
   Data: any=[];
-  
+  percentage=String;
   constructor(
       private dashService:DashboardService,
       private cdr: ChangeDetectorRef
@@ -53,5 +54,5 @@ export class DashboardComponent implements OnInit {
       // }   
     })
   }
-
+ 
 }

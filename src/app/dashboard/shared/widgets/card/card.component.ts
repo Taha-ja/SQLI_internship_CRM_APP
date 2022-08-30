@@ -7,7 +7,7 @@ import HC_exporting from 'highcharts/modules/exporting';
   styleUrls: ['./card.component.scss']
 })
 export class CardComponent implements OnInit {
-
+  
     @Input() label:string;
     @Input() total:string;
     @Input() percentage:string;
@@ -125,3 +125,4 @@ export class CardComponent implements OnInit {
   }
 
 }
+

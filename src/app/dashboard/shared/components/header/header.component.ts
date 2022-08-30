@@ -29,13 +29,15 @@ UrlImage:any;
 ngOnInit(): void {
   
   this.user = this.initData.getUser();
-  if(this.user.entityimage!=null){
+  if(this.user.entityimage!=""){
   // this.user.entityimage="data:image/png;base64,"+this.user.entityimage;
   this.UrlImage="data:image/png;base64,"+this.user.entityimage;
+  console.log("1");
 
   }else{
     // this.user.entityimage="../../../../../assets/images/unkown.jfif";
     this.UrlImage="../../../../../assets/images/unkown.jfif";
+    console.log("2");
 
   }
   this.dataService.profileImageUpdate$.subscribe((profileImage) => 
