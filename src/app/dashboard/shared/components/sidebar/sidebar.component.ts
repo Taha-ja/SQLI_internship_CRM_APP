@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataTransfertService } from 'src/app/shared/services/data-transfert.service';
+import { InitDataService } from 'src/app/shared/services/init-data.service';
 import { User } from 'src/app/_interfaces/User.model';
 
 @Component({
@@ -10,14 +11,11 @@ import { User } from 'src/app/_interfaces/User.model';
 export class SidebarComponent implements OnInit {
   sideBarOpen=true;
   user:User;
-  constructor(private dataService:DataTransfertService) { 
+  constructor(private initData:InitDataService) { 
   }
   
   ngOnInit(): void {
-    // this.user=this.dataService.userValue;
-    setTimeout(()=>{
-      this.user=this.dataService.userValue;
-    },1000)
+    this.user = this.initData.getUser();
   }
 
 }

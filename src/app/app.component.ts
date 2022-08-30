@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardService } from './shared/services/dashboard.service';
 import { DataTransfertService } from './shared/services/data-transfert.service';
+import { InitDataService } from './shared/services/init-data.service';
 
 @Component({
   selector: 'app-root',
@@ -10,17 +11,20 @@ import { DataTransfertService } from './shared/services/data-transfert.service';
 export class AppComponent implements OnInit{
   title = 'CustemerApp';
   constructor(
-    private dataService: DataTransfertService
+
 
   ){
     // this.lang=localStorage.getItem("keyLanguage");
     // if(this.lang==="ar"){document.querySelector('input').style.textAlign="end";}
     if(localStorage.getItem("jwt") != null) {
-      this.dataService.getCurrentUser();
+
+      // this.dataService.getPicture();
+      // console.log("this.dataService.getPicture(): ",this.dataService.getImageUrl());
+      
+      // this.dataService.getUserPicture;
     }
   }
   ngOnInit(): void {
-   
     
   }
 

@@ -2,7 +2,8 @@ import { Injectable, OnInit } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from 'src/app/_interfaces/User.model';
 import { AuthenticationService } from './authentication.service';
-
+import { Subject } from 'rxjs';
+import { DashboardService } from './dashboard.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -13,9 +14,15 @@ export class DataTransfertService implements OnInit{
   private lastname:string;
   private teamProfile:string;
   private userSubject: BehaviorSubject<User>;
-  public user: Observable<User>;
+  private userPicture :BehaviorSubject<any>;
+  public picture;
+  public user;
   private currentUser:string;
-  constructor(private authService:AuthenticationService) {
+  private urlImage:any;
+  private Data:any;
+  public profileImageUpdate$ = new Subject<string>();
+
+  constructor(private authService:AuthenticationService,private dashService:DashboardService) {
     // this.authService.getMe("api/Auth/me").subscribe(
     //   {
     //     next:(responce:User)=>{
@@ -51,19 +58,52 @@ export class DataTransfertService implements OnInit{
       {
         next:(responce:User)=>{
           this.currentUser='{"id":'+'"'+responce.id+'"'+',"firstname":'+'"'+responce.firstname+'"'+
-          ',"lastname":'+'"'+responce.lastname+'"'+',"email":'+'"'+responce.email+'"'+',"isPrimary":'+'"'+responce.isPrimary+'"'+'}';
+          ',"lastname":'+'"'+responce.lastname+'"'+',"email":'+'"'+responce.email+'"'+',"isPrimary":'+'"'+responce.isPrimary+'"'+',"userImage":'+'"'+this.profileImageUpdate$+'"'+'}';
           this.userSubject =new BehaviorSubject<User>(responce);
-        },
-        complete:()=>{
           // this.userSubject =new BehaviorSubject<User>(JSON.parse(this.currentUser));
-          this.user = this.userSubject.asObservable();
-        }
+          this.user =this.userSubject.asObservable();
+        },
+        // complete:()=>{
+        //   // this.userSubject =new BehaviorSubject<User>(JSON.parse(this.currentUser));
+        //   this.user = this.userSubject.asObservable();
+        // }
       }
     )
     // return this.userSubject;
+
   }
+  getPicture(){
+    const apiAddress: string = 'api/Crm/profilePicture';
+    this.dashService.opportunities(apiAddress).subscribe({
+      next:(responce)=>{
+        this.Data=responce.value[0];
+
+        if(this.Data.entityimage!=null){
+          this.urlImage="data:image/png;base64,"+this.Data.entityimage;
+        }
+        else{
+          this.urlImage="../../../../../assets/images/unkown.jfif";
+        }
+      }
+    })
+  }
+  // setUserPicture(url:string){
+  //   const imagePath='{"id":'+'"'+url+'"'+'}';
+  //   this.userPicture=new BehaviorSubject<any>(JSON.parse(imagePath));
+  //   this.picture = this.userPicture.asObservable();
+  //   console.log("imagePath :",this.userPicture);
+  // }
+  // public get getUserPicture(){
+  //   return this.userPicture?.value.id;
+  // }
   public get userValue(){
-    return this.userSubject.value;
+    return this.userSubject?.value;
+}
+setImageUrl(url :any){
+  this.urlImage=url;
+}
+getImageUrl(){
+  return this.urlImage;
 }
   setEmail(email :string){
     this.email=email;

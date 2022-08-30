@@ -14,6 +14,7 @@ export class TeamInfoComponent implements OnInit {
   showSpinner:boolean=true;
   section:any;
   notFound:boolean=false;
+  isMore:boolean=false;
   //  Responsive variable
   mobileMedia:any=window.matchMedia("(max-width:520px)")
   familyStatus={
@@ -28,32 +29,46 @@ export class TeamInfoComponent implements OnInit {
   ) {
     
   }
-
+  myFunction() {
+    var dots = document.getElementById("dots");
+    var moreText = document.getElementById("more");
+    var btnText = document.getElementById("myBtn");
+    if(moreText.style.display === "none"){
+      moreText.style.display="initial";
+      // btnText.innerHTML = "keyboard_arrow_down"; 
+      this.isMore=true;
+    }
+    else{
+      moreText.style.display="none";
+      // btnText.innerHTML = "keyboard_arrow_up";
+      this.isMore=false;
+    }
+    // if (dots.style.display === "none") {
+    //   dots.style.display = "inline";
+    //   btnText.innerHTML = "Read more"; 
+    //   moreText.style.display = "none";
+    // } else {
+    //   dots.style.display = "none";
+    //   btnText.innerHTML = "Read less"; 
+    //   moreText.style.display = "inline";
+    // }
+  }
   ngOnInit(): void {
     setTimeout(()=>{
       window.dispatchEvent(
         new Event('resize')
       );
-      // console.log(this.dataService.getCurrentUser());
-      // console.log(this.dataService.userValue);
     },300)
     this.initDataTable();
   }
   initDataTable() {
     const email=this.dataTrans.getTeamProfile();
-    const apiAddress: string = `api/Crm/contactsDetails`;
+    const apiAddress: string = `api/Crm/contactDetails`;
     this.emailCheck.email=email;
     this.dashService.getProfileByUser(apiAddress,this.emailCheck).subscribe({
       next:(responce)=>{
         this.Data=responce.value[0];
-        this.notFound=true
-        console.log(this.Data);
-        if(this.Data!=null){
-          setTimeout(()=>{
-            this.notFound=true;
-            this.section.style.display= "block";
-          },500)
-        }
+        this.notFound=true;
       }   
     })
 }

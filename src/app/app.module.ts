@@ -26,6 +26,7 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { HotToastModule } from '@ngneat/hot-toast';
 import { DashboardService } from './shared/services/dashboard.service';
 import { DataTransfertService } from './shared/services/data-transfert.service';
+import { InitDataService } from './shared/services/init-data.service';
 // import { LicenseManager } from 'ag-grid-enterprise';
 // LicenseManager.setLicenseKey("For_Trialing_ag-Grid_Only-Not_For_Real_Development_Or_Production_Projects-Valid_Until-15_October_2022_[v2]_MTY2NTc4ODQwMDAwMA==ed34c56281207035daa5a30ff4d54660")
 
@@ -35,6 +36,15 @@ export function httpTranslateLoader(http: HttpClient) {
 }
 export function tokenGetter() { 
   return localStorage.getItem("jwt"); 
+}
+export function dataProviderFactory(provider: InitDataService) {
+  return () => provider.geCurrentUser();
+  // return () => {
+  //   return new Promise((resolve) => {
+  //     //@ts-ignore
+  //     provider.geCurrentUser();
+  //   });
+  // };
 }
 @NgModule({
   declarations: [
@@ -79,6 +89,8 @@ export function tokenGetter() {
 
   ],
   providers: [
+    InitDataService, 
+    { provide: APP_INITIALIZER, useFactory: dataProviderFactory, deps: [InitDataService], multi: true }
   ],
   bootstrap: [AppComponent]
 

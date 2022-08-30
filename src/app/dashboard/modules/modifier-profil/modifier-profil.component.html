@@ -1,330 +1,199 @@
 <h2 style="color: rgb(81, 81, 81);">Modifier mon Compte</h2>
 <mat-divider></mat-divider>
 
-    <div class="card mb-5 mb-xl-10">
-      <div 
-        class="card-header border-0 cursor-pointer"
-        role="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#kt_account_profile_details"
-        aria-expanded="true"
-        aria-controls="kt_account_profile_details"
-      >
-        <div class="card-title m-0">
-          <h3 class="fw-bolder m-0"  style="color:rgb(134, 134, 134);padding: 2px;text-align: center;">{{Data?.firstname}} {{Data?.lastname}}</h3>
+<div class="card mb-5 mb-xl-10" *ngIf="notFound ;else loading">
+  <div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse"
+    data-bs-target="#kt_account_profile_details" aria-expanded="true" aria-controls="kt_account_profile_details">
+    <div class="card-title m-0">
+      <h3 class="fw-bolder m-0" style="color:rgb(134, 134, 134);padding: 2px;text-align: center;">{{Data?.firstname}}
+        {{Data?.lastname}}</h3>
+
+    </div>
+  </div>
+  <div id="kt_account_profile_details" class="collapse show">
+    <form novalidate [formGroup]="updateProfileForm" class="form">
+      <div class="card-body border-top p-9">
+        <div class="row mb-6">
+
+          <div class="profile-card">
+
+
+
+            <div class="Profile-image">
+              <img [src]="UrlImage" />
+              <!-- <input type="file" #F  (change)="getBase64($event)"> -->
+              <!-- <img src="{{me}}" alt="" [(ngModel)]="me"> -->
+
+              <button class="edit" mat-mini-fab style="background-color:#023f73;" (click)="inputField.click()"
+              formControlName="entityimage" name="entityimage">
+
+                <mat-icon style="margin-left:15% ;">edit</mat-icon>
+              </button>
+            </div>
+            <br>
+            <input #inputField type="file" hidden  (change)="onselectFile($event)" />
+
+          </div>
 
         </div>
-      </div>
-      <div id="kt_account_profile_details" class="collapse show">
-        <form novalidate [formGroup]="updateProfileForm" class="form">
-          <div class="card-body border-top p-9">
-            <div class="row mb-6">
-     
-              <div class="profile-card">
-              
-                
-                  
-                  <div class="Profile-image">
-                   <img  [src]="UrlImage"/>
-   
-                   <button class="edit" mat-mini-fab style="background-color:#023f73;" (click)="inputField.click()"  >
 
-                     <mat-icon style="margin-left:15% ;">edit</mat-icon>
-                   </button>
-                  </div>
-                  <br>
-                 <input #inputField type="file" hidden (change)="onselectFile($event)"/>
-                    
-              </div>
-            
-            </div>
-            
-            <div class="row mb-6">
-              <label class="col-lg-4 col-form-label required fw-bold fs-6"
-                >Nom Complet</label
-              >
-              <div class="col-lg-8">
-                <div class="row">
-                  <div class="col-lg-6 fv-row">
-                    <input
-                      type="text"
-                      class="
+        <div class="row mb-6">
+          <label class="col-lg-4 col-form-label required fw-bold fs-6">Nom Complet</label>
+          <div class="col-lg-8">
+            <div class="row">
+              <div class="col-lg-6 fv-row">
+                <input type="text" class="
                         form-control form-control-lg form-control-solid
                         mb-3 mb-lg-0
-                      "
-                      
-                      placeholder="Prénom"
-                      matInput
-                      formControlName="firstname"
-                      name="firstname"
-                  
-                    />
-                  </div>
-                  <div class="col-lg-6 fv-row">
-                    <input
-                      type="text"
-                      class="form-control form-control-lg form-control-solid"
-                      placeholder="Nom"
-                      matInput
-                      formControlName="lastname"
-                      name="lastname"
-                      
-                    />
-                  </div>
-                </div>
+                      " placeholder="Prénom" matInput formControlName="firstname" name="firstname" />
+              </div>
+              <div class="col-lg-6 fv-row">
+                <input type="text" class="form-control form-control-lg form-control-solid" placeholder="Nom" matInput
+                  formControlName="lastname" name="lastname" />
               </div>
             </div>
-            <br>
-            <div class="row mb-6">
-              <label class="col-lg-4 col-form-label required fw-bold fs-6"
-                >Email</label
-              >
-              <div class="col-lg-8 fv-row">
-                <input
-                  type="text"
-                  class="form-control form-control-lg form-control-solid"
-                  placeholder="Email" 
-                  name="emailaddress1"
-                  matInput
-                  formControlName="emailaddress1"
-                  
-                  
-                />
-              </div>
-            </div>
-            <br>
-            <div class="row mb-6">
-              <label class="col-lg-4 col-form-label fw-bold fs-6"
-                ><span class="required">Contact Phone</span></label
-              >
-              <div class="col-lg-8 fv-row">
-                <input
-                  type="tel"
-                  matInput
-                  formControlName="mobilephone"
-                  class="form-control form-control-lg form-control-solid"
-                  placeholder="Phone number"
-                  name="mobilephone"
-                  
-                />
-              </div>
-            </div>
-            <br>
-            <div class="row mb-6">
-              <label class="col-lg-4 col-form-label fw-bold fs-6"
-                ><span class="required">Business Phone</span></label
-              >
-              <div class="col-lg-8 fv-row">
-                <input
-                  type="tel"
-                  matInput
-                  formControlName="telephone1"
-                  class="form-control form-control-lg form-control-solid"
-                  placeholder="Business Phone"
-                  name="telephone1"
-               
-                />
-              </div>
-            </div><br>
-            <div class="row mb-6">
-              <label class="col-lg-4 col-form-label fw-bold fs-6"
-                ><span class="required">Fax</span></label
-              >
-              <div class="col-lg-8 fv-row">
-                <input
-                  type="tel"
-                  class="form-control form-control-lg form-control-solid"
-                  matInput
-                  formControlName="fax"
-                  placeholder="fax"
-                  name="fax"
-                 
-                />
-              </div>
-            </div><br>
-            <div class="row mb-6">
-              <label class="col-lg-4 col-form-label fw-bold fs-6"
-                ><span class="required">Job title</span></label
-              >
-              <div class="col-lg-8 fv-row">
-                <input
-                  type="text"
-                  class="form-control form-control-lg form-control-solid"
-                  placeholder="job title"
-                  matInput
-                  formControlName="jobtitle"
-                  name="companySite"
-              
-                />
-              </div>
-            </div>
-            <br>
-                     <div class="row mb-6">
-              <label class="col-lg-4 col-form-label fw-bold fs-6"
-                ><span class="required">Birth date</span></label
-              >
-              <div class="col-lg-8 fv-row">
-                <input
-                  type="date"
-                  class="form-control form-control-lg form-control-solid"
-                  placeholder="birthdate"
-                  matInput
-                  formControlName="birthdate"
-                  name="birthdate"
-                 
-               >
-              </div>
-            </div>
-            <br>
-            <div class="row mb-6">
-              <label class="col-lg-4 col-form-label fw-bold fs-6"
-                ><span class="required">Adresse 1</span></label
-              >
-              <div class="col-lg-8 fv-row">
-                <textarea
-                  type="text"
-                  class="form-control form-control-lg form-control-solid"
-                  placeholder="Adresse 1"
-                  matInput
-                  formControlName="address1_line1"
-                  name="address1_line1"
-                
-                ></textarea>
-              </div>
-            </div>
-            <br> 
-            <div class="row mb-6">
-              <label class="col-lg-4 col-form-label fw-bold fs-6"
-                ><span class="required">Adresse 2</span></label
-              >
-              <div class="col-lg-8 fv-row">
-                <textarea
-                  type="text"
-                  class="form-control form-control-lg form-control-solid"
-                  placeholder="------------"
-                 
-                  formControlName="address1_line2"
-                  name="address1_line2"
-                
-                ></textarea>
-              </div>
-            </div>
-            <br>
-            <div class="row mb-6">
-              <label class="col-lg-4 col-form-label fw-bold fs-6"
-                ><span class="required">Adresse 1 postal</span></label
-              >
-              <div class="col-lg-8 fv-row">
-                <textarea
+          </div>
+        </div>
+        <br>
+        <div class="row mb-6">
+          <label class="col-lg-4 col-form-label required fw-bold fs-6">Email</label>
+          <div class="col-lg-8 fv-row">
+            <input type="text" class="form-control form-control-lg form-control-solid" placeholder="Email"
+              name="emailaddress1" matInput formControlName="emailaddress1" />
+          </div>
+        </div>
+        <br>
+        <div class="row mb-6">
+          <label class="col-lg-4 col-form-label fw-bold fs-6"><span class="required">Contact Phone</span></label>
+          <div class="col-lg-8 fv-row">
+            <input type="tel" matInput formControlName="mobilephone"
+              class="form-control form-control-lg form-control-solid" placeholder="Phone number" name="mobilephone" />
+          </div>
+        </div>
+        <br>
+        <div class="row mb-6">
+          <label class="col-lg-4 col-form-label fw-bold fs-6"><span class="required">Business Phone</span></label>
+          <div class="col-lg-8 fv-row">
+            <input type="tel" matInput formControlName="telephone1"
+              class="form-control form-control-lg form-control-solid" placeholder="Business Phone" name="telephone1" />
+          </div>
+        </div><br>
+        <div class="row mb-6">
+          <label class="col-lg-4 col-form-label fw-bold fs-6"><span class="required">Fax</span></label>
+          <div class="col-lg-8 fv-row">
+            <input type="tel" class="form-control form-control-lg form-control-solid" matInput formControlName="fax"
+              placeholder="fax" name="fax" />
+          </div>
+        </div><br>
+        <div class="row mb-6">
+          <label class="col-lg-4 col-form-label fw-bold fs-6"><span class="required">Job title</span></label>
+          <div class="col-lg-8 fv-row">
+            <input type="text" class="form-control form-control-lg form-control-solid" placeholder="job title" matInput
+              formControlName="jobtitle" name="companySite" />
+          </div>
+        </div>
+        <br>
+        <div class="row mb-6">
+          <label class="col-lg-4 col-form-label fw-bold fs-6"><span class="required">Birth date</span></label>
+          <div class="col-lg-8 fv-row">
+            <input type="date" class="form-control form-control-lg form-control-solid" placeholder="birthdate" matInput
+              formControlName="birthdate" name="birthdate">
+          </div>
+        </div>
+        <br>
+        <div class="row mb-6">
+          <label class="col-lg-4 col-form-label fw-bold fs-6"><span class="required">Adresse 1</span></label>
+          <div class="col-lg-8 fv-row">
+            <textarea type="text" class="form-control form-control-lg form-control-solid" placeholder="Adresse 1"
+              matInput formControlName="address1_line1" name="address1_line1"></textarea>
+          </div>
+        </div>
+        <br>
+        <div class="row mb-6">
+          <label class="col-lg-4 col-form-label fw-bold fs-6"><span class="required">Adresse 2</span></label>
+          <div class="col-lg-8 fv-row">
+            <textarea type="text" class="form-control form-control-lg form-control-solid" placeholder="------------"
+              formControlName="address1_line2" name="address1_line2"></textarea>
+          </div>
+        </div>
+        <br>
+        <div class="row mb-6">
+          <label class="col-lg-4 col-form-label fw-bold fs-6"><span class="required">Adresse 1 postal</span></label>
+          <div class="col-lg-8 fv-row">
+            <textarea formControlName="address1_postalcode" class="form-control form-control-lg form-control-solid"
+              placeholder="------------" name="address1_postalcode"></textarea>
+          </div>
+        </div>
+        <br>
+        <div class="row mb-6">
+          <label class="col-lg-4 col-form-label fw-bold fs-6"><span class="required">Address1 country</span></label>
+          <div class="col-lg-8 fv-row">
+            <textarea formControlName="address1_country" class="form-control form-control-lg form-control-solid"
+              placeholder="------------" name="address1_country"></textarea>
+          </div>
+        </div><br>
+        <div class="row mb-6">
+          <label class="col-lg-4 col-form-label fw-bold fs-6"><span class="required">Full Address</span></label>
+          <div class="col-lg-8 fv-row">
+            <textarea type="text" formControlName="address1_composite" style="height: 100px;"
+              class="form-control form-control-lg form-control-solid" placeholder="Address1 country"
+              name="address1_composite"></textarea>
+          </div>
+        </div><br>
+        <div class="row mb-6">
+          <label class="col-lg-4 col-form-label fw-bold fs-6"><span class="required">Family status</span></label>
 
-                  formControlName="address1_postalcode"
-                  class="form-control form-control-lg form-control-solid"
-                  placeholder="------------"
-                  name="address1_postalcode"
-                
-                ></textarea>
-              </div>
+          <div class="col-lg-8 fv-row">
+            <select class="form-select form-select-solid form-select-lg " formControlName="familystatuscode"
+              name="familystatuscode">
+              <option value="">--Select--</option>
+              <option *ngFor="let datafamilystatuscode of Datafamilystatuscode" [ngValue]="datafamilystatuscode.id">
+                {{ datafamilystatuscode.name }}
+              </option>
+            </select>
+            <div class="form-text">
+              Please select a Family status.
             </div>
-            <br>
-            <div class="row mb-6">
-              <label class="col-lg-4 col-form-label fw-bold fs-6"
-                ><span class="required">Address1 country</span></label
-              >
-              <div class="col-lg-8 fv-row">
-                <textarea
-                formControlName="address1_country"
-                  class="form-control form-control-lg form-control-solid"
-                  placeholder="------------"
-                  name="address1_country"
-   
-                ></textarea>
-              </div>
-            </div><br>
-            <div class="row mb-6">
-              <label class="col-lg-4 col-form-label fw-bold fs-6"
-                ><span class="required">Full Address</span></label
-              >
-              <div class="col-lg-8 fv-row">
-                <textarea
-                
-                  type="text"
-                  formControlName="address1_composite"
-                  style="height: 100px;"
-                  class="form-control form-control-lg form-control-solid"
-                  placeholder="Address1 country"
-                  name="address1_composite"
-                 
-                ></textarea>
-              </div>
-            </div><br>
-            <div class="row mb-6">
-              <label class="col-lg-4 col-form-label fw-bold fs-6"
-                ><span class="required">Family status</span></label
-              >
-   
-              <div class="col-lg-8 fv-row">
-                <select
-                  class="form-select form-select-solid form-select-lg " 
-                  formControlName="familystatuscode"
-                  name="familystatuscode">
-                  <option value="">--Select--</option>
-                  <option *ngFor="let datafamilystatuscode of Datafamilystatuscode" [ngValue]="datafamilystatuscode.id">
-                    {{ datafamilystatuscode.name }}
-                  </option>
-                </select>
-                <div class="form-text">
-                  Please select a Family status.
-                </div>
-                <!-- <div class="fv-plugins-message-container">
+            <!-- <div class="fv-plugins-message-container">
                   <div class="fv-help-block">Country is required</div>
                 </div> -->
-              </div>
-            </div>
-                   
-            <div class="row mb-6">
-              <label class="col-lg-4 col-form-label fw-bold fs-6"
-                >Gender</label
-              >
-              <div class="col-lg-8 fv-row">
-                <div class="d-flex align-items-center mt-3">
-                  <label class="form-check form-check-inline form-check-solid me-5"
-                    ><input
-                      class="form-check-input"
-                      name="gendercode"
-                      formControlName="gendercode"
-                      type="radio"
-                      [value]="1"
-                    /><span class="fw-bold ps-2 fs-6">Men</span></label
-                  ><label class="form-check form-check-inline form-check-solid"
-                    ><input
-                      class="form-check-input"
-                      name="gendercode"
-                      formControlName="gendercode"
-                      type="radio"
-                      [value]="2"
-                    /><span class="fw-bold ps-2 fs-6">Women</span></label
-                  >
-                </div>
-              </div>
-            </div>
-            
-            
-          </div><br>
-          <div class="card-footer d-flex justify-content-end py-6 px-9">
-            <button
-              type="submit" style="background-color: #023f73;"
-              class="btn btn-primary" (click)="updateProfile()">
-             Enregistrer
-             
-            </button>
           </div>
-        </form>
+        </div>
+
+        <div class="row mb-6">
+          <label class="col-lg-4 col-form-label fw-bold fs-6">Gender</label>
+          <div class="col-lg-8 fv-row">
+            <div class="d-flex align-items-center mt-3">
+              <label class="form-check form-check-inline form-check-solid me-5"><input class="form-check-input"
+                  name="gendercode" formControlName="gendercode" type="radio" [value]="1" /><span
+                  class="fw-bold ps-2 fs-6">Men</span></label><label
+                class="form-check form-check-inline form-check-solid"><input class="form-check-input" name="gendercode"
+                  formControlName="gendercode" type="radio" [value]="2" /><span
+                  class="fw-bold ps-2 fs-6">Women</span></label>
+            </div>
+          </div>
+        </div>
+
+
+      </div><br>
+      <div class="card-footer d-flex justify-content-end py-6 px-9">
+        <button type="submit" style="background-color: #023f73;" class="btn btn-primary" (click)="updateProfile()">
+          Enregistrer
+
+        </button>
       </div>
-    </div>
-    <div class="spinner" *ngIf="showSpinner">
-    
-      <div >
-          <span class="spinner-border spinner-border-sm mx-2" role="status"></span>Loading...
-      </div>
+    </form>
   </div>
-  
+</div>
+<ng-template #loading>
+  <div class="spinner">
+
+    <div *ngIf="!isErrorHappend">
+      <span class="spinner-border spinner-border-sm mx-2" role="status"></span>Loading...
+    </div>
+    <div *ngIf="isErrorHappend">
+      Error is happend ,please check your network
+    </div>
+  </div>
+  <div class="spinner" id="spinner"></div>
+</ng-template>

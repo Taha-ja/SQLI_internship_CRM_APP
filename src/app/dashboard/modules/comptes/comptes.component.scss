@@ -34,3 +34,20 @@
   display: flex;
   justify-content: center;
 }
+// *{
+//   --background-image: url("/src/assets/images/tab.jpg");
+// }
+.tabClass{
+
+  background-image: url("/src/assets/images/tab.jpg");
+  
+  background-repeat: no-repeat;
+  
+  background-size: 100% 100%;
+  background-color: aqua;
+  
+  // float: left;
+  
+  // width: auto;
+  
+  }

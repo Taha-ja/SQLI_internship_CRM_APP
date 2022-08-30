@@ -78,15 +78,9 @@ export class LoginUserComponent implements OnInit {
           this.activeForm();
           this.loading=false;
           const token = response.token;
-          localStorage.setItem("UserName",response.fullName);
-          localStorage.setItem("Email",response.email)
-          localStorage.setItem("jwt", token); 
-          this.dataService.getCurrentUser();
-          console.log("after ");
+          localStorage.setItem("jwt", response.token); 
           this.invalidLogin = false; 
-          setTimeout(_=>{
-            this.router.navigate(["/dashboard/"]);
-          }, 200)
+          this.router.navigate(["/"]);
         },
         error: (err: HttpErrorResponse) => {
           this.activeForm();

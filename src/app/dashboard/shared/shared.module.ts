@@ -18,7 +18,6 @@ import { MatTableModule } from '@angular/material/table';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { ComptesComponent } from '../modules/comptes/comptes.component';
 import { ImageWidgetComponent } from './widgets/image-widget/image-widget.component';
-import { InfoPersonnelComponent } from './widgets/info-personnel/info-personnel.component';
 import { TeamInfoComponent } from './widgets/team-info/team-info.component';
 import { EntrepriseComponent } from './widgets/entreprise/entreprise.component';
 
@@ -31,7 +30,6 @@ import { EntrepriseComponent } from './widgets/entreprise/entreprise.component';
     AreaComponent, 
     CardComponent,
     ImageWidgetComponent,
-    InfoPersonnelComponent,
     TeamInfoComponent,
     EntrepriseComponent
 
@@ -61,7 +59,6 @@ import { EntrepriseComponent } from './widgets/entreprise/entreprise.component';
     MatMenuModule,
     MatFormFieldModule,
     ImageWidgetComponent,
-    InfoPersonnelComponent,
     EntrepriseComponent
   ]
 

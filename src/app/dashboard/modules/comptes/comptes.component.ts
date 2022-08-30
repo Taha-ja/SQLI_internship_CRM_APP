@@ -13,6 +13,7 @@ import { DashboardService } from 'src/app/shared/services/dashboard.service';
 export class ComptesComponent implements OnInit {
   Data!: any;
   notFound:boolean=false;
+  UrlImage:any;
   //  Responsive variable
   mobileMedia:any=window.matchMedia("(max-width:520px)")
   familyStatus={
@@ -35,6 +36,13 @@ export class ComptesComponent implements OnInit {
     this.dashService.opportunities(apiAddress).subscribe({
       next:(responce)=>{
         this.Data=responce.value[0];
+
+        if(this.Data.entityimage!=null){
+          this.UrlImage="data:image/png;base64,"+this.Data.entityimage;
+        }
+        else{
+          this.UrlImage="../../../../../assets/images/unkown.jfif";
+        }
       },
       error:()=>{
         setTimeout(_ =>{

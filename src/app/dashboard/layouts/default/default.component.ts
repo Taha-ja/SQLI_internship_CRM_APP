@@ -7,6 +7,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { AuthenticationService } from 'src/app/shared/services/authentication.service';
 import { DashboardService } from 'src/app/shared/services/dashboard.service';
 import { DataTransfertService } from 'src/app/shared/services/data-transfert.service';
+import { InitDataService } from 'src/app/shared/services/init-data.service';
 import { User } from 'src/app/_interfaces/User.model';
 
 @Component({
@@ -20,6 +21,7 @@ export class DefaultComponent implements OnInit {
   user:User;
   //OpportinitiesList:any=[];
   windowWidth:number;
+  isDataLoaded:boolean=false;
   private userSubject: BehaviorSubject<User>;
   public usr: Observable<User>;
   private currentUser:string;
@@ -29,11 +31,15 @@ export class DefaultComponent implements OnInit {
     private dashService:DashboardService,
     private http: HttpClient,
     private authService:AuthenticationService,
+    private initData:InitDataService
     ) {
     // this.windowWidth=window.innerWidth;
     // console.log(this.windowWidth);
     // this.user=this.dataService.userValue;
-
+    if(this.initData.getUser()==null){location.reload();}
+    else{
+          this.isDataLoaded=true;
+    }
   }
   
 
@@ -42,6 +48,7 @@ export class DefaultComponent implements OnInit {
     const token = localStorage.getItem("jwt");
     
     if (token && !this.jwtHelper.isTokenExpired(token)){
+
       return true;
     }
   
@@ -52,7 +59,6 @@ export class DefaultComponent implements OnInit {
   }
 
   ngOnInit(){
-    
     // this.user=this.dataService.userValue;
     // console.log(this.dataService.userValue);
     setTimeout(()=>{
@@ -69,11 +75,11 @@ export class DefaultComponent implements OnInit {
       this.windowWidth=window.innerWidth;
       
     });
-    const body = document.body;
-    const html = document.documentElement;
-    const heightToAdd = Math.max(body.scrollHeight, body.offsetHeight,
-      html.clientHeight, html.scrollHeight, html.offsetHeight);
-    console.log(heightToAdd)
+    // const body = document.body;
+    // const html = document.documentElement;
+    // const heightToAdd = Math.max(body.scrollHeight, body.offsetHeight,
+    //   html.clientHeight, html.scrollHeight, html.offsetHeight);
+    // console.log(heightToAdd)
     // console.log(this.dataService.userValue);
   }
   sideBarToggler(){

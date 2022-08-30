@@ -25,8 +25,10 @@
                             <!-- <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHw%3D&w=1000&q=80"
                              class="rounded-circle img-fluid"
                                 style="width: 150px;height: 150px;margin-right: 60px;"> -->
-                            <img src="../../../../../assets/images/unkown.jfif" class="rounded-circle img-fluid"
+                            <img src={{UrlImage}} class="rounded-circle img-fluid"
                                 style="width: 150px;height: 150px;margin-right: 60px;">
+                        <!-- <img src={{Data?.entityimage}} class="rounded-circle img-fluid"
+                                style="width: 150px;height: 150px;margin-right: 60px;"> -->
                         </div>
                         <h5 class="my-3" style="font-size: 25px;">{{Data?.firstname}} {{Data?.lastname}}</h5>
                         <p class="text-muted mb-1">{{Data?.jobtitle}}</p>
@@ -64,9 +66,16 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-8">
-                <div class="card mb-4">
-                    <div class="card-body">
+            <!-- class="bg-image"
+            style="
+              background-image: url('https://th.bing.com/th/id/OIP.qwqIUdn3im-4G-vWDB94pQHaE6?pid=ImgDet&rs=1');
+              height: fit-content;
+              width: 100%;
+              background-repeat: no-repeat;
+            " -->
+            <div class="col-lg-8" >
+                <div class="card mb-4 " >
+                    <div class="card-body " >
                         <div class="row">
                             <div class="col-sm-3">
                                 <dt class="font-bold mb-0">First Name</dt>

@@ -65,11 +65,11 @@ a.disabled {
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-body {
-    margin: 0;
-    padding: 0;
-    background-color: azure;
-}
+// body {
+//     margin: 0;
+//     padding: 0;
+//     background-color: azure;
+// }
 
 .splash-screen {
     position: absolute;
@@ -86,7 +86,11 @@ body {
 
 .splash-screen img {
     margin-left: calc(100vw - 100%);
-    margin-bottom: 30px;
+    margin-bottom: 10px;
+}
+.splash-screen span {
+    margin-left: 50px;
+    color: #444444;
 }
 
 #root {
@@ -103,4 +107,21 @@ body {
     display: flex;
     justify-content: center;
 }
-
+@media (max-width: 500px) {
+    .splash-screen img {
+    width:200px;
+    margin-bottom: 10px;
+    }
+    .splash-screen span {
+        margin-left: 30px;
+    }
+}
+@media (min-width:501px) and (max-width: 1200px) {
+    .splash-screen img {
+        width:300px;
+        margin-bottom: 10px;
+        }
+        .splash-screen span {
+            margin-left: 40px;
+        }
+}

@@ -4,9 +4,10 @@ export class User {
     // password: string;
     // firstName: string;
     // lastName: string;
-    id:string;
-    firstname:string;
-    lastname:string;
-    email:string;
-    isPrimary:boolean;
+    id?:string;
+    firstname?:string;
+    lastname?:string;
+    email?:string;
+    isPrimary?:boolean;
+    entityimage?:any;
 }

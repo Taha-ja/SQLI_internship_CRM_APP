@@ -88,7 +88,7 @@ onFilterTextBoxChanged() {
 // Each Column Definition results in one Column.
 public columnDefs: ColDef[] = [
   { field: 'name', wrapText: true, filter: 'agTextColumnFilter' },
-  // { field: 'emailaddress', wrapText: true, filter: 'agTextColumnFilter' },
+  { field: 'emailaddress', wrapText: true, filter: 'agTextColumnFilter' },
   { field: 'totalamount', wrapText: true, filter: 'agTextColumnFilter' },
   { field: 'actualclosedate', wrapText: true, filter: 'agTextColumnFilter' },
   { field: 'estimatedclosedate', wrapText: true, filter: 'agTextColumnFilter' },

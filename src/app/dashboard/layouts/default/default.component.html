@@ -1,13 +1,18 @@
-<app-header (toggleSideBarForMe)="sideBarToggler()"></app-header>
-<mat-drawer-container> 
-    <mat-drawer *ngIf="windowWidth <=800" mode="over" [opened]="!sideBarOpen">
+<!-- <div *ngIf="isDataLoaded">
+
+
+</div> -->
+
+<app-header *ngIf="isDataLoaded" (toggleSideBarForMe)="sideBarToggler()"></app-header>
+<mat-drawer-container *ngIf="isDataLoaded"> 
+    <mat-drawer  *ngIf="windowWidth <=800 " mode="over" [opened]="!sideBarOpen">
         <app-sidebar></app-sidebar> 
     </mat-drawer>
-    <mat-drawer *ngIf="windowWidth >800" mode="side" [opened]="sideBarOpen">
+    <mat-drawer *ngIf="windowWidth >800 " mode="side" [opened]="sideBarOpen">
         <app-sidebar></app-sidebar> 
     </mat-drawer>
 
-    <mat-drawer-content >
+    <mat-drawer-content>
         <div class="content-outer-container">
             <div class="content-inner-container">
                 <router-outlet></router-outlet>
@@ -20,5 +25,3 @@
     </mat-drawer-content>
     
 </mat-drawer-container>
-
-

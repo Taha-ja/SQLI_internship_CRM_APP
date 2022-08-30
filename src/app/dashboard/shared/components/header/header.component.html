@@ -1,71 +1,77 @@
-<mat-toolbar >
-<mat-toolbar-row>
-   <button mat-icon-button (click)="toggleSideBar()">
-   <mat-icon>menu</mat-icon>
-</button>
-<span class="logo">CRMP</span>
-<!-- <img src="../../../../../assets/images/LogoHeader2.png" alt=""> -->
-<div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
-    <ul fxLayout="row" fxLayoutGap="20px">
-<li>
-    <button mat-button [matMenuTriggerFor]="men">
-        <mat-icon style="margin-top: 20px;">settings</mat-icon>
+<mat-toolbar>
+  <mat-toolbar-row>
+    <button mat-icon-button (click)="toggleSideBar()">
+      <mat-icon>menu</mat-icon>
     </button>
-
-    <mat-menu #men="matMenu">
-        <button mat-menu-item>
-            <mat-icon>update</mat-icon>
-            Modifier mots de pass
+    <span class="logo">CRMP</span>
+    <!-- <img src="../../../../../assets/images/LogoHeader2.png" alt=""> -->
+    <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
+      <ul fxLayout="row" fxLayoutGap="20px">
+        <li>
+          <button mat-button [matMenuTriggerFor]="men">
+            <mat-icon style="margin-top: 20px;">settings</mat-icon>
           </button>
-          <mat-divider></mat-divider>
-          <button mat-menu-item routerLink="/dashboard/ModifierProfile">
-            <mat-icon>edit</mat-icon>
-            Modifier profile
+
+          <mat-menu #men="matMenu">
+            <button mat-menu-item>
+              <mat-icon>update</mat-icon>
+              Modifier mots de pass
+            </button>
+            <mat-divider></mat-divider>
+            <button mat-menu-item routerLink="/dashboard/ModifierProfile">
+              <mat-icon>edit</mat-icon>
+              Modifier profile
+            </button>
+
+
+
+          </mat-menu>
+        </li>
+        <li>
+          <button mat-button style="margin-top: 11px;" [matMenuTriggerFor]="Not">
+            <mat-icon matBadge="5" matBadgeColor="accent">notifications</mat-icon>
           </button>
-      
-     
-     
-    </mat-menu>
-</li>
-<li>
-    <button mat-icon-button style="margin-top: 11px;">
-      <mat-icon matBadge="15" matBadgeColor="warn">notifications</mat-icon>
-    </button> 
-</li>
-<li>
-    <button mat-button [matMenuTriggerFor]="menu">
-        <img style="margin-top: 40%;"
-        width="30"
-        height="30"
-        class="profile-image-toolbar"
-        src="./assets/images/pexels.jpg"
-      />
-    </button>
-<mat-menu #menu="matMenu">
-    <button mat-menu-item routerLink="/dashboard/comptes">
-        <mat-icon>perm_identity</mat-icon>
+          <mat-menu #Not="matMenu">
+            <button disabled="" mat-menu-item>
+              <mat-icon>notifications</mat-icon>
+              New opportunities
+            </button>
+            <mat-divider></mat-divider>
+            <button disabled mat-menu-item style="color: red;">
+              <mat-icon style="color: red;">info</mat-icon>
+              No new opportunities
+            </button>
+          </mat-menu>
+        </li>
+        <li>
+          <button mat-button [matMenuTriggerFor]="menu">
+            <img style="margin-top: 40%;" width="30" height="30" class="profile-image-toolbar" src={{UrlImage}} />
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item routerLink="/dashboard/comptes">
+              <mat-icon>perm_identity</mat-icon>
 
 
-        {{this.user?.firstname}} {{this.user?.lastname}}
+              {{this.user?.firstname}} {{this.user?.lastname}}
 
 
-      </button>
-      <button mat-menu-item>
-        <mat-icon>email</mat-icon>
+            </button>
+            <button mat-menu-item>
+              <mat-icon>email</mat-icon>
 
-        {{this.user?.email}}
+              {{this.user?.email}}
 
-      </button>
-      <mat-divider></mat-divider>
+            </button>
+            <mat-divider></mat-divider>
 
-  <button mat-menu-item (click)="logOut()">
-    <mat-icon>exit_to_app</mat-icon>
-    Se Déconnecté
-  </button>
+            <button mat-menu-item (click)="logOut()">
+              <mat-icon>exit_to_app</mat-icon>
+              Se Déconnecté
+            </button>
 
-</mat-menu>
-</li>
-    </ul>
-</div> 
-    </mat-toolbar-row>
-    </mat-toolbar>
+          </mat-menu>
+        </li>
+      </ul>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
