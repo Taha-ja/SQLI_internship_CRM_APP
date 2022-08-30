@@ -17,7 +17,7 @@ Email:string;
 // user:User={firstname:"firstname",lastname:"lastname",email:"email"};
 user:User;
 UrlImage:any;
-// UrlImage:any;
+fullName:any;
 @Output()toggleSideBarForMe:EventEmitter<any>=new EventEmitter();
 
   constructor(
@@ -29,6 +29,7 @@ UrlImage:any;
 ngOnInit(): void {
   
   this.user = this.initData.getUser();
+  this.fullName=this.user.firstname+" "+this.user.lastname;
   if(this.user.entityimage!=null){
   // this.user.entityimage="data:image/png;base64,"+this.user.entityimage;
   this.UrlImage="data:image/png;base64,"+this.user.entityimage;
@@ -43,6 +44,10 @@ ngOnInit(): void {
     this.UrlImage = profileImage;
   }
   );
+  this.dataService.fullNameUpdate$.subscribe((fullNameUpdate) => 
+  {
+    this.fullName=fullNameUpdate; 
+  });
   }
   logOut = () => {
     localStorage.removeItem("jwt");

@@ -21,6 +21,7 @@ export class DataTransfertService implements OnInit{
   private urlImage:any;
   private Data:any;
   public profileImageUpdate$ = new Subject<string>();
+  public fullNameUpdate$ = new Subject<string>();
 
   constructor(private authService:AuthenticationService,private dashService:DashboardService) {
     // this.authService.getMe("api/Auth/me").subscribe(

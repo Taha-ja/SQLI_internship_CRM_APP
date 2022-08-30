@@ -4,37 +4,69 @@
 
 
 
-<div  *ngIf="Data.length > 0" fxLayout="row" fxLayoutAlign="space-between center"  fxLayoutGap="40px" class="stats-cards" fxLayout.gt-sm="row" fxLayout.lt-md="column" >
-    
+<div *ngIf="Data.length > 0" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="40px" class="stats-cards"
+    fxLayout.gt-sm="row" fxLayout.lt-md="column">
 
-          <div fxLayout="column" fxFlex="100%" class="block-3" fxFlexFill >
-                <mat-card  style="background-color: #023f73; color: white; "fxFlex.gt-sm="33%" fxFlex.lt-md="50%" 
-                fxFlexFill>
-                    <app-widget-card fxLayoutAlign="center center" label="Opportunities" total={{Data[0].count}} percentage="Open"></app-widget-card>
-                    </mat-card>
-            </div>
-            <div fxLayout="column"  fxFlex="100%" class="block-3" fxFlexFill>
-                    <mat-card  style="background-color:  #eff6ee;  "  fxFlex.gt-sm="33%" fxFlex.lt-md="50%"
-                    fxFlexFill>
-                        <app-widget-card fxLayoutAlign="center center"  label="Opportunities" total={{Data[1].count}} percentage="Won"></app-widget-card>
-                        </mat-card>
-            </div>
-             <div fxLayout="column"  fxFlex="100%" class="block-3" fxFlexFill>
-                    <mat-card  style="background-color:#1a759f ;color: aliceblue;" fxFlex.gt-sm="33%" fxFlex.lt-md="50%" 
-                    fxFlexFill>
-                    <app-widget-card fxLayoutAlign="center center"  label="Opportunities" total={{Data[2].count}} percentage="Lost"></app-widget-card>
-                    </mat-card>
-        
-            </div> 
-   
+
+    <div fxLayout="column" fxFlex="100%" class="block-3" fxFlexFill>
+        <mat-card style="background-color: #023f73; color: white; " fxFlex.gt-sm="33%" fxFlex.lt-md="50%" fxFlexFill>
+            <app-widget-card fxLayoutAlign="center center" label="Opportunities" total={{Data[0].count}}
+                percentage="Open"></app-widget-card>
+        </mat-card>
+    </div>
+    <div fxLayout="column" fxFlex="100%" class="block-3" fxFlexFill>
+        <mat-card style="background-color:  #eff6ee;  " fxFlex.gt-sm="33%" fxFlex.lt-md="50%" fxFlexFill>
+            <app-widget-card fxLayoutAlign="center center" label="Opportunities" total={{Data[1].count}}
+                percentage="Won"></app-widget-card>
+        </mat-card>
+    </div>
+    <div fxLayout="column" fxFlex="100%" class="block-3" fxFlexFill>
+        <mat-card style="background-color:#1a759f ;color: aliceblue;" fxFlex.gt-sm="33%" fxFlex.lt-md="50%" fxFlexFill>
+            <app-widget-card fxLayoutAlign="center center" label="Opportunities" total={{Data[2].count}}
+                percentage="Lost"></app-widget-card>
+        </mat-card>
+
+    </div>
+
 </div>
+
+
+
+
+
+
+
+
+<div #elseTemplate *ngIf="Data.length <= 0" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="40px" class="stats-cards"
+    fxLayout.gt-sm="row" fxLayout.lt-md="column">
+
+
+    <div fxLayout="column" fxFlex="100%" class="block-3" fxFlexFill>
+        <ngx-skeleton-loader   [theme]="{ height: '100px',width: '100%'}">
+        </ngx-skeleton-loader>
+    </div>
+    <div fxLayout="column" fxFlex="100%" class="block-3" fxFlexFill>
+        <ngx-skeleton-loader   [theme]="{ height: '100px',width: '100%'}">
+        </ngx-skeleton-loader>
+    </div>
+    <div fxLayout="column" fxFlex="100%" class="block-3" fxFlexFill>
+        <ngx-skeleton-loader   [theme]="{ height: '100px',width: '100%'}">
+        </ngx-skeleton-loader>
+
+    </div>
+
+</div>
+
 <br>
 <mat-divider>
 
 </mat-divider>
 <br>
-<div class="area" fxFlexFill >
+<div class="area" fxFlexFill>
     <app-widget-area>
     </app-widget-area>
- </div>
- <br >
+</div>
+<br>
+
+
+

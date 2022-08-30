@@ -25,6 +25,7 @@ import { MatInputModule } from '@angular/material/input';
 
 import { ContactComponent } from '../../modules/contact/contact.component';
 import { TeamOpportunitiesComponent } from '../../modules/team-opportunities/team-opportunities.component';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 
 @NgModule({
@@ -57,7 +58,8 @@ import { TeamOpportunitiesComponent } from '../../modules/team-opportunities/tea
     MatButtonModule,
     MatBadgeModule,
     MatInputModule,
-    MatChipsModule
+    MatChipsModule,
+    NgxSkeletonLoaderModule
   ]
 })
 export class DefaultModule { }
