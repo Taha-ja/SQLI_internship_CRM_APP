@@ -224,7 +224,7 @@ export class ModifierProfilComponent implements OnInit {
           if (responce.message == "successfully") {
             this.showSuccess();
             this.dataTransfert.profileImageUpdate$.next(this.UrlImage);
-
+            this.dataTransfert.fullNameUpdate$.next(data['firstname']+" "+data['lastname']);
 
             this.router.navigate(['/dashboard/comptes']);
           }

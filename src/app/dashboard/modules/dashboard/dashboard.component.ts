@@ -21,6 +21,13 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.initDataTable();
   }
+  generateFake(count: number): Array<number> {
+    const indexes = [];
+    for (let i = 0; i < count; i++) {
+      indexes.push(i);
+    }
+    return indexes;
+  }
   initDataTable() {
     var initialData = [{statuscode:1, count:0}, {statuscode:3, count:0}, {statuscode:4, count:0} ]
     const apiAddress: string = 'api/Dashboard/opportunitiesStatusCodeCount';
