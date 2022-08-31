@@ -92,10 +92,10 @@ lang:string;
       let id = params['id'];
       this.id=id;
       this.email=this.dataTransfertService.getEmail() 
-      // if (id == 2 && this.email== null) {
-      //   this.router.navigateByUrl('/authentication/auth/0');
-      //   this.email=null;
-      // }
+      if (id == 2 && this.email== null) {
+        this.router.navigateByUrl('/authentication/auth/0');
+        this.email=null;
+      }
     });
    // this.id=this.activeRoute.snapshot.params['id']
   }

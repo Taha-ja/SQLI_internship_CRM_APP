@@ -1,11 +1,12 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {  map, Observable } from 'rxjs';
+import {  Observable } from 'rxjs';
+import { ChartModel } from 'src/app/_interfaces/chartInterface.model';
 
 import { EmailCheck } from 'src/app/_interfaces/email.model';
 
 import { EnvironmentUrlService } from './environment-url.service';
-
+import * as signalR from "@microsoft/signalr"
 const API_URL = 'http://localhost:7290/';
 
 @Injectable({
@@ -47,5 +48,25 @@ export class DashboardService {
     clearCache() {
         this.profileDetails$ = null;
     }
-    
+
+    ////////////////////////////// chart service /////////////////////////////////////:
+    public data: ChartModel[];
+    private hubConnection: signalR.HubConnection
+      public startConnection = () => {
+        this.hubConnection = new signalR.HubConnectionBuilder()
+                                .withUrl('https://localhost:7290/api/chart')
+                                .build();
+        this.hubConnection
+          .start()
+          .then(() => console.log('Connection started'))
+          .catch(err => console.log('Error while starting connection: ' + err))
+      }
+      
+      public addTransferChartDataListener = () => {
+        this.hubConnection.on('transferchartdata', (data) => {
+          this.data = data;
+          console.log(data);
+        });
+      }
+    ////////////////////////////// fin chart service /////////////////////////////
 }

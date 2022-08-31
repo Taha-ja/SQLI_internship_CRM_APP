@@ -39,13 +39,14 @@ export function tokenGetter() {
 }
 export function dataProviderFactory(provider: InitDataService) {
   return () => provider.geCurrentUser();
-  // return () => {
-  //   return new Promise((resolve) => {
-  //     //@ts-ignore
-  //     provider.geCurrentUser();
-  //   });
-  // };
 }
+export function dataProvider(provider: InitDataService) {
+  return () => provider.getDashboardData();
+}
+
+
+
+// getDashboardData
 @NgModule({
   declarations: [
     AppComponent,
@@ -90,7 +91,8 @@ export function dataProviderFactory(provider: InitDataService) {
   ],
   providers: [
     InitDataService, 
-    { provide: APP_INITIALIZER, useFactory: dataProviderFactory, deps: [InitDataService], multi: true }
+    { provide: APP_INITIALIZER, useFactory: dataProviderFactory, deps: [InitDataService], multi: true },
+    { provide: APP_INITIALIZER, useFactory: dataProvider, deps: [InitDataService], multi: true }
   ],
   bootstrap: [AppComponent]
 

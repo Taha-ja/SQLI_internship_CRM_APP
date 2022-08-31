@@ -37,7 +37,7 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
     ComptesComponent,
     ModifierProfilComponent,
     ContactComponent,
-    TeamOpportunitiesComponent,
+    TeamOpportunitiesComponent
   ],
   imports: [
     CommonModule,

@@ -1,3 +1,5 @@
+<h2 style="color: rgb(81, 81, 81);">Details Contact</h2>
+<mat-divider></mat-divider>
 <section *ngIf="notFound; else loading">
     <div class="container py-5">
         <div class="row d-flex justify-content-center align-items-center">
@@ -18,7 +20,7 @@
                         <div class="col-md-12">
                             <div class="card-body px-4">
 
-                                <h5 style="font-size:20px; position: relative;float: right;margin-top: -60px;" class="name">{{Data?.firstname}} {{Data?.lastname}}</h5>
+                                <h5 style="font-size:20px; position: relative;float: right;margin-top: -60px;color: #00193a;" class="name">{{Data?.firstname}} {{Data?.lastname}}</h5>
                                 <!-- <p style="color:#F9F3EE;">{{Data?.jobtitle}}</p> -->
                                 <h6 style="text-align: center;font-size: large;">{{Data?.jobtitle}} at {{Data?.parentcustomerid_account.name}}
                                 </h6>

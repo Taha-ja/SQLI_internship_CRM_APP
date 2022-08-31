@@ -20,6 +20,8 @@ import { ComptesComponent } from '../modules/comptes/comptes.component';
 import { ImageWidgetComponent } from './widgets/image-widget/image-widget.component';
 import { TeamInfoComponent } from './widgets/team-info/team-info.component';
 import { EntrepriseComponent } from './widgets/entreprise/entreprise.component';
+import { NgApexchartsModule } from "ng-apexcharts";
+import { InitDataService } from 'src/app/shared/services/init-data.service';
 
 
 @NgModule({
@@ -47,7 +49,8 @@ import { EntrepriseComponent } from './widgets/entreprise/entreprise.component';
     RouterModule,
     HighchartsChartModule,
     MatTableModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    NgApexchartsModule
   ],
   exports:[
     HeaderComponent,

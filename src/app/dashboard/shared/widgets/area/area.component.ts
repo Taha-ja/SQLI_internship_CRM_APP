@@ -1,90 +1,163 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import HC_exporting from 'highcharts/modules/exporting';
-HC_exporting(Highcharts);
+import { Chart ,registerables} from 'chart.js';
 
+
+import {
+    ChartComponent,
+    ApexAxisChartSeries,
+    ApexChart,
+    ApexFill,
+    ApexXAxis,
+    ApexDataLabels,
+    ApexYAxis,
+    ApexTitleSubtitle
+  } from "ng-apexcharts";
+import { InitDataService } from 'src/app/shared/services/init-data.service';
+
+// HC_exporting(Highcharts);
+export type ChartOptions = {
+    series: ApexAxisChartSeries;
+    chart: ApexChart;
+    xaxis: ApexXAxis;
+    yaxis: ApexYAxis;
+    title: ApexTitleSubtitle;
+    fill: ApexFill;
+    dataLabels: ApexDataLabels;
+  };
 @Component({
   selector: 'app-widget-area',
   templateUrl: './area.component.html',
   styleUrls: ['./area.component.scss']
 })
-export class AreaComponent implements OnInit {
+export class AreaComponent{
+    @ViewChild("chart") chart: ChartComponent;
+    public chartOptions: Partial<ChartOptions>;
+    Data:any;
+    constructor(private initData:InitDataService) {
+      this.chartOptions = {
+        series: [
+          {
+            name: "Bubble",
+            data: this.generateData()
+          },
+        //   {
+        //     name: "Bubble2",
+        //     data: this.generateData(new Date("11 Feb 2017 GMT").getTime(), 20, {
+        //       min: 10,
+        //       max: 60
+        //     })
+        //   },
+        //   {
+        //     name: "Bubble3",
+        //     data: this.generateData(new Date("11 Feb 2017 GMT").getTime(), 20, {
+        //       min: 10,
+        //       max: 60
+        //     })
+        //   },
+        //   {
+        //     name: "Bubble4",
+        //     data: this.generateData(new Date("11 Feb 2017 GMT").getTime(), 20, {
+        //       min: 10,
+        //       max: 60
+        //     })
+        //   }
+        ],
+        chart: {
+          height: 350,
+          type: "bubble"
+        },
+        dataLabels: {
+          enabled: false
+        },
+        fill: {
+          opacity: 0.8
+        },
+        title: {
+          text: ""
+        },
+        xaxis: {
+          tickAmount: 4,
+          type: "datetime",
+          title: {
+            text: "Date de fermeture estimée"
+          }
+        },
+        yaxis:{
+            title: {
+                text: "Revenue estimée"
+              }
+        }
+      };
+    }
+  
+    public generateData() {
+      //var i = 0;
+   // var series = [[new Date("2022-01-01").getTime(),0,0],[new Date("2022-12-31").getTime(),0,0]];
+      var series = [];
+      var data=this.initData.getData();
+      console.log("dashData :",data);
+      
+    //   var data=[
+    //     {
+    //         "x": "2022-01-20",
+    //         "y": 24995,
+    //         "z": 24995
+    //     },
+    //     {
+    //         "x": "2022-09-10",
+    //         "y": 30582,
+    //         "z": 30582
+    //     },
+    //     {
+    //         "x": "2022-10-04",
+    //         "y": 33800,
+    //         "z": 33800
+    //     },
+    //     {
+    //         "x": "2022-10-05",
+    //         "y": 33800,
+    //         "z": 54800
+    //     }
+    // ];
+    // if(this.Data!=null){
+        var min;
+        var max
+        var Min=[];
+        data.forEach(element => {
+        var z = element.z;
+        Min.push(new Date(element.x).getTime())
+        series.push([new Date(element.x).getTime(), element.y,z]);
+     });
+     min=Math.min(...Min)
+     max=Math.max(...Min)
+     console.log("min :",min," max :",max);
+     
+    // }
+    //  {
+    //     //var x = Math.floor(Math.random() * (750 - 1 + 1)) + 1;
+    //     var y =
+    //       Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min;
+    //     var z = Math.floor(Math.random() * (75 - 15 + 1)) + 15;
+   
+    //     baseval += 86400000;
+    //     i++;
+    //   }
+      return series;
+    }
 
-  chartOptions={};
+    initDataTable() {
+        const apiAddress: string = 'api/Dashboard/opportunitiesEstimatedRevenue';
+        // OpportunityModel
+        // this.dashService.opportunities(apiAddress).subscribe({
+        //   next:(responce)=>{
+        //     //var result = JSON.parse(JSON.stringify(responce));
+        //     this.Data=responce.value;
+        //   }   
+        // })
+        return this.Data
+    }
 
-  Highcharts=Highcharts;
-  constructor() { }
 
-
-
-  ngOnInit(): void {
-    this.chartOptions= {chart: {
-      type: 'column'
-  },
-  title: {
-      text: 'Les opportunités'
-  },
-  subtitle: {
-      text: 'Annual'
-  },
-  xAxis: {
-      categories: [
-          'Jan',
-          'Feb',
-          'Mar',
-          'Apr',
-          'May',
-          'Jun',
-          'Jul',
-          'Aug',
-          'Sep',
-          'Oct',
-          'Nov',
-          'Dec'
-      ],
-      crosshair: true
-  },
-  yAxis: {
-      min: 0,
-      title: {
-          text: 'Score d opportunité'
-      }
-  },
-  tooltip: {
-      headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-      pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-          '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
-      footerFormat: '</table>',
-      shared: true,
-      useHTML: true
-  },
-
-  plotOptions: {
-      column: {
-          pointPadding: 0.2,
-          borderWidth: 0
-      }
-  },
-  series: [{
-      name: 'Niveau A',
-      data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
-
-  }, {
-      name: 'Niveau B',
-      data: [83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5, 106.6, 92.3]
-
-  }, {
-      name: 'Niveau C',
-      data: [48.9, 38.8, 39.3, 41.4, 47.0, 48.3, 59.0, 59.6, 52.4, 65.2, 59.3, 51.2]
-
-  }]
-  };
-
-  HC_exporting(Highcharts);
-  setTimeout(()=>{
-    window.dispatchEvent(
-      new Event('resize')
-     );
-  },300)
-
-}}
+  }

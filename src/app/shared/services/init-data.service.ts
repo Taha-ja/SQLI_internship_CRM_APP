@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { User } from 'src/app/_interfaces/User.model';
+import { DashboardService } from './dashboard.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,12 +13,16 @@ export class InitDataService {
   // private urlImage:any;
   private userSubject: BehaviorSubject<User>;
   user: any;
-  constructor(private http: HttpClient) { }
+  Data:any;
+  constructor(private http: HttpClient,private dashService:DashboardService) { }
   // public getData(){
   //   return this.urlImage;
   // }
   public getUser(){
     return this.userSubject?.value;
+  }
+  public getData(){
+    return this.Data;
   }
   // load(){
   //   return new Promise((resolve, reject) => {
@@ -37,6 +42,27 @@ export class InitDataService {
   // })
   // })
   // }
+  getDashboardData(){
+    return new Promise((resolve, reject) => {
+      this.http.get<User>('https://localhost:7290/api/Dashboard/opportunitiesEstimatedRevenue',{
+        headers: new HttpHeaders({ "Authorization": `Bearer ${localStorage.getItem("jwt")}`})
+    })
+  //   .subscribe(response => {
+  //     this.Data = response.value[0].entityimage;
+  //     resolve(true);
+  // })
+  .subscribe({
+    next:(responce)=>{
+      this.Data=responce;
+      resolve(true);
+    }
+  })
+  })
+
+
+
+
+  }
   geCurrentUser(){
     const token =localStorage.getItem('jwt');
     if(!token || token == null){
