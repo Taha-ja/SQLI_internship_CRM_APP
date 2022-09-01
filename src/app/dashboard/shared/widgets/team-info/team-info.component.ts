@@ -15,6 +15,8 @@ export class TeamInfoComponent implements OnInit {
   section:any;
   notFound:boolean=false;
   isMore:boolean=false;
+  container:any;
+  UrlImage:any;
   //  Responsive variable
   mobileMedia:any=window.matchMedia("(max-width:520px)")
   familyStatus={
@@ -60,6 +62,13 @@ export class TeamInfoComponent implements OnInit {
       );
     },300)
     this.initDataTable();
+    // this.container = document.getElementById("btnContainer");
+    // setInterval(Move,200)
+    // function Move(){
+    //   if(this.Data!=null){
+    //   this.container.style.marginTop="-50px";
+    // }
+    // }
   }
   initDataTable() {
     const email=this.dataTrans.getTeamProfile();
@@ -68,8 +77,15 @@ export class TeamInfoComponent implements OnInit {
     this.dashService.getProfileByUser(apiAddress,this.emailCheck).subscribe({
       next:(responce)=>{
         this.Data=responce.value[0];
+        if(this.Data.entityimage!=null){
+          this.UrlImage="data:image/png;base64,"+this.Data.entityimage;
+        }
+        else{
+          this.UrlImage="../../../../../assets/images/unkown.jfif";
+        }
         this.notFound=true;
       }   
     })
 }
+
 }

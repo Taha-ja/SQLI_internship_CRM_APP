@@ -43,6 +43,12 @@ export class InitDataService {
   // })
   // }
   getDashboardData(){
+    const token =localStorage.getItem('jwt');
+
+    if(!token || token == null){
+      return of(undefined);
+      // return new Promise((resolve)=>resolve(true));
+    }
     return new Promise((resolve, reject) => {
       this.http.get<User>('https://localhost:7290/api/Dashboard/opportunitiesEstimatedRevenue',{
         headers: new HttpHeaders({ "Authorization": `Bearer ${localStorage.getItem("jwt")}`})

@@ -39,7 +39,7 @@ export class AreaComponent{
       this.chartOptions = {
         series: [
           {
-            name: "Bubble",
+            name: "income",
             data: this.generateData()
           },
         //   {

@@ -9,8 +9,8 @@
                         <!-- <div class="col-md-4 gradient-custom text-center text-white"
                             style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;"> -->
                             <div id="child" class="text-black">
-                                <img *ngIf="Data?.entityimage" src={{Data?.entityimage}}
-                                    class="rounded-circle img-fluid my-5" alt="Avatar" style="width: 80px;" />
+                                <img *ngIf="Data?.entityimage" src={{UrlImage}}
+                                    class="rounded-circle img-fluid" alt="Avatar" style="width: 80px;" />
                                 <img *ngIf="!Data?.entityimage" src="../../../../../assets/images/unkown.jfif"
                                     class="rounded-circle img-fluid " alt="Avatar" style="width: 80px;" />
                                 <!-- <h5 style="font-size:20px ;" class="name">{{Data?.firstname}} {{Data?.lastname}}</h5>
@@ -20,7 +20,7 @@
                         <div class="col-md-12">
                             <div class="card-body px-4">
 
-                                <h5 style="font-size:20px; position: relative;float: right;margin-top: -60px;color: #00193a;" class="name">{{Data?.firstname}} {{Data?.lastname}}</h5>
+                                <h5 style="font-size:20px; position: relative;float: right;margin-top: -60px;" class="name">{{Data?.firstname}} {{Data?.lastname}}</h5>
                                 <!-- <p style="color:#F9F3EE;">{{Data?.jobtitle}}</p> -->
                                 <h6 style="text-align: center;font-size: large;">{{Data?.jobtitle}} at {{Data?.parentcustomerid_account.name}}
                                 </h6>
